@@ -1,37 +1,43 @@
-import SocialIcon from '@/components/social-icons'
+﻿import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
 import { PageSEO } from '@/components/SEO'
 import Quote from '@/components/Quotes/quote'
 import Button from '@/components/Button'
 import siteMetadata from '@/data/siteMetadata'
 
-const aboutTitle = 'Investigaci\u00f3n, sistemas y escritura t\u00e9cnica.'
-const aboutDescription =
-  'Un resumen de mi perfil profesional: qu\u00e9 construyo, qu\u00e9 investigo y c\u00f3mo conecto electr\u00f3nica, software, IA eficiente y divulgaci\u00f3n t\u00e9cnica.'
-const occupationDisplay = 'Ingeniero electr\u00f3nico e investigador en IA eficiente'
+const defaultContent = {
+  seoDescription:
+    'Perfil profesional, trayectoria, investigacion, proyectos y escritura tecnica de Raul Pacheco Rodriguez.',
+  eyebrow: 'Acerca de',
+  title: 'Investigacion, sistemas y escritura tecnica.',
+  description:
+    'Un resumen de mi perfil profesional: que construyo, que investigo y como conecto electronica, software, IA eficiente y divulgacion tecnica.',
+  occupation: 'Ingeniero electronico e investigador en IA eficiente',
+}
 
-export default function AuthorLayout({ children, frontMatter }) {
+export default function AuthorLayout({ children, frontMatter, pageContent }) {
   const { nickname, avatar, company, email, twitter, linkedin, github, platzi, CV } = frontMatter
   const displayName = siteMetadata.author
+  const content = { ...defaultContent, ...(pageContent || {}) }
 
   return (
     <>
       <PageSEO
-        title={`Qui\u00e9n es ${displayName} - @${nickname}`}
-        description={`Perfil profesional, trayectoria, investigaci\u00f3n, proyectos y escritura t\u00e9cnica de ${displayName}`}
+        title={content.seoTitle || `Quien es ${displayName} - @${nickname}`}
+        description={content.seoDescription}
       />
       <section className="divide-y divide-gray-200 dark:divide-gray-800">
         <div className="grid gap-10 pb-10 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-              Acerca de
+              {content.eyebrow}
             </p>
             <h1 className="text-4xl font-black tracking-tight text-gray-950 dark:text-white md:text-6xl">
-              {aboutTitle}
+              {content.title}
             </h1>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            {aboutDescription}
+            {content.description}
           </p>
         </div>
         <article className="items-start space-y-8 xl:grid xl:grid-cols-3 xl:gap-x-10 xl:space-y-0">
@@ -46,7 +52,7 @@ export default function AuthorLayout({ children, frontMatter }) {
             <h2 className="pb-2 pt-4 text-center text-2xl font-bold leading-8 tracking-tight text-gray-950 dark:text-white">
               {displayName}
             </h2>
-            <h3 className="text-center text-gray-500 dark:text-gray-400">{occupationDisplay}</h3>
+            <h3 className="text-center text-gray-500 dark:text-gray-400">{content.occupation}</h3>
             <h4 className="text-center text-gray-500 dark:text-gray-400">{company}</h4>
             <div className="flex space-x-3 pt-6">
               <SocialIcon kind="mail" href={`mailto:${email}`} />

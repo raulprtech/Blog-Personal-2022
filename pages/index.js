@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import Hero from '@/components/Hero'
@@ -18,7 +18,12 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ updates, projects, resources }) {
+export default function Home({ updates, projects, resources, pageContent }) {
+  const sections = pageContent?.sections || {}
+  const updatesSection = sections.updates || {}
+  const resourcesSection = sections.resources || {}
+  const projectsSection = sections.projects || {}
+
   return (
     <>
       <Banner
@@ -30,25 +35,33 @@ export default function Home({ updates, projects, resources }) {
       />
       <LayoutWrapper bgImage="">
         <PageSEO
-          title={`${siteMetadata.title} - ${siteMetadata.author} - ${siteMetadata.nickname}`}
-          description={`${siteMetadata.description}`}
+          title={
+            pageContent?.seoTitle ||
+            `${siteMetadata.title} - ${siteMetadata.author} - ${siteMetadata.nickname}`
+          }
+          description={pageContent?.seoDescription || siteMetadata.description}
         />
-        <Hero />
+        <Hero content={pageContent?.hero} />
         <section className="py-12">
           <div className="mb-8 flex items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-                Carrera y actividad reciente
+                {updatesSection.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
-                Updates
+                {updatesSection.title}
               </h2>
+              {updatesSection.description && (
+                <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
+                  {updatesSection.description}
+                </p>
+              )}
             </div>
             <Link
               href="/updates"
               className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
             >
-              Ver todos -&gt;
+              {updatesSection.hrefLabel} -&gt;
             </Link>
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
@@ -64,21 +77,22 @@ export default function Home({ updates, projects, resources }) {
           <div className="mb-8 flex items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-                Biblioteca t&eacute;cnica
+                {resourcesSection.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
-                Recursos
+                {resourcesSection.title}
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
-                Lecturas, repositorios y referencias que alimentan mi investigaci&oacute;n, mi
-                escritura y mi trabajo de programaci&oacute;n.
-              </p>
+              {resourcesSection.description && (
+                <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
+                  {resourcesSection.description}
+                </p>
+              )}
             </div>
             <Link
               href="/resources"
               className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
             >
-              Ver recursos -&gt;
+              {resourcesSection.hrefLabel} -&gt;
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -92,21 +106,22 @@ export default function Home({ updates, projects, resources }) {
           <div className="mb-8 flex items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-                Trabajo seleccionado
+                {projectsSection.eyebrow}
               </p>
               <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
-                Proyectos
+                {projectsSection.title}
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
-                Experimentos, repositorios y piezas t&eacute;cnicas que conectan software, hardware
-                e IA aplicada.
-              </p>
+              {projectsSection.description && (
+                <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
+                  {projectsSection.description}
+                </p>
+              )}
             </div>
             <Link
               href="/projects"
               className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
             >
-              Ver proyectos -&gt;
+              {projectsSection.hrefLabel} -&gt;
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2">

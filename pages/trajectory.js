@@ -1,8 +1,8 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import { getTrajectory } from '@/lib/content'
+import { getPageContent, getTrajectory } from '@/lib/content'
 
 const categoryStyles = {
   Education:
@@ -57,55 +57,53 @@ function Milestone({ item }) {
 }
 
 export async function getStaticProps() {
+  const [trajectoryData, pageContent] = await Promise.all([
+    getTrajectory(),
+    getPageContent('trajectory'),
+  ])
   return {
-    props: { trajectoryData: await getTrajectory() },
+    props: { trajectoryData, pageContent },
     revalidate: 60,
   }
 }
 
-export default function Trajectory({ trajectoryData }) {
+export default function Trajectory({ trajectoryData, pageContent }) {
   const featured = trajectoryData.filter((item) => item.featured)
+  const summaryStats = pageContent?.summaryStats || []
 
   return (
     <LayoutWrapper>
       <PageSEO
-        title={`Trayectoria - ${siteMetadata.author} - ${siteMetadata.nickname}`}
-        description={`Trayectoria profesional, academica y editorial de ${siteMetadata.author}.`}
+        title={
+          pageContent?.seoTitle || `Trayectoria - ${siteMetadata.author} - ${siteMetadata.nickname}`
+        }
+        description={pageContent?.seoDescription}
       />
       <section className="pb-16 pt-8">
         <div className="grid gap-10 border-b border-gray-200 pb-12 dark:border-gray-800 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-              Trayectoria
+              {pageContent?.eyebrow}
             </p>
             <h1 className="text-4xl font-black tracking-tight text-gray-950 dark:text-white md:text-6xl">
-              De electronica y web hacia IA eficiente y sistemas verificables.
+              {pageContent?.title}
             </h1>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Una linea de tiempo de mi formacion, trabajo, investigacion, productos y actividad
-            editorial. Esta pagina funciona como puente entre el CV, los proyectos y la direccion de
-            investigacion del sitio.
+            {pageContent?.description}
           </p>
         </div>
 
         <div className="grid gap-4 py-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
-            <p className="text-3xl font-black text-gray-950 dark:text-white">2024+</p>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Doctorado CINVESTAV</p>
-          </div>
-          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
-            <p className="text-3xl font-black text-gray-950 dark:text-white">FPGA</p>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Hardware-aware AI</p>
-          </div>
-          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
-            <p className="text-3xl font-black text-gray-950 dark:text-white">FP32</p>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Editorial lab</p>
-          </div>
-          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
-            <p className="text-3xl font-black text-gray-950 dark:text-white">AI</p>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Research and product</p>
-          </div>
+          {summaryStats.map((stat) => (
+            <div
+              key={`${stat.value}-${stat.label}`}
+              className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950"
+            >
+              <p className="text-3xl font-black text-gray-950 dark:text-white">{stat.value}</p>
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
+            </div>
+          ))}
         </div>
 
         <div className="mb-10 flex flex-wrap gap-2">
@@ -127,7 +125,7 @@ export default function Trajectory({ trajectoryData }) {
 
         <section className="mt-12 rounded-lg border border-gray-200 bg-gray-950 p-8 text-white dark:border-gray-800">
           <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300">
-            Hitos destacados
+            {pageContent?.featuredEyebrow}
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {featured.slice(0, 4).map((item) => (
