@@ -10,8 +10,6 @@ const defaultContent = {
   primaryCtaHref: '/research',
   secondaryCtaLabel: 'Ver updates',
   secondaryCtaHref: '/updates',
-  tertiaryCtaLabel: 'Ver CV',
-  tertiaryCtaHref: '/static/CV/CV.pdf',
   focusAreas: ['Hardware-aware AI', 'Anti-leakage evaluation', 'Clinical-Core'],
   visualEyebrow: 'Research direction',
   visualTitle: 'Machine learning, quantization, RTL and reproducible medical AI.',
@@ -43,24 +41,18 @@ export default function Presentation({ content }) {
             {hero.description}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 grid gap-3 sm:max-w-xl sm:grid-cols-2">
             <Link
               href={hero.primaryCtaHref}
-              className="inline-flex items-center justify-center rounded-md bg-gray-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-700 dark:bg-white dark:text-gray-950 dark:hover:bg-secondary-300"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-md bg-gray-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary-700 dark:bg-white dark:text-gray-950 dark:hover:bg-secondary-300"
             >
               {hero.primaryCtaLabel}
             </Link>
             <Link
               href={hero.secondaryCtaHref}
-              className="inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-900 transition hover:border-primary-700 hover:text-primary-700 dark:border-gray-700 dark:text-gray-100 dark:hover:border-secondary-400 dark:hover:text-secondary-400"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-md border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-900 transition hover:border-primary-700 hover:text-primary-700 dark:border-gray-700 dark:text-gray-100 dark:hover:border-secondary-400 dark:hover:text-secondary-400"
             >
               {hero.secondaryCtaLabel}
-            </Link>
-            <Link
-              href={hero.tertiaryCtaHref}
-              className="inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-900 transition hover:border-primary-700 hover:text-primary-700 dark:border-gray-700 dark:text-gray-100 dark:hover:border-secondary-400 dark:hover:text-secondary-400"
-            >
-              {hero.tertiaryCtaLabel}
             </Link>
           </div>
 

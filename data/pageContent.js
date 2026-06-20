@@ -9,8 +9,6 @@ const pageContent = {
       primaryCtaHref: '/research',
       secondaryCtaLabel: 'Ver updates',
       secondaryCtaHref: '/updates',
-      tertiaryCtaLabel: 'Ver CV',
-      tertiaryCtaHref: '/static/CV/CV.pdf',
       focusAreas: ['Hardware-aware AI', 'Anti-leakage evaluation', 'Clinical-Core'],
       visualEyebrow: 'Research direction',
       visualTitle: 'Machine learning, quantization, RTL and reproducible medical AI.',

@@ -41,8 +41,6 @@ export default {
         simpleText('primaryCtaHref', 'Primary CTA href'),
         simpleText('secondaryCtaLabel', 'Secondary CTA label'),
         simpleText('secondaryCtaHref', 'Secondary CTA href'),
-        simpleText('tertiaryCtaLabel', 'Tertiary CTA label'),
-        simpleText('tertiaryCtaHref', 'Tertiary CTA href'),
         {
           name: 'focusAreas',
           title: 'Focus areas',
