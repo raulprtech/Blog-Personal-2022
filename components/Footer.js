@@ -1,37 +1,56 @@
+﻿import Image from 'next/image'
 import Link from 'next/link'
 import siteMetadata from '@/data/siteMetadata'
+import fallbackSiteSettings from '@/data/siteSettings'
 import SocialIcon from '@/components/social-icons'
 
-export default function Footer() {
+function FooterSocialLink({ link }) {
+  if (!link?.href) return null
+
+  if (link.image) {
+    return (
+      <a
+        className="inline-flex h-6 w-6 items-center justify-center opacity-80 transition hover:opacity-100"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={link.href}
+      >
+        <span className="sr-only">{link.label || link.kind}</span>
+        <Image
+          src={link.image}
+          alt={link.imageAlt || link.label || link.kind || 'Social link'}
+          width={24}
+          height={24}
+          className="h-6 w-6 object-contain"
+        />
+      </a>
+    )
+  }
+
+  return <SocialIcon kind={link.kind} href={link.href} size="6" />
+}
+
+export default function Footer({ siteSettings = fallbackSiteSettings }) {
+  const socialLinks = siteSettings.socialLinks || fallbackSiteSettings.socialLinks
+  const title = siteSettings.title || siteMetadata.title
+  const author = siteSettings.author || siteMetadata.author
+  const footerCredit = siteSettings.footerCredit || fallbackSiteSettings.footerCredit
+
   return (
     <footer>
       <div className=" mt-8 flex flex-col items-center">
         <div className="mb-3 flex space-x-4">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
-          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size="6" />
-          <SocialIcon kind="github" href={siteMetadata.github} size="6" />
-          <SocialIcon kind="twitter" href={siteMetadata.twitter} size="6" />
-          <SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" />
-          <SocialIcon kind="rss" href={siteMetadata.rss} size="6" />
+          {socialLinks.map((link) => (
+            <FooterSocialLink key={`${link.kind}-${link.href}`} link={link} />
+          ))}
         </div>
-        {/* <div className="mb-3 flex space-x-56">
-          <Link href="/">Hola</Link>
-          <Link href="/">Hola</Link>
-          <Link href="/">Mas Posts</Link>
-          <Link href="/">¿Necesitas un Freelance?</Link>
-        </div> */}
         <div className="m-2 mb-6 flex space-x-2 text-xs text-gray-500 dark:text-gray-400 sm:text-sm">
-          <Link href="/">{siteMetadata.title}</Link>
+          <Link href="/">{title}</Link>
           <div>{` • `}</div>
-          <div>Hecho con ❤️ por </div>
-          <div>{siteMetadata.author}</div>
+          <div>{footerCredit}</div>
+          <div>{author}</div>
           <div>{` © ${new Date().getFullYear()}`}</div>
         </div>
-        {/* <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
-          </Link>
-        </div> */}
       </div>
     </footer>
   )

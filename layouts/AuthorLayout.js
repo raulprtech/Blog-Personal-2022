@@ -4,6 +4,7 @@ import { PageSEO } from '@/components/SEO'
 import Quote from '@/components/Quotes/quote'
 import Button from '@/components/Button'
 import siteMetadata from '@/data/siteMetadata'
+import fallbackSiteSettings from '@/data/siteSettings'
 
 const defaultContent = {
   seoDescription:
@@ -15,10 +16,13 @@ const defaultContent = {
   occupation: 'Ingeniero electronico e investigador en IA eficiente',
 }
 
-export default function AuthorLayout({ children, frontMatter, pageContent }) {
+export default function AuthorLayout({ children, frontMatter, pageContent, siteSettings }) {
   const { nickname, avatar, company, email, twitter, linkedin, github, platzi, CV } = frontMatter
   const displayName = siteMetadata.author
   const content = { ...defaultContent, ...(pageContent || {}) }
+  const settings = siteSettings || fallbackSiteSettings
+  const cvHref = settings.cvHref || CV
+  const cvLabel = settings.cvLabel || 'Descargar CV'
 
   return (
     <>
@@ -75,7 +79,7 @@ export default function AuthorLayout({ children, frontMatter, pageContent }) {
               <SocialIcon kind="platzi" href={platzi} />
             </div>
             <div className="grid grid-cols-1 gap-3 pb-10 pt-10">
-              <Button link={CV} text="Descargar CV">
+              <Button link={cvHref} text={cvLabel}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

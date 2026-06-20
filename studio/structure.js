@@ -3,6 +3,9 @@
     .title('Content')
     .items([
       S.listItem()
+        .title('Site settings')
+        .child(S.document().schemaType('siteSettings').documentId('site-settings')),
+      S.listItem()
         .title('Site content')
         .child(
           S.list()
@@ -32,5 +35,7 @@
             ])
         ),
       S.divider(),
-      ...S.documentTypeListItems().filter((item) => item.getId() !== 'pageContent'),
+      ...S.documentTypeListItems().filter(
+        (item) => !['pageContent', 'siteSettings'].includes(item.getId())
+      ),
     ])
