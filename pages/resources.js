@@ -2,11 +2,18 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import ResourceCard from '@/components/ResourceCard'
 import siteMetadata from '@/data/siteMetadata'
-import resourcesData from '@/data/resourcesData'
+import { getResources } from '@/lib/content'
 
 const categories = ['papers', 'repos', 'blogs', 'books', 'talks', 'datasets']
 
-export default function Resources() {
+export async function getStaticProps() {
+  return {
+    props: { resourcesData: await getResources() },
+    revalidate: 60,
+  }
+}
+
+export default function Resources({ resourcesData }) {
   return (
     <LayoutWrapper>
       <PageSEO

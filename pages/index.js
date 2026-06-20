@@ -5,19 +5,20 @@ import Hero from '@/components/Hero'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import Banner from '@/components/Banner'
 import mainBanner from '@/data/mainBanner'
-import projectsData from '@/data/projectsData'
-import updatesData from '@/data/updatesData'
 import UpdateCard from '@/components/UpdateCard'
 import ProjectCard from '@/components/ProjectCard'
 import NewsletterCTA from '@/components/NewsletterCTA'
 import ResourceCard from '@/components/ResourceCard'
-import resourcesData from '@/data/resourcesData'
+import { getHomeContent } from '@/lib/content'
 
 export async function getStaticProps() {
-  return { props: { updates: updatesData } }
+  return {
+    props: await getHomeContent(),
+    revalidate: 60,
+  }
 }
 
-export default function Home({ updates }) {
+export default function Home({ updates, projects, resources }) {
   return (
     <>
       <Banner
@@ -81,7 +82,7 @@ export default function Home({ updates }) {
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {resourcesData.map((resource) => (
+            {resources.map((resource) => (
               <ResourceCard key={resource.title} resource={resource} compact />
             ))}
           </div>
@@ -109,7 +110,7 @@ export default function Home({ updates }) {
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {projectsData.slice(0, 4).map((project) => (
+            {projects.slice(0, 4).map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}
           </div>

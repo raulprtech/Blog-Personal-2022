@@ -1,10 +1,17 @@
-﻿import LayoutWrapper from '@/components/LayoutWrapper'
+import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import UpdateCard from '@/components/UpdateCard'
 import siteMetadata from '@/data/siteMetadata'
-import updatesData from '@/data/updatesData'
+import { getUpdates } from '@/lib/content'
 
-export default function Updates() {
+export async function getStaticProps() {
+  return {
+    props: { updatesData: await getUpdates() },
+    revalidate: 60,
+  }
+}
+
+export default function Updates({ updatesData }) {
   const [featuredUpdate, ...updates] = updatesData
 
   return (

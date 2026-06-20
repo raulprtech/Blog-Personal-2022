@@ -2,7 +2,7 @@ import Link from 'next/link'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import trajectoryData from '@/data/trajectoryData'
+import { getTrajectory } from '@/lib/content'
 
 const categoryStyles = {
   Education:
@@ -56,7 +56,14 @@ function Milestone({ item }) {
   )
 }
 
-export default function Trajectory() {
+export async function getStaticProps() {
+  return {
+    props: { trajectoryData: await getTrajectory() },
+    revalidate: 60,
+  }
+}
+
+export default function Trajectory({ trajectoryData }) {
   const featured = trajectoryData.filter((item) => item.featured)
 
   return (

@@ -1,10 +1,17 @@
 import siteMetadata from '@/data/siteMetadata'
-import projectsData from '@/data/projectsData'
+import { getProjects } from '@/lib/content'
 import { PageSEO } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import ProjectCard from '@/components/ProjectCard'
 
-export default function Projects() {
+export async function getStaticProps() {
+  return {
+    props: { projectsData: await getProjects() },
+    revalidate: 60,
+  }
+}
+
+export default function Projects({ projectsData }) {
   return (
     <LayoutWrapper>
       <PageSEO

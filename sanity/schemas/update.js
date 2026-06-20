@@ -1,0 +1,19 @@
+export default {
+  name: 'update',
+  title: 'Update',
+  type: 'document',
+  fields: [
+    { name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() },
+    { name: 'date', title: 'Date', type: 'date', validation: (Rule) => Rule.required() },
+    { name: 'type', title: 'Type', type: 'string' },
+    { name: 'eyebrow', title: 'Eyebrow', type: 'string' },
+    { name: 'summary', title: 'Summary', type: 'text', rows: 4 },
+    { name: 'href', title: 'Link', type: 'url' },
+    { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
+    { name: 'accent', title: 'Tailwind accent gradient', type: 'string' },
+    { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
+  ],
+  preview: {
+    select: { title: 'title', subtitle: 'eyebrow', media: 'image' },
+  },
+}
