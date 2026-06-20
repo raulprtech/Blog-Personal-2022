@@ -9,8 +9,9 @@
     "deploy": "sanity deploy",
     "import:initial": "sanity datasets import --project-id a668buu6 --dataset production --replace import/initial-content.ndjson",
     "import:initial:missing": "sanity datasets import --project-id a668buu6 --dataset production --missing import/initial-content.ndjson",
-    "verify:production": "sanity documents query --project-id a668buu6 --dataset production \"*[]{_id,_type,title,slug}[0...30]\" --pretty",
-    "verify:site-settings": "sanity documents query --project-id a668buu6 --dataset production \"*[_type == \\\"siteSettings\\\"]{_id,_type,title,headerTitle,cvHref,socialLinks}\" --pretty"
+    "verify:production": "sanity documents query --project-id a668buu6 --dataset production \"*[!(_id in path(\\\"_.**\\\")) && !(_id in path(\\\"drafts.**\\\"))]{_id,_type,title,slug}[0...50]\" --pretty",
+    "verify:site-settings": "sanity documents query --project-id a668buu6 --dataset production \"*[_type == \\\"siteSettings\\\"]{_id,_type,title,headerTitle,cvHref,socialLinks}\" --pretty",
+    "verify:count": "sanity documents query --project-id a668buu6 --dataset production \"count(*[!(_id in path(\\\"_.**\\\")) && !(_id in path(\\\"drafts.**\\\"))])\" --pretty"
   },
   "dependencies": {
     "@sanity/vision": "latest",
