@@ -33,7 +33,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
             <div className="space-y-1 text-center">
               <dl className="space-y-10">
                 <div>
-                  <dt className="sr-only">Fecha de publicacion</dt>
+                  <dt className="sr-only">Fecha de publicación</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                     <time dateTime={date}>
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
@@ -78,7 +78,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                           {author.twitter && (
                             <Link
                               href={author.twitter}
-                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                              className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400"
                             >
                               {author.twitter.replace('https://twitter.com/', '@')}
                             </Link>
@@ -94,11 +94,11 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div className="prose max-w-3xl pb-8 pt-10 dark:prose-dark">{children}</div>
               <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
                 {/* <Link href={discussUrl(slug)} rel="nofollow">
-                  {'Discusion en Twitter'}
+                  {'Discusión en Twitter'}
                 </Link> */}
                 {thread && (
                   <Link href={thread} rel="nofollow">
-                    {'Discusion en Twitter'}
+                    {'Discusión en Twitter'}
                   </Link>
                 )}
                 {repository && thread && ` • `}
@@ -125,9 +125,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     {prev && (
                       <div>
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                          Articulo Anterior
+                          Artículo anterior
                         </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                        <div className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400">
                           <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
                         </div>
                       </div>
@@ -135,9 +135,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     {next && (
                       <div>
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                          Siguiente Articulo
+                          Siguiente artículo
                         </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                        <div className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400">
                           <Link href={`/blog/${next.slug}`}>{next.title}</Link>
                         </div>
                       </div>
@@ -148,7 +148,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div className="pt-4 xl:pt-8">
                 <Link
                   href="/blog"
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                  className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400"
                 >
                   &larr; Volver al Blog
                 </Link>

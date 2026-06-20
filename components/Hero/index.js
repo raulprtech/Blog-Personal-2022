@@ -1,63 +1,93 @@
-import siteMetadata from '@/data/siteMetadata'
-// import SocialIcon from '@/components/social-icons'
-import Button from '../Button'
 import Image from 'next/image'
+import Link from 'next/link'
+import siteMetadata from '@/data/siteMetadata'
+
+const focusAreas = ['Hardware-aware AI', 'Anti-leakage evaluation', 'Clinical-Core']
 
 export default function Presentation() {
   return (
-    <section className="mt-4 flex flex-col items-center rounded-3xl pb-4 pt-10">
-      <Image
-        src="/static/images/logo.png"
-        alt="Raul Alberto Pacheco Rodriguez"
-        width={80}
-        height={80}
-        priority={true}
-        className="lg:h-100 lg:w-100 h-20 w-20 animate-bounce content-center rounded-md"
-      />
-      <div className="flex-col py-4 text-center font-extrabold leading-9 tracking-tight">
-        <h1 className="block space-x-4 text-xl font-bold text-primary-400 dark:text-primary-400 lg:text-3xl">
-          Raúl Pacheco Rodríguez
-        </h1>
-        <h2 className="text-xl font-bold text-gray-900 dark:text-secondary-400 sm:text-xl md:text-5xl lg:py-5 lg:text-7xl">
-          Exploremos juntos los límites de la tecnología
-        </h2>
-        <h3 className="font-medium text-gray-600 dark:text-gray-300 lg:py-4 lg:text-xl">
-          {`${siteMetadata.description}`}
-        </h3>
-        <div className="mx-auto flex items-center justify-center py-6">
-          <div className="grid grid-cols-2 grid-rows-1 gap-4 sm:gap-8 lg:gap-12">
-            <Button text="Proyectos" link="projects">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-5 w-5 group-hover:skew-y-6 lg:h-10 lg:w-10"
+    <section className="relative overflow-hidden py-12 md:py-20">
+      <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="max-w-3xl">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
+            Raul Pacheco Rodriguez
+          </p>
+          <h1 className="text-5xl font-black leading-tight tracking-tight text-gray-950 dark:text-white md:text-7xl">
+            Efficient AI for systems that need evidence.
+          </h1>
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300 md:text-xl md:leading-9">
+            {siteMetadata.description}
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/research"
+              className="inline-flex items-center justify-center rounded-md bg-gray-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-700 dark:bg-white dark:text-gray-950 dark:hover:bg-secondary-300"
+            >
+              Ver investigacion
+            </Link>
+            <Link
+              href="/updates"
+              className="inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-900 transition hover:border-primary-700 hover:text-primary-700 dark:border-gray-700 dark:text-gray-100 dark:hover:border-secondary-400 dark:hover:text-secondary-400"
+            >
+              Ver updates
+            </Link>
+            <Link
+              href="/static/CV/CV.pdf"
+              className="inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-900 transition hover:border-primary-700 hover:text-primary-700 dark:border-gray-700 dark:text-gray-100 dark:hover:border-secondary-400 dark:hover:text-secondary-400"
+            >
+              Ver CV
+            </Link>
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            {focusAreas.map((area) => (
+              <span
+                key={area}
+                className="rounded-full border border-gray-200 px-4 py-2 text-xs font-medium text-gray-600 dark:border-gray-800 dark:text-gray-300"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
-                />
-              </svg>
-            </Button>
-            <Button text="Sobre mi" link="about">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-5 w-5 group-hover:skew-y-6 lg:h-10 lg:w-10"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
-                />
-              </svg>
-            </Button>
+                {area}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="absolute -left-6 top-8 hidden h-24 w-24 border-l border-t border-primary-300 dark:border-secondary-500 md:block" />
+          <div className="absolute -bottom-6 -right-6 hidden h-24 w-24 border-b border-r border-primary-300 dark:border-secondary-500 md:block" />
+          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-xl dark:border-gray-800 dark:bg-gray-950">
+            <div className="relative aspect-[4/3] bg-gray-100 dark:bg-gray-900">
+              <Image
+                src="/static/images/circuito.png"
+                alt="Research hardware visual"
+                fill
+                priority
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <p className="text-xs font-semibold uppercase tracking-widest text-cyan-200">
+                  Research direction
+                </p>
+                <p className="mt-3 text-2xl font-black leading-tight">
+                  Machine learning, quantization, RTL and reproducible medical AI.
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 divide-x divide-gray-200 dark:divide-gray-800">
+              <div className="p-4">
+                <p className="text-2xl font-black text-gray-950 dark:text-white">2026</p>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Doctoral sprint</p>
+              </div>
+              <div className="p-4">
+                <p className="text-2xl font-black text-gray-950 dark:text-white">FP32</p>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Editorial lab</p>
+              </div>
+              <div className="p-4">
+                <p className="text-2xl font-black text-gray-950 dark:text-white">HW</p>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Aware AI</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

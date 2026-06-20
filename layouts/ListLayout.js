@@ -22,16 +22,16 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
     <>
       <section className="divide-y">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold uppercase leading-9 tracking-tight text-primary-500 dark:text-secondary-400 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          <h1 className="text-3xl font-extrabold uppercase leading-9 tracking-tight text-primary-700 dark:text-secondary-400 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             {title}
           </h1>
           <div className="relative max-w-lg">
             <input
-              aria-label="Buscar Articulos"
+              aria-label="Buscar artículos"
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Buscar Articulos"
-              className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
+              placeholder="Buscar artículos"
+              className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-700 focus:ring-primary-700 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
             />
             <svg
               className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
@@ -59,7 +59,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                   <li key={slug} className="py-4">
                     <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                       <dl>
-                        <dt className="sr-only">Fecha de Publicacion</dt>
+                        <dt className="sr-only">Fecha de publicación</dt>
                         <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                           <time dateTime={date}>{formatDate(date)}</time>
                         </dd>
@@ -92,8 +92,8 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
           </div>
           {sortedTags != '0' && (
             <div className="py-4">
-              <span className="block py-4 text-center text-2xl font-bold text-primary-600 dark:text-secondary-400">
-                🏷️Tags
+              <span className="block py-4 text-center text-2xl font-bold text-primary-700 dark:text-secondary-400">
+                Tags
               </span>
               <div className="flex flex-wrap justify-start capitalize">
                 {Object.keys(tags).length === 0 && 'No se encontraron tags.'}

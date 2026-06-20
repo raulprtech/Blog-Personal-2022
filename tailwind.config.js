@@ -10,6 +10,7 @@ module.exports = {
     './components/**/*.js',
     './layouts/**/*.js',
     './lib/**/*.js',
+    './data/**/*.js',
     './data/**/*.mdx',
   ],
   darkMode: 'class',
@@ -28,7 +29,7 @@ module.exports = {
         sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.sky,
+        primary: colors.cyan,
         secondary: colors.amber,
         gray: colors.slate,
       },
@@ -37,11 +38,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.primary.700'),
               '&:hover': {
-                color: `${theme('colors.primary.600')} !important`,
+                color: `${theme('colors.primary.800')} !important`,
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.primary.700') },
             },
             h1: {
               fontWeight: '700',
@@ -105,11 +106,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.primary.300'),
               '&:hover': {
                 color: `${theme('colors.primary.400')} !important`,
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.primary.300') },
             },
             h1: {
               fontWeight: '700',

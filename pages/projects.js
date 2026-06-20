@@ -1,81 +1,39 @@
-import { useRef } from 'react'
 import siteMetadata from '@/data/siteMetadata'
 import projectsData from '@/data/projectsData'
-import Card from '@/components/Card'
 import { PageSEO } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-
-import { Autoplay, Pagination, Navigation } from 'swiper/modules'
+import ProjectCard from '@/components/ProjectCard'
 
 export default function Projects() {
-  const progressCircle = useRef(null)
-  const progressContent = useRef(null)
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty('--progress', 1 - progress)
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
-  }
   return (
     <LayoutWrapper>
       <PageSEO
         title={`Proyectos - ${siteMetadata.author} - ${siteMetadata.nickname}`}
-        description={`Proyectos de Desarrollo Web de ${siteMetadata.author} - React, Next, Gatasby, Javascript, html, css y python`}
+        description={`Proyectos tecnicos de ${siteMetadata.author} en IA, hardware-aware ML, FPGA, web y productos educativos.`}
       />
-      {/* <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-        {projectsData.map((d) => (
-          <SwiperSlide key={d.title}>
-            <Card
-              key={d.title}
-              title={d.title}
-              description={d.description}
-              imgSrc={d.imgSrc}
-              href={d.href}
-              tags={d.tags}
-            />
-          </SwiperSlide>
-        ))}
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div>
-      </Swiper> */}
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-primary-500 dark:text-secondary-400 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Proyectos
-          </h1>
-          <p className="text-lg leading-7 text-gray-800 dark:text-gray-400">
-            Aquí encuentras algunos de mis proyectos
+      <section className="pb-16 pt-8">
+        <div className="grid gap-10 border-b border-gray-200 pb-12 dark:border-gray-800 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
+              Portfolio tecnico
+            </p>
+            <h1 className="text-4xl font-black tracking-tight text-gray-950 dark:text-white md:text-6xl">
+              Proyectos que conectan investigacion, producto y sistemas.
+            </h1>
+          </div>
+          <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+            Una seleccion de trabajo en aceleracion hardware, IA medica, productos educativos y
+            escritura tecnica. La estructura esta pensada para migrar cada proyecto a Sanity con
+            imagen, estado, rol, tags y enlaces.
           </p>
         </div>
-        <div className="container py-12">
-          <div className="grid grid-cols-2 gap-x-14 gap-y-4">
-            {projectsData.map((d) => (
-              <Card
-                key={d.title}
-                title={d.title}
-                description={d.description}
-                imgSrc={d.imgSrc}
-                href={d.href}
-                tags={d.tags}
-              />
-            ))}
-          </div>
+
+        <div className="grid gap-6 py-12 md:grid-cols-2">
+          {projectsData.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
         </div>
-      </div>
+      </section>
     </LayoutWrapper>
   )
 }

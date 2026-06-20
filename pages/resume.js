@@ -28,7 +28,7 @@ const Resume = () => {
         />
         <div className="container mx-auto mb-10">
           <div className="mt-10 flex w-full flex-col items-center">
-            <div className="w-full max-w-4xl rounded-xl border-2 border-primary-500 bg-gray-200 p-5 text-gray-900 shadow-sm dark:bg-gray-800 dark:text-primary-100 md:px-20 md:py-16">
+            <div className="w-full max-w-4xl rounded-xl border-2 border-primary-700 bg-gray-200 p-5 text-gray-900 shadow-sm dark:bg-gray-800 dark:text-primary-100 md:px-20 md:py-16">
               <div className="mb-6 grid grid-cols-3 gap-x-4">
                 <div className="max-w-none items-start xl:col-span-1">
                   <Image
@@ -41,7 +41,7 @@ const Resume = () => {
                 </div>
                 <div className="max-w-full xl:col-span-2">
                   <h1 className="mt-3 text-4xl font-bold">{siteMetadata.author}</h1>
-                  <h2 className="mt-3 text-2xl font-bold text-primary-500">Desarrollador Web</h2>
+                  <h2 className="mt-3 text-2xl font-bold text-primary-700">Desarrollador Web</h2>
                   <h3 className="text-md mt-3">{siteMetadata.authorDescription}</h3>
                   <div className="my-6 flex space-x-4">
                     <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />

@@ -1,47 +1,138 @@
-import React from 'react'
-import Timeline from '@/components/Profile/Timeline'
-import siteMetadata from '@/data/siteMetadata'
-import { PageSEO } from '@/components/SEO'
+import Link from 'next/link'
 import LayoutWrapper from '@/components/LayoutWrapper'
-import jobsData from '@/data/jobsData'
-import eduData from '@/data/eduData'
-import workshopsData from '@/data/workshopsData'
-import mvpData from '@/data/mvpData'
+import { PageSEO } from '@/components/SEO'
+import siteMetadata from '@/data/siteMetadata'
+import trajectoryData from '@/data/trajectoryData'
 
-export default function trajectory() {
+const categoryStyles = {
+  Education:
+    'border-cyan-200 bg-cyan-50 text-cyan-700 dark:border-cyan-900 dark:bg-cyan-950 dark:text-cyan-300',
+  Work: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-300',
+  Project:
+    'border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-900 dark:bg-violet-950 dark:text-violet-300',
+  Research:
+    'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-300',
+  Editorial:
+    'border-cyan-200 bg-cyan-50 text-cyan-700 dark:border-cyan-900 dark:bg-cyan-950 dark:text-cyan-300',
+  Product:
+    'border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-300',
+  Teaching:
+    'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300',
+}
+
+const categories = ['Research', 'Education', 'Project', 'Work', 'Editorial', 'Product', 'Teaching']
+
+function Milestone({ item }) {
+  return (
+    <article className="relative grid gap-4 border-b border-gray-200 py-8 last:border-b-0 dark:border-gray-800 md:grid-cols-[180px_1fr]">
+      <div>
+        <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">{item.period}</p>
+        <span
+          className={`mt-3 inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${
+            categoryStyles[item.category] || categoryStyles.Teaching
+          }`}
+        >
+          {item.category}
+        </span>
+      </div>
+      <div>
+        <h2 className="text-2xl font-black tracking-tight text-gray-950 dark:text-white">
+          {item.title}
+        </h2>
+        <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
+          {item.organization}
+        </p>
+        <p className="mt-4 max-w-3xl leading-8 text-gray-600 dark:text-gray-300">{item.summary}</p>
+        {item.href && (
+          <Link
+            href={item.href}
+            className="mt-5 inline-flex text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400"
+          >
+            Ver contexto <span aria-hidden="true">-&gt;</span>
+          </Link>
+        )}
+      </div>
+    </article>
+  )
+}
+
+export default function Trajectory() {
+  const featured = trajectoryData.filter((item) => item.featured)
+
   return (
     <LayoutWrapper>
       <PageSEO
         title={`Trayectoria - ${siteMetadata.author} - ${siteMetadata.nickname}`}
-        description={`Conoce la trayectoria profesional y escolar, de ${siteMetadata.author}`}
+        description={`Trayectoria profesional, academica y editorial de ${siteMetadata.author}.`}
       />
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-primary-500 dark:text-secondary-400 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Trayectoria
-          </h1>
-          <p className="text-lg leading-7 text-gray-800 dark:text-gray-400">
-            Aquí encuentras información sobre lo que he hecho los ultímos años. Trabajos, Educación,
-            Emprendimientos y los Talleres que he impartido.
+      <section className="pb-16 pt-8">
+        <div className="grid gap-10 border-b border-gray-200 pb-12 dark:border-gray-800 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
+              Trayectoria
+            </p>
+            <h1 className="text-4xl font-black tracking-tight text-gray-950 dark:text-white md:text-6xl">
+              De electronica y web hacia IA eficiente y sistemas verificables.
+            </h1>
+          </div>
+          <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+            Una linea de tiempo de mi formacion, trabajo, investigacion, productos y actividad
+            editorial. Esta pagina funciona como puente entre el CV, los proyectos y la direccion de
+            investigacion del sitio.
           </p>
         </div>
-        <article className="items-start space-y-2 xl:grid xl:grid-cols-4 xl:gap-x-8 xl:space-y-0">
-          <div className="max-w-none pb-8 pt-8 xl:col-span-2">
-            <Timeline title="Estudios" jobs={eduData} />
+
+        <div className="grid gap-4 py-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
+            <p className="text-3xl font-black text-gray-950 dark:text-white">2024+</p>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Doctorado CINVESTAV</p>
           </div>
-          <div className="max-w-none pb-8 pt-8 xl:col-span-2">
-            <Timeline title="Trabajos" jobs={jobsData} />
+          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
+            <p className="text-3xl font-black text-gray-950 dark:text-white">FPGA</p>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Hardware-aware AI</p>
           </div>
-        </article>
-        <article className="items-start space-y-2 xl:grid xl:grid-cols-4 xl:gap-x-8 xl:space-y-0">
-          <div className="max-w-none pb-8 pt-8 xl:col-span-2">
-            <Timeline title="Workshops" jobs={workshopsData} />
+          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
+            <p className="text-3xl font-black text-gray-950 dark:text-white">FP32</p>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Editorial lab</p>
           </div>
-          <div className="max-w-none pb-8 pt-8 xl:col-span-2">
-            <Timeline title="Emprendimientos" jobs={mvpData} />
+          <div className="rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-950">
+            <p className="text-3xl font-black text-gray-950 dark:text-white">AI</p>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Research and product</p>
           </div>
-        </article>
-      </div>
+        </div>
+
+        <div className="mb-10 flex flex-wrap gap-2">
+          {categories.map((category) => (
+            <span
+              key={category}
+              className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryStyles[category]}`}
+            >
+              {category}
+            </span>
+          ))}
+        </div>
+
+        <div className="rounded-lg border border-gray-200 bg-white px-6 dark:border-gray-800 dark:bg-gray-950 md:px-8">
+          {trajectoryData.map((item) => (
+            <Milestone key={`${item.period}-${item.title}`} item={item} />
+          ))}
+        </div>
+
+        <section className="mt-12 rounded-lg border border-gray-200 bg-gray-950 p-8 text-white dark:border-gray-800">
+          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300">
+            Hitos destacados
+          </p>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {featured.slice(0, 4).map((item) => (
+              <div key={item.title}>
+                <p className="text-sm font-semibold text-cyan-200">{item.period}</p>
+                <h2 className="mt-2 text-xl font-black">{item.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-gray-300">{item.summary}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </section>
     </LayoutWrapper>
   )
 }

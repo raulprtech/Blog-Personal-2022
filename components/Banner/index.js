@@ -6,7 +6,7 @@ export default function SocialBanner({ title, link, image, emoji, bgColor }) {
   const colorSelect = (color) => {
     switch (color) {
       case 'blue':
-        return 'bg-primary-500'
+        return 'bg-primary-700'
       case 'red':
         return 'bg-red-600'
       case 'yellow':

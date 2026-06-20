@@ -3,60 +3,51 @@ import Image from '@/components/Image'
 import { PageSEO } from '@/components/SEO'
 import Quote from '@/components/Quotes/quote'
 import Button from '@/components/Button'
-import Skills from '@/components/Skills'
+import siteMetadata from '@/data/siteMetadata'
 
-const skills = {
-  html: 0,
-  css: 0,
-  react: 0,
-  next: 0,
-  tailwind: 0,
-  python: 0,
-}
+const aboutTitle = 'Investigaci\u00f3n, sistemas y escritura t\u00e9cnica.'
+const aboutDescription =
+  'Un resumen de mi perfil profesional: qu\u00e9 construyo, qu\u00e9 investigo y c\u00f3mo conecto electr\u00f3nica, software, IA eficiente y divulgaci\u00f3n t\u00e9cnica.'
+const occupationDisplay = 'Ingeniero electr\u00f3nico e investigador en IA eficiente'
 
 export default function AuthorLayout({ children, frontMatter }) {
-  const {
-    name,
-    nickname,
-    avatar,
-    occupation,
-    company,
-    email,
-    twitter,
-    linkedin,
-    github,
-    platzi,
-    CV,
-  } = frontMatter
-  // const router = useRouter()
+  const { nickname, avatar, company, email, twitter, linkedin, github, platzi, CV } = frontMatter
+  const displayName = siteMetadata.author
 
   return (
     <>
       <PageSEO
-        title={`¿Quien es ${name}? - @${nickname}`}
-        description={`Trayectoria escolar y profesional, Skills tecnicos, Talleres impartidos y mas sobre ${name}`}
+        title={`Qui\u00e9n es ${displayName} - @${nickname}`}
+        description={`Perfil profesional, trayectoria, investigaci\u00f3n, proyectos y escritura t\u00e9cnica de ${displayName}`}
       />
-      <section className="divide-y">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-primary-500 dark:text-secondary-400 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Sobre mi
-          </h1>
-          <p className="text-lg leading-7 text-gray-800 dark:text-gray-400">
-            Encuentra aquí la informacion más relevante sobre mí.
+      <section className="divide-y divide-gray-200 dark:divide-gray-800">
+        <div className="grid gap-10 pb-10 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
+              Acerca de
+            </p>
+            <h1 className="text-4xl font-black tracking-tight text-gray-950 dark:text-white md:text-6xl">
+              {aboutTitle}
+            </h1>
+          </div>
+          <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+            {aboutDescription}
           </p>
         </div>
-        <article className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="flex flex-col items-center pt-8">
+        <article className="items-start space-y-8 xl:grid xl:grid-cols-3 xl:gap-x-10 xl:space-y-0">
+          <aside className="flex flex-col items-center pt-8">
             <Image
               src={avatar}
               alt="Raul Alberto Pacheco Rodriguez"
               width="800"
               height="800"
-              className="h-48 w-48 rounded-full"
+              className="h-48 w-48 rounded-full border border-gray-200 object-cover dark:border-gray-800"
             />
-            <h2 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h2>
-            <h3 className="text-gray-500 dark:text-gray-400">{occupation}</h3>
-            <h4 className="text-gray-500 dark:text-gray-400">{company}</h4>
+            <h2 className="pb-2 pt-4 text-center text-2xl font-bold leading-8 tracking-tight text-gray-950 dark:text-white">
+              {displayName}
+            </h2>
+            <h3 className="text-center text-gray-500 dark:text-gray-400">{occupationDisplay}</h3>
+            <h4 className="text-center text-gray-500 dark:text-gray-400">{company}</h4>
             <div className="flex space-x-3 pt-6">
               <SocialIcon kind="mail" href={`mailto:${email}`} />
               <SocialIcon kind="github" href={github} />
@@ -64,7 +55,7 @@ export default function AuthorLayout({ children, frontMatter }) {
               <SocialIcon kind="twitter" href={twitter} />
               <SocialIcon kind="platzi" href={platzi} />
             </div>
-            <div className="grid grid-cols-1 grid-rows-1 gap-3 pb-10 pt-10 md:pb-2 lg:grid-cols-1 lg:grid-rows-2">
+            <div className="grid grid-cols-1 gap-3 pb-10 pt-10">
               <Button link={CV} text="Descargar CV">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -82,9 +73,8 @@ export default function AuthorLayout({ children, frontMatter }) {
                 </svg>
               </Button>
             </div>
-            {/* <Skills tags={skills} /> */}
             <Quote />
-          </div>
+          </aside>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-dark xl:col-span-2">{children}</div>
         </article>
       </section>

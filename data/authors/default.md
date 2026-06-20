@@ -1,9 +1,9 @@
 ---
-name: Raúl Pacheco Rodríguez
+name: Raul Pacheco Rodriguez
 nickname: RaulprTech
 avatar: /static/images/avatar_nblue.png
-occupation: Electronic Engineer • Web Developer
-company: Freelance
+occupation: Ingeniero electronico e investigador en IA eficiente
+company: CINVESTAV / FP32
 email: contacto@raulpacheco.dev
 twitter: https://twitter.com/RaulprTech
 linkedin: https://www.linkedin.com/in/raulprtech
@@ -12,36 +12,34 @@ platzi: https://platzi.com/p/RaulprTech/
 CV: /static/CV/CV.pdf
 ---
 
-## ¿Quién es Raúl Pacheco Rodríguez?
+## Qui&eacute;n soy
 
-**Mexicano** nacido en **Campeche**, fanático de la **Ciencia** 🧪, la **Tecnología** ⚙️ y de la cultura Hacker, buscando nuevos retos, aprendizajes y compartir lo que aprendo. La tecnología no para de mejorar y quiero estar siempre en primera fila para verlo.
+Soy **ingeniero electr&oacute;nico** y estudiante de doctorado en CINVESTAV Guadalajara. Trabajo en la intersecci&oacute;n entre **machine learning**, **cuantizaci&oacute;n**, **FPGA**, **dise&ntilde;o digital** y evaluaci&oacute;n reproducible de sistemas de IA.
 
-**Ingeniero Electrónico** y Maestro en ciencias, especializado en **Electrónica Digital**, uso **Python** 🐍 y **Verilog** para diseñar aceleradores de **Deep Learning** en **FPGA's** y aplicaciones de **IoT**. También hago Desarrollo Web con **JavaScript** y **React** ⚛️.
+Mi direcci&oacute;n actual es desarrollar m&eacute;todos de **IA eficiente y hardware-aware**: modelos y herramientas que no solo funcionen en software, sino que puedan razonar sobre restricciones reales de c&oacute;mputo, memoria, latencia, verificaci&oacute;n e implementaci&oacute;n f&iacute;sica.
 
-## Trayectoria
+## En qu&eacute; estoy trabajando
 
-He realizado proyectos de 🧑‍💻 **Desarrollo Web** usando principalmente JavaScript, React, Next, Gatsby, Tailwind, Bootstrap y GraphQl. Puedes ver algunos en [Proyectos](https://raulpacheco.dev/projects).
+Actualmente organizo mi investigaci&oacute;n alrededor de tres l&iacute;neas conectadas:
 
-Mi trayectoria profesional y escolar las puedes ver en mi CV o en la pagina de [Trayectoria](https://raulpacheco.dev/trajectory).
+- **IA eficiente y hardware-aware:** cuantizaci&oacute;n, rotaciones, primitivas implementables y aceleraci&oacute;n en hardware.
+- **IA m&eacute;dica reproducible:** evaluaci&oacute;n anti-leakage, manifests temporales y pipelines auditables.
+- **Clinical-Core / FP32:** herramientas, escritura t&eacute;cnica y productos editoriales para convertir investigaci&oacute;n en sistemas y conocimiento reutilizable.
 
-## Experiencia Enseñando
+Puedes ver una versi&oacute;n m&aacute;s estructurada en [Investigaci&oacute;n](/research), [Proyectos](/projects) y [Trayectoria](/trajectory).
 
-👨‍🏫 Me encanta aprender y compartir conocimiento. He impartido talleres de electrónica y programación como los que ves en la pagina de [Trayectoria](https://raulpacheco.dev/trajectory) y ahora busco aumentar mi alcance de educador escribiendo sobre ciencia y tecnología a través de este blog, de mis redes sociales y próximamente también en YouTube.
+## FP32 y escritura t&eacute;cnica
 
-Principalmente escribo sobre [JavaScript](https://raulpacheco.dev/tags/javascript), [Python](https://raulpacheco.dev/tags/python), [Electrónica](https://raulpacheco.dev/tags/electronica), [Inteligencia Artificial](https://raulpacheco.dev/tags/machine-learning) y alguno que otro consejo para principiantes que quieren empezar a aprender sobre tecnología.
+Adem&aacute;s de investigar y construir software, escribo en **FP32**, mi laboratorio editorial sobre deep learning, investigaci&oacute;n aumentada, IA m&eacute;dica, sistemas eficientes y lectura de papers.
 
-¿Cómo sabes que aprendiste algo bien? Tratando de enseñarlo a alguien más, así no solo consolidas tu conocimiento, sino que también ayudas a más personas.
+FP32 es donde pruebo ideas, convierto notas t&eacute;cnicas en ensayos y preparo material que puede crecer hacia libros, cursos o recursos para investigadores y estudiantes.
 
-## Proyectos de Emprendimiento
+## C&oacute;mo trabajo
 
-🚀 Soy aficionado al emprendimiento. Hay ideas que no salen de tu cabeza hasta que las llevas a la acción. No todo sale bien, no todo funciona como debería, no hay camino fácil, pero el encanto está en al menos intentarlo.
+Me interesa construir sistemas que sean claros, auditables y honestos sobre sus l&iacute;mites. No me atrae vender IA como magia: prefiero entender qu&eacute; datos usa un modelo, cu&aacute;ndo falla, qu&eacute; costo computacional tiene y c&oacute;mo se puede llevar de una idea a una implementaci&oacute;n verificable.
 
-## Proyectos Recientes
+Mi experiencia combina desarrollo web, dise&ntilde;o de interfaces, automatizaci&oacute;n con IA, electr&oacute;nica digital, docencia t&eacute;cnica y proyectos de investigaci&oacute;n aplicada.
 
-Actualmente estudio un doctorado en Ingeniería Eléctrica con la especialidad de Diseño Electrónico Digital en el CINVESTAV, unidad Guadalajara. Me encuentro desarrollando mi tesis, que consiste en un Acelerador de Hardware para un modelo de [Deep Learning](https://raulpacheco.dev/tags/deep-learning) basado en el **Swin Transformer**.
+## Contacto
 
-## ¿Qué busco de un trabajo?
-
-👥 Principalmente trabajar junto con buenas personas con proyectos ambiciosos que busquen generar un impacto positivo en el mundo y donde pueda poner a prueba mis conocimientos e ingenio.
-
-💻 El trabajo remoto y flexible es esencial para mi. Me gusta trabajar a mi ritmo, poder pasar el mayor tiempo posible con mi familia y odio el trafico.
+Si quieres hablar sobre investigaci&oacute;n, colaboraciones, charlas, proyectos t&eacute;cnicos o escritura sobre IA, puedes escribirme a [contacto@raulpacheco.dev](mailto:contacto@raulpacheco.dev) o revisar mi [CV](/static/CV/CV.pdf).

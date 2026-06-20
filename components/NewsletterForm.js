@@ -31,7 +31,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
     inputEl.current.value = ''
     setError(false)
     setSubscribed(true)
-    setMessage('Successfully! 🎉 You are now subscribed.')
+    setMessage('Successfully! You are now subscribed.')
   }
 
   return (
@@ -44,10 +44,10 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
           </label>
           <input
             autoComplete="email"
-            className="w-72 rounded-md px-4 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-black"
+            className="w-72 rounded-md px-4 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-700 dark:bg-black"
             id="email-input"
             name="email"
-            placeholder={subscribed ? "You're subscribed !  🎉" : 'Enter your email'}
+            placeholder={subscribed ? "You're subscribed!" : 'Enter your email'}
             ref={inputEl}
             required
             type="email"
@@ -56,11 +56,11 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
         </div>
         <div className="mt-2 flex w-full rounded-md shadow-sm sm:ml-3 sm:mt-0">
           <button
-            className={`w-full rounded-md border-2 border-primary-500 bg-gray-900 px-4 py-2 font-medium text-primary-500 sm:py-0 ${
+            className={`w-full rounded-md border-2 border-primary-700 bg-gray-900 px-4 py-2 font-medium text-white sm:py-0 ${
               subscribed
                 ? 'cursor-default'
-                : 'hover:bg-primary-700 hover:text-white dark:hover:bg-primary-600'
-            } focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 dark:ring-offset-black`}
+                : 'hover:bg-primary-700 hover:text-white dark:hover:bg-primary-700'
+            } focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 dark:ring-offset-black`}
             type="submit"
             disabled={subscribed}
           >
