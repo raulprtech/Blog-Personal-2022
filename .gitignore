@@ -18,6 +18,7 @@ public/sitemap.xml
 # production
 /build
 /studio/dist
+/studio/.sanity
 *.xml
 # rss feed
 /public/feed.xml 

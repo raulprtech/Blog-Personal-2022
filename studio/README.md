@@ -6,26 +6,35 @@ This folder contains the Sanity Studio for editing the site content.
 
 ```bash
 cd studio
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 The Studio will open locally, usually at `http://localhost:3333`.
 
+From the repository root you can also run:
+
+```bash
+npm run studio:install
+npm run studio:dev
+```
+
 ## Deploy Studio
+
+First log in with the Sanity account that owns the project:
 
 ```bash
 cd studio
-npm run deploy
+pnpm exec sanity login
 ```
 
-Sanity will ask for a Studio hostname the first time you deploy. A good option is:
+Then deploy the hosted Studio:
 
-```txt
-raul-pacheco
+```bash
+pnpm exec sanity deploy --url raul-pacheco --yes
 ```
 
-That would create a Studio URL similar to:
+This publishes the panel at:
 
 ```txt
 https://raul-pacheco.sanity.studio
