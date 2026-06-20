@@ -14,7 +14,7 @@ export default {
     { name: 'organization', title: 'Organization', type: 'string' },
     { name: 'category', title: 'Category', type: 'string' },
     { name: 'summary', title: 'Summary', type: 'text', rows: 4 },
-    { name: 'href', title: 'Link', type: 'url' },
+    { name: 'href', title: 'Link or path', type: 'string' },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
   ],
   preview: {

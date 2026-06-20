@@ -5,7 +5,7 @@ export default {
   fields: [
     { name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() },
     { name: 'description', title: 'Description', type: 'text', rows: 4 },
-    { name: 'href', title: 'Link', type: 'url' },
+    { name: 'href', title: 'Link or path', type: 'string' },
     { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
     { name: 'category', title: 'Category', type: 'string' },
     { name: 'status', title: 'Status', type: 'string' },

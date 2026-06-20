@@ -6,7 +6,8 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
-    "deploy": "sanity deploy"
+    "deploy": "sanity deploy",
+    "import:initial": "sanity dataset import import/initial-content.ndjson --dataset production --replace"
   },
   "dependencies": {
     "@sanity/vision": "latest",

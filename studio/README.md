@@ -40,6 +40,17 @@ This publishes the panel at:
 https://raul-pacheco.sanity.studio
 ```
 
+## Import initial content
+
+After logging in, you can load the curated starter content with:
+
+```bash
+cd studio
+pnpm run import:initial
+```
+
+The import includes published examples for each section and draft documents for future or in-progress work. Drafts use Sanity IDs that start with `drafts.` and are excluded from the public site queries.
+
 ## Content types
 
 - `Update`: career updates, talks, papers, announcements.

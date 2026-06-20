@@ -8,7 +8,7 @@ export default {
     { name: 'type', title: 'Type', type: 'string' },
     { name: 'eyebrow', title: 'Eyebrow', type: 'string' },
     { name: 'summary', title: 'Summary', type: 'text', rows: 4 },
-    { name: 'href', title: 'Link', type: 'url' },
+    { name: 'href', title: 'Link or path', type: 'string' },
     { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
     { name: 'accent', title: 'Tailwind accent gradient', type: 'string' },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
