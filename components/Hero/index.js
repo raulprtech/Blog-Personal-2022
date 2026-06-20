@@ -16,6 +16,7 @@ const defaultContent = {
   visualEyebrow: 'Research direction',
   visualTitle: 'Machine learning, quantization, RTL and reproducible medical AI.',
   visualImage: '/static/images/circuito.png',
+  visualImageAlt: 'Research visual',
   stats: [
     { value: '2026', label: 'Doctoral sprint' },
     { value: 'FP32', label: 'Editorial lab' },
@@ -82,7 +83,7 @@ export default function Presentation({ content }) {
             <div className="relative aspect-[4/3] bg-gray-100 dark:bg-gray-900">
               <Image
                 src={hero.visualImage}
-                alt="Research visual"
+                alt={hero.visualImageAlt || hero.visualTitle || 'Research visual'}
                 fill
                 priority
                 className="object-cover object-center"

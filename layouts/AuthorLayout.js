@@ -36,9 +36,22 @@ export default function AuthorLayout({ children, frontMatter, pageContent }) {
               {content.title}
             </h1>
           </div>
-          <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-            {content.description}
-          </p>
+          <div>
+            <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+              {content.description}
+            </p>
+            {content.image && (
+              <div className="mt-8 overflow-hidden rounded-lg border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+                <Image
+                  src={content.image}
+                  alt={content.imageAlt || content.title || 'About visual'}
+                  width="1200"
+                  height="675"
+                  className="aspect-video w-full object-cover object-center"
+                />
+              </div>
+            )}
+          </div>
         </div>
         <article className="items-start space-y-8 xl:grid xl:grid-cols-3 xl:gap-x-10 xl:space-y-0">
           <aside className="flex flex-col items-center pt-8">

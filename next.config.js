@@ -55,7 +55,7 @@ const securityHeaders = [
 module.exports = withBundleAnalyzer({
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'cdn.sanity.io'],
   },
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],

@@ -1,4 +1,5 @@
-﻿import Link from 'next/link'
+﻿import Image from 'next/image'
+import Link from 'next/link'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import Hero from '@/components/Hero'
@@ -10,6 +11,61 @@ import ProjectCard from '@/components/ProjectCard'
 import NewsletterCTA from '@/components/NewsletterCTA'
 import ResourceCard from '@/components/ResourceCard'
 import { getHomeContent } from '@/lib/content'
+
+function SectionHeading({ section, href }) {
+  return (
+    <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-end">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
+          {section.eyebrow}
+        </p>
+        <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
+          {section.title}
+        </h2>
+        {section.description && (
+          <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
+            {section.description}
+          </p>
+        )}
+        <Link
+          href={href}
+          className="mt-5 inline-flex text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:hidden"
+        >
+          {section.hrefLabel} -&gt;
+        </Link>
+      </div>
+      <div className="flex justify-start lg:justify-end">
+        {section.image ? (
+          <div className="w-full lg:max-w-xs">
+            <div className="overflow-hidden rounded-lg border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={section.image}
+                  alt={section.imageAlt || section.title || 'Section visual'}
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
+            <Link
+              href={href}
+              className="mt-4 hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:inline-flex"
+            >
+              {section.hrefLabel} -&gt;
+            </Link>
+          </div>
+        ) : (
+          <Link
+            href={href}
+            className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
+          >
+            {section.hrefLabel} -&gt;
+          </Link>
+        )}
+      </div>
+    </div>
+  )
+}
 
 export async function getStaticProps() {
   return {
@@ -43,27 +99,7 @@ export default function Home({ updates, projects, resources, pageContent }) {
         />
         <Hero content={pageContent?.hero} />
         <section className="py-12">
-          <div className="mb-8 flex items-end justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-                {updatesSection.eyebrow}
-              </p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
-                {updatesSection.title}
-              </h2>
-              {updatesSection.description && (
-                <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
-                  {updatesSection.description}
-                </p>
-              )}
-            </div>
-            <Link
-              href="/updates"
-              className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
-            >
-              {updatesSection.hrefLabel} -&gt;
-            </Link>
-          </div>
+          <SectionHeading section={updatesSection} href="/updates" />
           <div className="grid gap-6 lg:grid-cols-3">
             {updates.slice(0, 3).map((update, index) => (
               <UpdateCard key={update.title} update={update} large={index === 0} />
@@ -74,27 +110,7 @@ export default function Home({ updates, projects, resources, pageContent }) {
         <NewsletterCTA />
 
         <section className="py-12">
-          <div className="mb-8 flex items-end justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-                {resourcesSection.eyebrow}
-              </p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
-                {resourcesSection.title}
-              </h2>
-              {resourcesSection.description && (
-                <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
-                  {resourcesSection.description}
-                </p>
-              )}
-            </div>
-            <Link
-              href="/resources"
-              className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
-            >
-              {resourcesSection.hrefLabel} -&gt;
-            </Link>
-          </div>
+          <SectionHeading section={resourcesSection} href="/resources" />
           <div className="grid gap-6 md:grid-cols-3">
             {resources.map((resource) => (
               <ResourceCard key={resource.title} resource={resource} compact />
@@ -103,27 +119,7 @@ export default function Home({ updates, projects, resources, pageContent }) {
         </section>
 
         <section className="py-12">
-          <div className="mb-8 flex items-end justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-                {projectsSection.eyebrow}
-              </p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
-                {projectsSection.title}
-              </h2>
-              {projectsSection.description && (
-                <p className="mt-4 max-w-2xl text-base leading-8 text-gray-600 dark:text-gray-300">
-                  {projectsSection.description}
-                </p>
-              )}
-            </div>
-            <Link
-              href="/projects"
-              className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
-            >
-              {projectsSection.hrefLabel} -&gt;
-            </Link>
-          </div>
+          <SectionHeading section={projectsSection} href="/projects" />
           <div className="grid gap-6 md:grid-cols-2">
             {projects.slice(0, 4).map((project) => (
               <ProjectCard key={project.title} project={project} />

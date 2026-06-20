@@ -1,5 +1,15 @@
 ﻿const simpleText = (name, title, type = 'string') => ({ name, title, type })
 
+const imageFields = [
+  {
+    name: 'image',
+    title: 'Image',
+    type: 'image',
+    options: { hotspot: true },
+  },
+  simpleText('imageAlt', 'Image alt text'),
+]
+
 export default {
   name: 'pageContent',
   title: 'Page content',
@@ -11,6 +21,7 @@ export default {
     simpleText('eyebrow', 'Eyebrow'),
     simpleText('title', 'Title'),
     simpleText('description', 'Description', 'text'),
+    ...imageFields,
     {
       name: 'categories',
       title: 'Categories',
@@ -46,6 +57,7 @@ export default {
           type: 'image',
           options: { hotspot: true },
         },
+        simpleText('visualImageAlt', 'Visual image alt text'),
         {
           name: 'stats',
           title: 'Stats',
@@ -72,6 +84,7 @@ export default {
             simpleText('title', 'Title'),
             simpleText('description', 'Description', 'text'),
             simpleText('hrefLabel', 'Link label'),
+            ...imageFields,
           ],
         },
       ],
@@ -83,7 +96,11 @@ export default {
       of: [
         {
           type: 'object',
-          fields: [simpleText('name', 'Name'), simpleText('description', 'Description', 'text')],
+          fields: [
+            simpleText('name', 'Name'),
+            simpleText('description', 'Description', 'text'),
+            ...imageFields,
+          ],
         },
       ],
     },
