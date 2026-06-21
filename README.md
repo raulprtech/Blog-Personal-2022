@@ -1,6 +1,6 @@
 ![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
 
-# BLog + Portfolio
+# BLog + Portfolio 2026
 
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
