@@ -2,10 +2,13 @@
 
 export default async function handler(req, res) {
   try {
-    const [siteSettingsCount, pageContentCount] = await Promise.all([
-      sanityFetch('count(*[_type == "siteSettings"])'),
-      sanityFetch('count(*[_type == "pageContent"])'),
-    ])
+    const [publishedSiteSettings, draftSiteSettings, publishedPageContent, draftPageContent] =
+      await Promise.all([
+        sanityFetch('count(*[_type == "siteSettings" && !(_id in path("drafts.**"))])'),
+        sanityFetch('count(*[_type == "siteSettings" && _id in path("drafts.**")])'),
+        sanityFetch('count(*[_type == "pageContent" && !(_id in path("drafts.**"))])'),
+        sanityFetch('count(*[_type == "pageContent" && _id in path("drafts.**")])'),
+      ])
 
     res.setHeader('Cache-Control', 'no-store, max-age=0')
     res.status(200).json({
@@ -13,8 +16,14 @@ export default async function handler(req, res) {
       projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'a668buu6',
       dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
       hasReadToken: Boolean(process.env.SANITY_API_READ_TOKEN),
-      siteSettingsCount,
-      pageContentCount,
+      published: {
+        siteSettings: publishedSiteSettings,
+        pageContent: publishedPageContent,
+      },
+      drafts: {
+        siteSettings: draftSiteSettings,
+        pageContent: draftPageContent,
+      },
     })
   } catch (error) {
     res.status(500).json({
