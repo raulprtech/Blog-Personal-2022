@@ -117,6 +117,18 @@ const pageContent = {
     title: 'Investigacion, sistemas y escritura tecnica.',
     description:
       'Un resumen de mi perfil profesional: que construyo, que investigo y como conecto electronica, software, IA eficiente y divulgacion tecnica.',
+    bodySections: [
+      {
+        eyebrow: 'Perfil',
+        heading: 'Construyo entre software, electronica e investigacion aplicada.',
+        text: 'Mi trabajo conecta experiencia frontend, sistemas digitales e inteligencia artificial eficiente. Me interesa convertir ideas tecnicas complejas en productos, experimentos reproducibles y recursos que otras personas puedan usar.',
+      },
+      {
+        eyebrow: 'Direccion',
+        heading: 'IA eficiente con evidencia, no solo demos.',
+        text: 'Actualmente concentro mi trabajo en machine learning hardware-aware, evaluacion anti-leakage, cuantizacion y flujos reproducibles para problemas medicos y sistemas verificables.',
+      },
+    ],
     occupation: 'Ingeniero electronico e investigador en IA eficiente',
   },
 }

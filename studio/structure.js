@@ -30,12 +30,15 @@
                 .title('Research page')
                 .child(S.document().schemaType('pageContent').documentId('page-research')),
               S.listItem()
+                .title('Research items')
+                .child(S.documentTypeList('researchItem').title('Research items')),
+              S.listItem()
                 .title('Trajectory page')
                 .child(S.document().schemaType('pageContent').documentId('page-trajectory')),
             ])
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (item) => !['pageContent', 'siteSettings'].includes(item.getId())
+        (item) => !['pageContent', 'siteSettings', 'researchItem'].includes(item.getId())
       ),
     ])

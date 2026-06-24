@@ -89,8 +89,9 @@ export default {
     },
     {
       name: 'cards',
-      title: 'Cards',
+      title: 'Legacy cards fallback',
       type: 'array',
+      hidden: true,
       of: [
         {
           type: 'object',
@@ -110,6 +111,21 @@ export default {
         {
           type: 'object',
           fields: [simpleText('value', 'Value'), simpleText('label', 'Label')],
+        },
+      ],
+    },
+    {
+      name: 'bodySections',
+      title: 'Body sections',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            simpleText('eyebrow', 'Eyebrow'),
+            simpleText('heading', 'Heading'),
+            simpleText('text', 'Text', 'text'),
+          ],
         },
       ],
     },
