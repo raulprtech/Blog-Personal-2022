@@ -30,6 +30,19 @@ export default {
     },
     simpleText('featuredEyebrow', 'Featured section eyebrow'),
     {
+      name: 'announcementBanner',
+      title: 'Announcement banner',
+      type: 'object',
+      fields: [
+        { name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: false },
+        simpleText('title', 'Title'),
+        simpleText('href', 'Link or path'),
+        simpleText('bgColor', 'Background color key'),
+        simpleText('emoji', 'Emoji'),
+        ...imageFields,
+      ],
+    },
+    {
       name: 'hero',
       title: 'Home hero',
       type: 'object',
@@ -67,6 +80,22 @@ export default {
             },
           ],
         },
+      ],
+    },
+    {
+      name: 'newsletterCta',
+      title: 'Newsletter CTA',
+      type: 'object',
+      fields: [
+        { name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: true },
+        simpleText('eyebrow', 'Eyebrow'),
+        simpleText('title', 'Title'),
+        simpleText('description', 'Description', 'text'),
+        simpleText('primaryCtaLabel', 'Primary CTA label'),
+        simpleText('primaryCtaHref', 'Primary CTA href'),
+        simpleText('secondaryCtaLabel', 'Secondary CTA label'),
+        simpleText('secondaryCtaHref', 'Secondary CTA href'),
+        ...imageFields,
       ],
     },
     {

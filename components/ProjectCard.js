@@ -1,5 +1,5 @@
-﻿import Link from 'next/link'
-import Image from '@/components/Image'
+﻿import Image from '@/components/Image'
+import { CardLink, ContentBadge, ContentTags } from '@/components/ContentMeta'
 
 const ProjectCard = ({ project }) => {
   return (
@@ -17,16 +17,8 @@ const ProjectCard = ({ project }) => {
       )}
       <div className="p-6">
         <div className="mb-5 flex flex-wrap items-center gap-2">
-          {project.category && (
-            <span className="rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 dark:border-cyan-900 dark:bg-cyan-950 dark:text-cyan-300">
-              {project.category}
-            </span>
-          )}
-          {project.status && (
-            <span className="rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400">
-              {project.status}
-            </span>
-          )}
+          {project.category && <ContentBadge tone="accent">{project.category}</ContentBadge>}
+          {project.status && <ContentBadge tone="muted">{project.status}</ContentBadge>}
         </div>
         <h3 className="text-2xl font-black tracking-tight text-gray-950 dark:text-white">
           {project.title}
@@ -39,24 +31,14 @@ const ProjectCard = ({ project }) => {
           </p>
         )}
         {project.tags && (
-          <div className="mt-5 flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 dark:bg-gray-900 dark:text-gray-300"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="mt-5">
+            <ContentTags tags={project.tags} />
           </div>
         )}
         {project.href && (
-          <Link
-            href={project.href}
-            className="mt-7 inline-flex text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400"
-          >
-            Ver proyecto <span aria-hidden="true">-&gt;</span>
-          </Link>
+          <div className="mt-7">
+            <CardLink href={project.href}>Ver proyecto</CardLink>
+          </div>
         )}
       </div>
     </article>

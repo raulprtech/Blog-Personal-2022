@@ -5,20 +5,18 @@ import siteMetadata from '@/data/siteMetadata'
 import Hero from '@/components/Hero'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import Banner from '@/components/Banner'
-import mainBanner from '@/data/mainBanner'
 import UpdateCard from '@/components/UpdateCard'
 import ProjectCard from '@/components/ProjectCard'
 import NewsletterCTA from '@/components/NewsletterCTA'
 import ResourceCard from '@/components/ResourceCard'
+import { Eyebrow } from '@/components/ContentMeta'
 import { getHomeContent } from '@/lib/content'
 
 function SectionHeading({ section, href }) {
   return (
     <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-end">
       <div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-          {section.eyebrow}
-        </p>
+        <Eyebrow>{section.eyebrow}</Eyebrow>
         <h2 className="mt-3 text-3xl font-black tracking-tight text-gray-950 dark:text-white md:text-5xl">
           {section.title}
         </h2>
@@ -82,13 +80,15 @@ export default function Home({ updates, projects, resources, pageContent }) {
 
   return (
     <>
-      <Banner
-        title={mainBanner.title}
-        link={mainBanner.link}
-        bgColor={mainBanner.bgColor}
-        image={mainBanner.image}
-        emoji={mainBanner.emoji}
-      />
+      {pageContent?.announcementBanner?.enabled && (
+        <Banner
+          title={pageContent.announcementBanner.title}
+          link={pageContent.announcementBanner.href}
+          bgColor={pageContent.announcementBanner.bgColor}
+          image={pageContent.announcementBanner.image}
+          emoji={pageContent.announcementBanner.emoji}
+        />
+      )}
       <LayoutWrapper bgImage="">
         <PageSEO
           title={
@@ -107,7 +107,7 @@ export default function Home({ updates, projects, resources, pageContent }) {
           </div>
         </section>
 
-        <NewsletterCTA />
+        <NewsletterCTA content={pageContent?.newsletterCta} />
 
         <section className="py-12">
           <SectionHeading section={resourcesSection} href="/resources" />

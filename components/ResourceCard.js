@@ -1,5 +1,6 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from '@/components/Image'
+import { ContentBadge, ContentTags } from '@/components/ContentMeta'
 
 const ResourceCard = ({ resource, compact = false }) => {
   const content = (
@@ -16,29 +17,17 @@ const ResourceCard = ({ resource, compact = false }) => {
         </div>
       )}
       <div className={compact ? 'p-5' : 'p-6 md:p-7'}>
-        <div className="mb-5 flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400">
-          <span>{resource.type}</span>
-          {resource.source && (
-            <>
-              <span aria-hidden="true">/</span>
-              <span>{resource.source}</span>
-            </>
-          )}
+        <div className="mb-5 flex flex-wrap items-center gap-2">
+          <ContentBadge tone="accent">{resource.type}</ContentBadge>
+          <ContentBadge tone="muted">{resource.source}</ContentBadge>
         </div>
         <h3 className="text-2xl font-black tracking-tight text-gray-950 dark:text-white">
           {resource.title}
         </h3>
         <p className="mt-4 leading-8 text-gray-600 dark:text-gray-300">{resource.summary}</p>
         {resource.tags && (
-          <div className="mt-6 flex flex-wrap gap-2">
-            {resource.tags.map((tag) => (
-              <span
-                key={tag}
-                className="border border-gray-200 px-2.5 py-1 font-mono text-[11px] text-gray-600 dark:border-gray-800 dark:text-gray-300"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="mt-6">
+            <ContentTags tags={resource.tags} />
           </div>
         )}
         {resource.href && (

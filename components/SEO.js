@@ -1,4 +1,4 @@
-import Head from 'next/head'
+﻿import Head from 'next/head'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 
@@ -33,8 +33,8 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
 }
 
 export const PageSEO = ({ title, description }) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  const ogImageUrl = siteMetadata.siteUrl + '/api/site-image'
+  const twImageUrl = siteMetadata.siteUrl + '/api/site-image'
   return (
     <CommonSEO
       title={title}
@@ -47,8 +47,8 @@ export const PageSEO = ({ title, description }) => {
 }
 
 export const TagSEO = ({ title, description }) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  const ogImageUrl = siteMetadata.siteUrl + '/api/site-image'
+  const twImageUrl = siteMetadata.siteUrl + '/api/site-image'
   const router = useRouter()
   return (
     <>
@@ -85,11 +85,7 @@ export const BlogSEO = ({
   const publishedAt = new Date(date).toISOString()
   const modifiedAt = new Date(lastmod || date).toISOString()
   let imagesArr =
-    images.length === 0
-      ? [siteMetadata.socialBanner]
-      : typeof images === 'string'
-      ? [images]
-      : images
+    images.length === 0 ? ['/api/site-image'] : typeof images === 'string' ? [images] : images
 
   const featuredImages = imagesArr.map((img) => {
     return {

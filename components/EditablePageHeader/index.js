@@ -1,4 +1,5 @@
 ﻿import Image from 'next/image'
+import { Eyebrow } from '@/components/ContentMeta'
 
 export default function EditablePageHeader({
   content,
@@ -14,9 +15,9 @@ export default function EditablePageHeader({
     <div className="grid gap-10 border-b border-gray-200 pb-12 dark:border-gray-800 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
       <div>
         {content?.eyebrow && (
-          <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
-            {content.eyebrow}
-          </p>
+          <div className="mb-5">
+            <Eyebrow>{content.eyebrow}</Eyebrow>
+          </div>
         )}
         <h1 className="text-4xl font-black tracking-tight text-gray-950 dark:text-white md:text-6xl">
           {title}

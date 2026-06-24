@@ -1,5 +1,26 @@
-const pageContent = {
+﻿const pageContent = {
   home: {
+    announcementBanner: {
+      enabled: false,
+      title: '',
+      href: 'https://raulpacheco.dev',
+      image: '/static/images/twitter-card.png',
+      bgColor: 'blue',
+      emoji: '',
+    },
+    newsletterCta: {
+      enabled: true,
+      eyebrow: 'FP32',
+      title: 'Una bitacora tecnica para pensar mejor la IA.',
+      description:
+        'Ensayos, papers, notas de investigacion y aprendizajes sobre deep learning, IA medica, sistemas eficientes y herramientas para investigadores aumentados.',
+      primaryCtaLabel: 'Suscribirme a FP32',
+      primaryCtaHref: 'https://fp32.io/',
+      secondaryCtaLabel: 'Ver updates',
+      secondaryCtaHref: '/updates',
+      image: '/static/images/fp32/fp32-code.png',
+      imageAlt: 'FP32 newsletter',
+    },
     hero: {
       eyebrow: 'Raul Pacheco Rodriguez',
       title: 'Efficient AI for systems that need evidence.',

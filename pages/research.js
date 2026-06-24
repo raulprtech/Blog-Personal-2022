@@ -1,9 +1,9 @@
 ﻿import Image from 'next/image'
-import Link from 'next/link'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
+import { CardLink } from '@/components/ContentMeta'
 import { getPageContent, getResearchItems } from '@/lib/content'
 
 export async function getStaticProps() {
@@ -47,19 +47,16 @@ export default function Research({ pageContent, researchItems }) {
                 </div>
               )}
               <div className="p-6">
-                <h2 className="text-2xl font-bold text-gray-950 dark:text-white">
+                <h2 className="text-2xl font-black tracking-tight text-gray-950 dark:text-white">
                   {line.name || line.title}
                 </h2>
                 <p className="mt-4 leading-8 text-gray-600 dark:text-gray-300">
                   {line.description}
                 </p>
                 {line.href && (
-                  <Link
-                    href={line.href}
-                    className="mt-5 inline-flex text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400"
-                  >
-                    {line.linkLabel || 'Ver contexto'} <span aria-hidden="true">-&gt;</span>
-                  </Link>
+                  <div className="mt-5">
+                    <CardLink href={line.href}>{line.linkLabel || 'Ver contexto'}</CardLink>
+                  </div>
                 )}
               </div>
             </article>

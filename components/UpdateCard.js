@@ -1,6 +1,7 @@
 ﻿import Image from '@/components/Image'
 import Link from 'next/link'
 import formatDate from '@/lib/utils/formatDate'
+import { ContentBadge, Eyebrow } from '@/components/ContentMeta'
 
 const UpdateCard = ({ update, large = false }) => {
   const content = (
@@ -23,17 +24,13 @@ const UpdateCard = ({ update, large = false }) => {
       )}
       <div className={`${large ? 'p-7 md:p-8' : 'p-6'}`}>
         <div className="mb-7 flex items-center justify-between gap-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-            {update.eyebrow}
-          </p>
+          <Eyebrow>{update.eyebrow}</Eyebrow>
           <time className="text-xs text-gray-500 dark:text-gray-400" dateTime={update.date}>
             {formatDate(update.date)}
           </time>
         </div>
         <div className="space-y-4">
-          <span className="inline-flex rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300">
-            {update.type}
-          </span>
+          <ContentBadge>{update.type}</ContentBadge>
           <h2
             className={`font-extrabold tracking-tight text-gray-950 dark:text-gray-50 ${
               large ? 'text-3xl md:text-5xl' : 'text-2xl'
