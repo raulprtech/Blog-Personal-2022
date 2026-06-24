@@ -46,6 +46,22 @@
         title: 'Updates',
         hrefLabel: 'Ver todos',
       },
+      papers: {
+        seoDescription:
+          'Publicaciones, preprints y borradores de investigacion relacionados con IA eficiente, sistemas y evaluacion reproducible.',
+        eyebrow: 'Publicaciones',
+        title: 'Papers y manuscritos conectados con mi investigacion.',
+        description:
+          'Una lista editorial de trabajos publicados, preprints y borradores que se conectan con lineas de investigacion, proyectos y colaboradores.',
+      },
+      ventures: {
+        seoDescription:
+          'Emprendimientos, productos y laboratorios editoriales conectados con el trabajo profesional de Raul Pacheco Rodriguez.',
+        eyebrow: 'Emprendimientos',
+        title: 'Iniciativas que convierten investigacion y software en productos.',
+        description:
+          'Un espacio para productos, laboratorios editoriales y proyectos con vocacion de convertirse en organizaciones o herramientas sostenibles.',
+      },
       resources: {
         eyebrow: 'Biblioteca tecnica',
         title: 'Recursos',
@@ -77,6 +93,22 @@
     title: 'Proyectos que conectan investigacion, producto y sistemas.',
     description:
       'Una seleccion de trabajo en aceleracion hardware, IA medica, productos educativos y escritura tecnica. La estructura esta pensada para migrar cada proyecto a Sanity con imagen, estado, rol, tags y enlaces.',
+  },
+  papers: {
+    seoDescription:
+      'Publicaciones, preprints y borradores de investigacion relacionados con IA eficiente, sistemas y evaluacion reproducible.',
+    eyebrow: 'Publicaciones',
+    title: 'Papers y manuscritos conectados con mi investigacion.',
+    description:
+      'Una lista editorial de trabajos publicados, preprints y borradores que se conectan con lineas de investigacion, proyectos y colaboradores.',
+  },
+  ventures: {
+    seoDescription:
+      'Emprendimientos, productos y laboratorios editoriales conectados con el trabajo profesional de Raul Pacheco Rodriguez.',
+    eyebrow: 'Emprendimientos',
+    title: 'Iniciativas que convierten investigacion y software en productos.',
+    description:
+      'Un espacio para productos, laboratorios editoriales y proyectos con vocacion de convertirse en organizaciones o herramientas sostenibles.',
   },
   resources: {
     seoDescription:

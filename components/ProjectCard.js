@@ -1,5 +1,11 @@
 ﻿import Image from '@/components/Image'
-import { CardLink, ContentBadge, ContentTags } from '@/components/ContentMeta'
+import {
+  CardLink,
+  CollaboratorLine,
+  ContentBadge,
+  ContentTags,
+  RelatedLinks,
+} from '@/components/ContentMeta'
 
 const ProjectCard = ({ project }) => {
   return (
@@ -30,11 +36,21 @@ const ProjectCard = ({ project }) => {
             <span className="font-medium text-gray-500 dark:text-gray-400">{project.role}</span>
           </p>
         )}
+        {project.collaborators && (
+          <div className="mt-4">
+            <CollaboratorLine collaborators={project.collaborators} />
+          </div>
+        )}
         {project.tags && (
           <div className="mt-5">
             <ContentTags tags={project.tags} />
           </div>
         )}
+        <div className="mt-6 grid gap-5">
+          <RelatedLinks title="Lineas de investigacion" items={project.researchItems} />
+          <RelatedLinks title="Papers" items={project.papers} />
+          <RelatedLinks title="Emprendimientos" items={project.ventures} />
+        </div>
         {project.href && (
           <div className="mt-7">
             <CardLink href={project.href}>Ver proyecto</CardLink>

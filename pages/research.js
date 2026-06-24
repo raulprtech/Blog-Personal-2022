@@ -3,7 +3,7 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
-import { CardLink } from '@/components/ContentMeta'
+import { CardLink, CollaboratorLine, RelatedLinks } from '@/components/ContentMeta'
 import { getPageContent, getResearchItems } from '@/lib/content'
 
 export async function getStaticProps() {
@@ -53,6 +53,16 @@ export default function Research({ pageContent, researchItems }) {
                 <p className="mt-4 leading-8 text-gray-600 dark:text-gray-300">
                   {line.description}
                 </p>
+                {line.collaborators && (
+                  <div className="mt-4">
+                    <CollaboratorLine collaborators={line.collaborators} />
+                  </div>
+                )}
+                <div className="mt-6 grid gap-5">
+                  <RelatedLinks title="Papers" items={line.papers} />
+                  <RelatedLinks title="Proyectos" items={line.projects} />
+                  <RelatedLinks title="Emprendimientos" items={line.ventures} />
+                </div>
                 {line.href && (
                   <div className="mt-5">
                     <CardLink href={line.href}>{line.linkLabel || 'Ver contexto'}</CardLink>

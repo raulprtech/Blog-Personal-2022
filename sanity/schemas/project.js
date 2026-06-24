@@ -1,4 +1,4 @@
-export default {
+﻿export default {
   name: 'project',
   title: 'Project',
   type: 'document',
@@ -11,6 +11,30 @@ export default {
     { name: 'status', title: 'Status', type: 'string' },
     { name: 'role', title: 'Role', type: 'string' },
     { name: 'tags', title: 'Tags', type: 'array', of: [{ type: 'string' }] },
+    {
+      name: 'collaborators',
+      title: 'Collaborators',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'collaborator' }] }],
+    },
+    {
+      name: 'researchItems',
+      title: 'Related research lines',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'researchItem' }] }],
+    },
+    {
+      name: 'papers',
+      title: 'Related papers',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'paper' }] }],
+    },
+    {
+      name: 'ventures',
+      title: 'Related ventures',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'venture' }] }],
+    },
     { name: 'orderRank', title: 'Order rank', type: 'number' },
   ],
   preview: {

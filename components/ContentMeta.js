@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 
 export function Eyebrow({ children }) {
   if (!children) return null
@@ -55,5 +55,70 @@ export function CardLink({ href, children = 'Ver contexto' }) {
     >
       {children} <span aria-hidden="true">-&gt;</span>
     </Link>
+  )
+}
+
+export function CollaboratorLine({ collaborators }) {
+  if (!Array.isArray(collaborators) || collaborators.length === 0) return null
+
+  return (
+    <p className="text-sm leading-7 text-gray-500 dark:text-gray-400">
+      Con{' '}
+      {collaborators.map((collaborator, index) => (
+        <span key={collaborator.name || collaborator.href || index}>
+          {collaborator.href ? (
+            <Link
+              href={collaborator.href}
+              className="font-semibold text-gray-700 hover:text-primary-700 dark:text-gray-200 dark:hover:text-secondary-400"
+            >
+              {collaborator.name}
+            </Link>
+          ) : (
+            <span className="font-semibold text-gray-700 dark:text-gray-200">
+              {collaborator.name}
+            </span>
+          )}
+          {index < collaborators.length - 1 ? ', ' : ''}
+        </span>
+      ))}
+    </p>
+  )
+}
+
+export function RelatedLinks({ title = 'Relacionado', items }) {
+  if (!Array.isArray(items) || items.length === 0) return null
+
+  return (
+    <div>
+      <p className="mb-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
+        {title}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {items.map((item, index) => {
+          const label = item.title || item.name
+          const key = item._id || item.href || label || index
+          const className =
+            'rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-gray-600 transition dark:border-gray-700 dark:text-gray-300'
+
+          if (!item.href) {
+            return (
+              <span key={key} className={className}>
+                {label}
+              </span>
+            )
+          }
+
+          return (
+            <Link
+              key={key}
+              href={item.href}
+              className={`${className} hover:border-primary-400 hover:text-primary-700 dark:hover:border-secondary-400 dark:hover:text-secondary-300`}
+            >
+              {label}
+            </Link>
+          )
+        })}
+      </div>
+    </div>
   )
 }

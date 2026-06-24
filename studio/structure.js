@@ -24,6 +24,12 @@
                 .title('Projects page')
                 .child(S.document().schemaType('pageContent').documentId('page-projects')),
               S.listItem()
+                .title('Papers page')
+                .child(S.document().schemaType('pageContent').documentId('page-papers')),
+              S.listItem()
+                .title('Ventures page')
+                .child(S.document().schemaType('pageContent').documentId('page-ventures')),
+              S.listItem()
                 .title('Resources page')
                 .child(S.document().schemaType('pageContent').documentId('page-resources')),
               S.listItem()
