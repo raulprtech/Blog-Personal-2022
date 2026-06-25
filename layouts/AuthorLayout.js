@@ -36,6 +36,14 @@ function AboutBody({ sections, children }) {
           {section.text && (
             <p className="mt-4 leading-8 text-gray-600 dark:text-gray-300">{section.text}</p>
           )}
+          {section.href && section.linkLabel && (
+            <Link
+              href={section.href}
+              className="mt-4 inline-flex text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400"
+            >
+              {section.linkLabel} <span aria-hidden="true">-&gt;</span>
+            </Link>
+          )}
         </section>
       ))}
     </div>

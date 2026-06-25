@@ -1,4 +1,5 @@
 ﻿import collaborator from './collaborator'
+import credential from './credential'
 import pageContent from './pageContent'
 import paper from './paper'
 import project from './project'
@@ -14,6 +15,7 @@ export const schemaTypes = [
   pageContent,
   update,
   collaborator,
+  credential,
   paper,
   project,
   resource,

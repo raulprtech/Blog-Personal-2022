@@ -21,10 +21,19 @@ const alumniOf = [
     alternateName: 'Colegio de Estudios Cient\u00edficos y Tecnol\u00f3gicos',
     url: 'https://www.cecytcampeche.edu.mx/',
   },
+]
+
+const hasCredential = [
   {
-    '@type': 'EducationalOrganization',
-    name: 'Platzi',
-    url: 'https://platzi.com/',
+    '@type': 'EducationalOccupationalCredential',
+    name: 'Cursos y constancias destacadas de Platzi',
+    credentialCategory: 'Professional certificate',
+    recognizedBy: {
+      '@type': 'Organization',
+      name: 'Platzi',
+      url: 'https://platzi.com/',
+    },
+    url: 'https://platzi.com/p/raulprtech/',
   },
 ]
 
@@ -35,12 +44,14 @@ const personStructuredData = {
   name: siteMetadata.author,
   url: siteMetadata.siteUrl,
   alumniOf,
+  hasCredential,
 }
 
 const personAuthor = (name = siteMetadata.author) => ({
   '@type': 'Person',
   name,
   alumniOf,
+  hasCredential,
 })
 
 const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl }) => {

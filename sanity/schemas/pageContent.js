@@ -154,6 +154,8 @@ export default {
             simpleText('eyebrow', 'Eyebrow'),
             simpleText('heading', 'Heading'),
             simpleText('text', 'Text', 'text'),
+            simpleText('href', 'Link or path'),
+            simpleText('linkLabel', 'Link label'),
           ],
         },
       ],

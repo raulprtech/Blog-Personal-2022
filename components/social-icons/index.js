@@ -8,7 +8,6 @@ import Whatsapp from './whatsapp.svg'
 import Instagram from './instagram.svg'
 import Telegram from './telegram.svg'
 import Pinterest from './pinterest.svg'
-import Platzi from './platzi.svg'
 import StackOverflow from './stackoverflow.svg'
 import Feedly from './feedly.svg'
 import Patreon from './patreon.svg'
@@ -30,7 +29,6 @@ const components = {
   pinterest: Pinterest,
   feedly: Feedly,
   stackoverflow: StackOverflow,
-  platzi: Platzi,
   patreon: Patreon,
   rss: RSS,
   googlenews: GoogleNews,

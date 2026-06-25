@@ -10,7 +10,6 @@ const socialKinds = [
   'instagram',
   'facebook',
   'whatsapp',
-  'platzi',
   'pinterest',
   'feedly',
   'telegram',
