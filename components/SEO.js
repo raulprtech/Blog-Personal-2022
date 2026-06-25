@@ -19,7 +19,7 @@ const alumniOf = [
     '@type': 'EducationalOrganization',
     name: 'CECyTEC Plantel Campeche',
     alternateName: 'Colegio de Estudios Cient\u00edficos y Tecnol\u00f3gicos',
-    url: 'https://www.cecytec.edu.mx/',
+    url: 'https://www.cecytcampeche.edu.mx/',
   },
   {
     '@type': 'EducationalOrganization',
