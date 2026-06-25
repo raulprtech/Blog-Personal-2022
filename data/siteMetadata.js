@@ -20,6 +20,8 @@ const siteMetadata = {
   youtube: 'https://www.youtube.com/@raulprtech',
   linkedin: 'https://www.linkedin.com/in/RaulprTech',
   instagram: 'https://www.instagram.com/RaulprTech',
+  devto: 'https://dev.to/raulprtech',
+  medium: 'https://raulprtech.medium.com/',
   whatsapp: 'https://wa.link/c6t4c7',
   feedly: 'https://feedly.com/i/subscription/feed/https://raulpacheco.dev/feed.xml',
   rss: 'https://feedly.com/i/subscription/feed/https://raulpacheco.dev/feed.xml',

@@ -37,12 +37,24 @@ const hasCredential = [
   },
 ]
 
+const sameAs = [
+  siteMetadata.github,
+  siteMetadata.linkedin,
+  siteMetadata.twitter,
+  siteMetadata.youtube,
+  siteMetadata.instagram,
+  siteMetadata.devto,
+  siteMetadata.medium,
+  siteMetadata.platzi,
+].filter(Boolean)
+
 const personStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${siteMetadata.siteUrl}/#person`,
   name: siteMetadata.author,
   url: siteMetadata.siteUrl,
+  sameAs,
   alumniOf,
   hasCredential,
 }
@@ -50,6 +62,7 @@ const personStructuredData = {
 const personAuthor = (name = siteMetadata.author) => ({
   '@type': 'Person',
   name,
+  sameAs,
   alumniOf,
   hasCredential,
 })
