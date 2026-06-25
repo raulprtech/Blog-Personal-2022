@@ -46,6 +46,13 @@
         title: 'Updates',
         hrefLabel: 'Ver todos',
       },
+      blog: {
+        eyebrow: 'Bitacora de investigacion',
+        title: 'Notas cercanas al trabajo en curso',
+        description:
+          'Apuntes cortos sobre papers, decisiones tecnicas, experimentos y preguntas que todavia estan tomando forma.',
+        hrefLabel: 'Leer notas',
+      },
       resources: {
         eyebrow: 'Biblioteca tecnica',
         title: 'Recursos',

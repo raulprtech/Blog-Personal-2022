@@ -11,6 +11,7 @@ import NewsletterCTA from '@/components/NewsletterCTA'
 import ResourceCard from '@/components/ResourceCard'
 import { Eyebrow } from '@/components/ContentMeta'
 import { getHomeContent } from '@/lib/content'
+import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 function SectionHeading({ section, href }) {
   return (
@@ -65,17 +66,52 @@ function SectionHeading({ section, href }) {
   )
 }
 
+function BlogNoteCard({ post }) {
+  return (
+    <article className="h-full rounded-md border border-gray-200 bg-white p-6 transition hover:border-gray-400 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-600">
+      <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-700 dark:text-secondary-400">
+        {post.date}
+      </p>
+      <h3 className="mt-4 text-2xl font-black tracking-tight text-gray-950 dark:text-white">
+        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+      </h3>
+      <p className="mt-4 leading-8 text-gray-600 dark:text-gray-300">{post.summary}</p>
+      {post.tags && (
+        <div className="mt-5 flex flex-wrap gap-2">
+          {post.tags.slice(0, 4).map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-gray-200 px-3 py-1 text-xs font-semibold text-gray-600 dark:border-gray-700 dark:text-gray-300"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </article>
+  )
+}
+
 export async function getStaticProps() {
+  const [homeContent, blogPosts] = await Promise.all([
+    getHomeContent(),
+    getAllFilesFrontMatter('blog'),
+  ])
+
   return {
-    props: await getHomeContent(),
+    props: {
+      ...homeContent,
+      blogPosts: blogPosts.slice(0, 3),
+    },
     revalidate: 60,
   }
 }
 
-export default function Home({ updates, projects, resources, pageContent }) {
+export default function Home({ updates, projects, resources, blogPosts, pageContent }) {
   const sections = pageContent?.sections || {}
   const updatesSection = sections.updates || {}
   const resourcesSection = sections.resources || {}
+  const blogSection = sections.blog || {}
   const projectsSection = sections.projects || {}
 
   return (
@@ -108,6 +144,15 @@ export default function Home({ updates, projects, resources, pageContent }) {
         </section>
 
         <NewsletterCTA content={pageContent?.newsletterCta} />
+
+        <section className="py-12">
+          <SectionHeading section={blogSection} href="/blog" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {(blogPosts || []).map((post) => (
+              <BlogNoteCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
 
         <section className="py-12">
           <SectionHeading section={resourcesSection} href="/resources" />
