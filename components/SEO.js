@@ -45,6 +45,7 @@ const sameAs = [
   siteMetadata.instagram,
   siteMetadata.devto,
   siteMetadata.medium,
+  siteMetadata.researchgate,
   siteMetadata.platzi,
 ].filter(Boolean)
 

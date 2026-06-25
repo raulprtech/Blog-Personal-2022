@@ -50,6 +50,7 @@ export default function me() {
                   <SocialIcon kind="twitter" href={siteMetadata.twitter} size="6" />
                   <SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" />
                   <SocialIcon kind="github" href={siteMetadata.github} size="6" />
+                  <SocialIcon kind="researchgate" href={siteMetadata.researchgate} size="6" />
                 </div>
               </div>
               <div className="flex-col justify-around">

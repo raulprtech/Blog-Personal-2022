@@ -22,6 +22,7 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com/RaulprTech',
   devto: 'https://dev.to/raulprtech',
   medium: 'https://raulprtech.medium.com/',
+  researchgate: '',
   whatsapp: 'https://wa.link/c6t4c7',
   feedly: 'https://feedly.com/i/subscription/feed/https://raulpacheco.dev/feed.xml',
   rss: 'https://feedly.com/i/subscription/feed/https://raulpacheco.dev/feed.xml',

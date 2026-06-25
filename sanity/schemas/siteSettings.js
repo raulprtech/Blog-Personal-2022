@@ -13,6 +13,7 @@ const socialKinds = [
   'pinterest',
   'feedly',
   'telegram',
+  'researchgate',
 ]
 
 export default {

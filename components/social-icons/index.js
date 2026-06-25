@@ -13,6 +13,7 @@ import Feedly from './feedly.svg'
 import Patreon from './patreon.svg'
 import RSS from './rss.svg'
 import GoogleNews from './googlenews.svg'
+import ResearchGate from './researchgate.svg'
 
 // Icons taken from: https://simpleicons.org/
 
@@ -32,6 +33,7 @@ const components = {
   patreon: Patreon,
   rss: RSS,
   googlenews: GoogleNews,
+  researchgate: ResearchGate,
 }
 
 const SocialIcon = ({ kind, href, size = 8 }) => {
