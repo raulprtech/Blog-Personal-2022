@@ -23,6 +23,7 @@
   ],
   update: ['/', '/updates'],
   project: ['/', '/projects', '/research', '/papers', '/ventures'],
+  researchItem: ['/research', '/papers', '/projects', '/ventures'],
   paper: ['/papers', '/research', '/projects', '/ventures'],
   venture: ['/ventures', '/research', '/projects', '/papers'],
   collaborator: ['/papers', '/research', '/projects', '/ventures'],
