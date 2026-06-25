@@ -2,6 +2,28 @@
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 
+const cinvestavAlumniOf = {
+  '@type': 'EducationalOrganization',
+  name: 'Centro de Investigaci\u00f3n y de Estudios Avanzados del Instituto Polit\u00e9cnico Nacional',
+  alternateName: 'Cinvestav',
+  url: 'https://www.cinvestav.mx/',
+}
+
+const personStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${siteMetadata.siteUrl}/#person`,
+  name: siteMetadata.author,
+  url: siteMetadata.siteUrl,
+  alumniOf: cinvestavAlumniOf,
+}
+
+const personAuthor = (name = siteMetadata.author) => ({
+  '@type': 'Person',
+  name,
+  alumniOf: cinvestavAlumniOf,
+})
+
 const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl }) => {
   const router = useRouter()
   return (
@@ -36,13 +58,23 @@ export const PageSEO = ({ title, description }) => {
   const ogImageUrl = siteMetadata.siteUrl + '/api/site-image'
   const twImageUrl = siteMetadata.siteUrl + '/api/site-image'
   return (
-    <CommonSEO
-      title={title}
-      description={description}
-      ogType="website"
-      ogImage={ogImageUrl}
-      twImage={twImageUrl}
-    />
+    <>
+      <CommonSEO
+        title={title}
+        description={description}
+        ogType="website"
+        ogImage={ogImageUrl}
+        twImage={twImageUrl}
+      />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personStructuredData, null, 2),
+          }}
+        />
+      </Head>
+    </>
   )
 }
 
@@ -97,16 +129,10 @@ export const BlogSEO = ({
   let authorList
   if (authorDetails) {
     authorList = authorDetails.map((author) => {
-      return {
-        '@type': 'Person',
-        name: author.name,
-      }
+      return personAuthor(author.name)
     })
   } else {
-    authorList = {
-      '@type': 'Person',
-      name: siteMetadata.author,
-    }
+    authorList = personAuthor()
   }
 
   const structuredData = {
