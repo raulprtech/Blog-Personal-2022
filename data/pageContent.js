@@ -180,6 +180,13 @@
         heading: 'IA eficiente con evidencia, no solo demos.',
         text: 'Actualmente concentro mi trabajo en machine learning hardware-aware, evaluacion anti-leakage, cuantizacion y flujos reproducibles para problemas medicos y sistemas verificables.',
       },
+      {
+        eyebrow: 'Biblioteca tecnica',
+        heading: 'Recursos para seguir el mapa de trabajo.',
+        text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigacion y mis notas tecnicas.',
+        href: '/resources',
+        linkLabel: 'Ver recursos',
+      },
     ],
     occupation: 'Ingeniero electronico e investigador en IA eficiente',
   },

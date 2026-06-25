@@ -47,14 +47,16 @@ export default function PostPage({ posts, initialDisplayPosts, pagination }) {
     <LayoutWrapper>
       <>
         <PageSEO
-          title={`Notas de investigaci?n - ${siteMetadata.author} - p${pagination.currentPage}`}
-          description={`${siteMetadata.description} - página ${pagination.currentPage}`}
+          title={`Notas de investigacion - ${siteMetadata.author} - p${pagination.currentPage}`}
+          description={`Notas cercanas a investigacion, papers, sistemas eficientes e IA reproducible - pagina ${pagination.currentPage}`}
         />
         <ListLayout
           posts={posts}
           initialDisplayPosts={initialDisplayPosts}
           pagination={pagination}
-          title="Notas de investigaci?n"
+          title="Notas de investigacion"
+          eyebrow="Bitacora de investigacion"
+          description="Apuntes cortos sobre papers, decisiones tecnicas, experimentos y preguntas que todavia estan tomando forma."
         />
       </>
     </LayoutWrapper>

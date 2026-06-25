@@ -16,12 +16,24 @@ const defaultContent = {
   occupation: 'Ingeniero electronico e investigador en IA eficiente',
 }
 
+const resourcesSection = {
+  eyebrow: 'Biblioteca tecnica',
+  heading: 'Recursos para seguir el mapa de trabajo.',
+  text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigacion y mis notas tecnicas.',
+  href: '/resources',
+  linkLabel: 'Ver recursos',
+}
+
 function AboutBody({ sections, children }) {
-  if (!sections?.length) return children
+  const displaySections = sections?.length ? sections : []
+  const hasResourcesLink = displaySections.some((section) => section.href === '/resources')
+  const mergedSections = hasResourcesLink ? displaySections : [...displaySections, resourcesSection]
+
+  if (!mergedSections.length) return children
 
   return (
     <div className="not-prose space-y-8">
-      {sections.map((section) => (
+      {mergedSections.map((section) => (
         <section key={`${section.heading}-${section.text?.slice(0, 24)}`}>
           {section.eyebrow && (
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
