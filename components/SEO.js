@@ -2,12 +2,31 @@
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 
-const cinvestavAlumniOf = {
-  '@type': 'EducationalOrganization',
-  name: 'Centro de Investigaci\u00f3n y de Estudios Avanzados del Instituto Polit\u00e9cnico Nacional',
-  alternateName: 'Cinvestav',
-  url: 'https://www.cinvestav.mx/',
-}
+const alumniOf = [
+  {
+    '@type': 'EducationalOrganization',
+    name: 'Centro de Investigaci\u00f3n y de Estudios Avanzados del Instituto Polit\u00e9cnico Nacional',
+    alternateName: 'Cinvestav',
+    url: 'https://www.cinvestav.mx/',
+  },
+  {
+    '@type': 'EducationalOrganization',
+    name: 'Tecnol\u00f3gico Nacional de M\u00e9xico Campus Lerma',
+    alternateName: 'Instituto Tecnol\u00f3gico de Lerma',
+    url: 'https://lerma.tecnm.mx/',
+  },
+  {
+    '@type': 'EducationalOrganization',
+    name: 'CECyTEC Plantel Campeche',
+    alternateName: 'Colegio de Estudios Cient\u00edficos y Tecnol\u00f3gicos',
+    url: 'https://www.cecytec.edu.mx/',
+  },
+  {
+    '@type': 'EducationalOrganization',
+    name: 'Platzi',
+    url: 'https://platzi.com/',
+  },
+]
 
 const personStructuredData = {
   '@context': 'https://schema.org',
@@ -15,13 +34,13 @@ const personStructuredData = {
   '@id': `${siteMetadata.siteUrl}/#person`,
   name: siteMetadata.author,
   url: siteMetadata.siteUrl,
-  alumniOf: cinvestavAlumniOf,
+  alumniOf,
 }
 
 const personAuthor = (name = siteMetadata.author) => ({
   '@type': 'Person',
   name,
-  alumniOf: cinvestavAlumniOf,
+  alumniOf,
 })
 
 const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl }) => {
