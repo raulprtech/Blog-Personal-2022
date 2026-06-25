@@ -69,6 +69,15 @@
       },
     },
   },
+  blog: {
+    seoTitle: 'Notas de investigacion - Raul Pacheco Rodriguez',
+    seoDescription:
+      'Notas cercanas a investigacion, papers, sistemas eficientes e IA reproducible de Raul Pacheco Rodriguez.',
+    eyebrow: 'Bitacora de investigacion',
+    title: 'Notas cercanas al trabajo en curso',
+    description:
+      'Apuntes cortos sobre papers, decisiones tecnicas, experimentos y preguntas que todavia estan tomando forma.',
+  },
   updates: {
     seoDescription:
       'Notas breves sobre publicaciones, charlas, proyectos, docencia y avances profesionales de Raul Pacheco Rodriguez.',

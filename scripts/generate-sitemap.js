@@ -4,6 +4,26 @@ const matter = require('gray-matter')
 const prettier = require('prettier')
 const siteMetadata = require('../data/siteMetadata')
 
+async function getSanityNotePages() {
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'a668buu6'
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+  const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-01-01'
+
+  try {
+    const url = new URL(`https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`)
+    url.searchParams.set(
+      'query',
+      '*[_type == "note" && defined(slug.current) && !(_id in path("drafts.**"))]{"slug": slug.current}'
+    )
+    const response = await fetch(url.toString())
+    if (!response.ok) return []
+    const data = await response.json()
+    return Array.isArray(data.result) ? data.result.map((note) => `data/blog/${note.slug}.md`) : []
+  } catch (error) {
+    return []
+  }
+}
+
 ;(async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const pages = await globby([
@@ -17,10 +37,13 @@ const siteMetadata = require('../data/siteMetadata')
     '!pages/api',
   ])
 
+  const sanityNotePages = await getSanityNotePages()
+  const allPages = Array.from(new Set([...pages, ...sanityNotePages]))
+
   const sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-            ${pages
+            ${allPages
               .map((page) => {
                 // Exclude drafts from the sitemap
                 if (page.search('.md') >= 1 && fs.existsSync(page)) {

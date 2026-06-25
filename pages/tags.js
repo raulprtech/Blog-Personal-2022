@@ -1,12 +1,12 @@
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { getAllTags } from '@/lib/tags'
+import { getAllNoteTags } from '@/lib/notes'
 import kebabCase from '@/lib/utils/kebabCase'
 import LayoutWrapper from '@/components/LayoutWrapper'
 
 export async function getStaticProps() {
-  const tags = await getAllTags('blog')
+  const tags = await getAllNoteTags()
 
   return { props: { tags } }
 }

@@ -1,12 +1,13 @@
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
 import { POSTS_PER_PAGE } from '../../blog'
 import LayoutWrapper from '@/components/LayoutWrapper'
+import { getAllNoteTags, getAllNotesFrontMatter } from '@/lib/notes'
+import { getPageContent } from '@/lib/content'
 
 export async function getStaticPaths() {
-  const totalPosts = await getAllFilesFrontMatter('blog')
+  const totalPosts = await getAllNotesFrontMatter()
   const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({
     params: { page: (i + 1).toString() },
@@ -22,7 +23,11 @@ export async function getStaticProps(context) {
   const {
     params: { page },
   } = context
-  const posts = await getAllFilesFrontMatter('blog')
+  const [posts, tags, pageContent] = await Promise.all([
+    getAllNotesFrontMatter(),
+    getAllNoteTags(),
+    getPageContent('blog'),
+  ])
   const pageNumber = parseInt(page)
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
@@ -38,27 +43,29 @@ export async function getStaticProps(context) {
       posts,
       initialDisplayPosts,
       pagination,
+      tags,
+      pageContent,
     },
+    revalidate: 60,
   }
 }
 
-export default function PostPage({ posts, initialDisplayPosts, pagination }) {
+export default function PostPage({ posts, initialDisplayPosts, pagination, tags, pageContent }) {
   return (
     <LayoutWrapper>
-      <>
-        <PageSEO
-          title={`Notas de investigacion - ${siteMetadata.author} - p${pagination.currentPage}`}
-          description={`Notas cercanas a investigacion, papers, sistemas eficientes e IA reproducible - pagina ${pagination.currentPage}`}
-        />
-        <ListLayout
-          posts={posts}
-          initialDisplayPosts={initialDisplayPosts}
-          pagination={pagination}
-          title="Notas de investigacion"
-          eyebrow="Bitacora de investigacion"
-          description="Apuntes cortos sobre papers, decisiones tecnicas, experimentos y preguntas que todavia estan tomando forma."
-        />
-      </>
+      <PageSEO
+        title={pageContent?.seoTitle || `Notas de investigacion - ${siteMetadata.author}`}
+        description={pageContent?.seoDescription || pageContent?.description}
+      />
+      <ListLayout
+        posts={posts}
+        initialDisplayPosts={initialDisplayPosts}
+        pagination={pagination}
+        title={pageContent?.title || 'Notas de investigacion'}
+        eyebrow={pageContent?.eyebrow || 'Bitacora de investigacion'}
+        description={pageContent?.description}
+        tags={tags}
+      />
     </LayoutWrapper>
   )
 }

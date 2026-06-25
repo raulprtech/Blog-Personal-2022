@@ -24,6 +24,7 @@
     '/credentials',
   ],
   credential: ['/credentials', '/about'],
+  note: ['/', '/blog', '/tags'],
   update: ['/', '/updates'],
   project: ['/', '/projects', '/research', '/papers', '/ventures', '/credentials'],
   researchItem: ['/research', '/papers', '/projects', '/ventures', '/credentials'],
@@ -51,6 +52,10 @@ export default async function handler(req, res) {
 
     if (type === 'pageContent' && slug) {
       paths.add(slug === 'home' ? '/' : `/${slug}`)
+    }
+
+    if (type === 'note' && slug) {
+      paths.add(`/blog/${slug}`)
     }
 
     await Promise.all(Array.from(paths).map((path) => res.revalidate(path)))

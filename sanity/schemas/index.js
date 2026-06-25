@@ -1,5 +1,6 @@
 ﻿import collaborator from './collaborator'
 import credential from './credential'
+import note from './note'
 import pageContent from './pageContent'
 import paper from './paper'
 import project from './project'
@@ -14,6 +15,7 @@ export const schemaTypes = [
   siteSettings,
   pageContent,
   update,
+  note,
   collaborator,
   credential,
   paper,

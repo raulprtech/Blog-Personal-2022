@@ -11,7 +11,7 @@ import NewsletterCTA from '@/components/NewsletterCTA'
 import ResourceCard from '@/components/ResourceCard'
 import { Eyebrow } from '@/components/ContentMeta'
 import { getHomeContent } from '@/lib/content'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { getAllNotesFrontMatter } from '@/lib/notes'
 
 function SectionHeading({ section, href }) {
   return (
@@ -93,10 +93,7 @@ function BlogNoteCard({ post }) {
 }
 
 export async function getStaticProps() {
-  const [homeContent, blogPosts] = await Promise.all([
-    getHomeContent(),
-    getAllFilesFrontMatter('blog'),
-  ])
+  const [homeContent, blogPosts] = await Promise.all([getHomeContent(), getAllNotesFrontMatter()])
 
   return {
     props: {

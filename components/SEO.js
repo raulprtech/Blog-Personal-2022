@@ -68,6 +68,12 @@ const personAuthor = (name = siteMetadata.author) => ({
   hasCredential,
 })
 
+const toAbsoluteUrl = (url) => {
+  if (!url) return `${siteMetadata.siteUrl}/api/site-image`
+  if (/^https?:\/\//.test(url)) return url
+  return `${siteMetadata.siteUrl}${url}`
+}
+
 const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl }) => {
   const router = useRouter()
   return (
@@ -166,7 +172,7 @@ export const BlogSEO = ({
   const featuredImages = imagesArr.map((img) => {
     return {
       '@type': 'ImageObject',
-      url: `${siteMetadata.siteUrl}${img}`,
+      url: toAbsoluteUrl(img),
     }
   })
 
@@ -196,7 +202,7 @@ export const BlogSEO = ({
       name: siteMetadata.author,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+        url: toAbsoluteUrl(siteMetadata.siteLogo),
       },
     },
     description: summary,
