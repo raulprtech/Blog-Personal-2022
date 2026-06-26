@@ -1,4 +1,5 @@
-﻿const simpleText = (name, title, type = 'string') => ({ name, title, type })
+import { englishField, textField } from './localization'
+const simpleText = (name, title, type = 'string') => ({ name, title, type })
 
 const imageFields = [
   {
@@ -161,6 +162,74 @@ export default {
       ],
     },
     simpleText('occupation', 'Occupation'),
+    englishField([
+      textField('seoTitle', 'SEO title'),
+      textField('seoDescription', 'SEO description', 'text'),
+      textField('eyebrow', 'Eyebrow'),
+      textField('title', 'Title'),
+      textField('description', 'Description', 'text'),
+      textField('featuredEyebrow', 'Featured section eyebrow'),
+      textField('occupation', 'Occupation'),
+      {
+        name: 'hero',
+        title: 'Home hero',
+        type: 'object',
+        fields: [
+          textField('eyebrow', 'Eyebrow'),
+          textField('title', 'Title'),
+          textField('description', 'Description', 'text'),
+          textField('primaryCtaLabel', 'Primary CTA label'),
+          textField('secondaryCtaLabel', 'Secondary CTA label'),
+          { name: 'focusAreas', title: 'Focus areas', type: 'array', of: [{ type: 'string' }] },
+          textField('visualEyebrow', 'Visual eyebrow'),
+          textField('visualTitle', 'Visual title'),
+          {
+            name: 'stats',
+            title: 'Stats',
+            type: 'array',
+            of: [
+              {
+                type: 'object',
+                fields: [textField('value', 'Value'), textField('label', 'Label')],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'sections',
+        title: 'Home sections',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [
+              textField('key', 'Key'),
+              textField('eyebrow', 'Eyebrow'),
+              textField('title', 'Title'),
+              textField('description', 'Description', 'text'),
+              textField('hrefLabel', 'Link label'),
+            ],
+          },
+        ],
+      },
+      {
+        name: 'bodySections',
+        title: 'Body sections',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [
+              textField('eyebrow', 'Eyebrow'),
+              textField('heading', 'Heading'),
+              textField('text', 'Text', 'text'),
+              textField('linkLabel', 'Link label'),
+            ],
+          },
+        ],
+      },
+    ]),
   ],
   preview: {
     select: {

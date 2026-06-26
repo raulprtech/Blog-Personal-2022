@@ -1,3 +1,4 @@
+import { englishField, textField } from './localization'
 export default {
   name: 'trajectoryItem',
   title: 'Trajectory item',
@@ -16,6 +17,13 @@ export default {
     { name: 'summary', title: 'Summary', type: 'text', rows: 4 },
     { name: 'href', title: 'Link or path', type: 'string' },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
+    englishField([
+      textField('period', 'Period label'),
+      textField('title', 'Title'),
+      textField('organization', 'Organization'),
+      textField('category', 'Category'),
+      textField('summary', 'Summary', 'text'),
+    ]),
   ],
   preview: {
     select: { title: 'title', subtitle: 'period' },

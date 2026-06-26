@@ -1,3 +1,4 @@
+import { englishField, textField } from './localization'
 export default {
   name: 'update',
   title: 'Update',
@@ -12,6 +13,12 @@ export default {
     { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
     { name: 'accent', title: 'Tailwind accent gradient', type: 'string' },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
+    englishField([
+      textField('title', 'Title'),
+      textField('type', 'Type'),
+      textField('eyebrow', 'Eyebrow'),
+      textField('summary', 'Summary', 'text'),
+    ]),
   ],
   preview: {
     select: { title: 'title', subtitle: 'eyebrow', media: 'image' },

@@ -1,4 +1,5 @@
-﻿const simpleText = (name, title, type = 'string') => ({ name, title, type })
+import { englishField, textField } from './localization'
+const simpleText = (name, title, type = 'string') => ({ name, title, type })
 
 export default {
   name: 'researchItem',
@@ -46,6 +47,12 @@ export default {
       type: 'number',
       initialValue: 100,
     },
+    englishField([
+      textField('title', 'Title'),
+      textField('description', 'Description', 'text'),
+      textField('linkLabel', 'Link label'),
+      textField('imageAlt', 'Image alt text'),
+    ]),
   ],
   preview: {
     select: {

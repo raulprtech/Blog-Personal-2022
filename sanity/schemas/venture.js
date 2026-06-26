@@ -1,3 +1,4 @@
+import { englishField, stringArrayField, textField } from './localization'
 const simpleText = (name, title, type = 'string') => ({ name, title, type })
 
 export default {
@@ -44,6 +45,15 @@ export default {
     },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
     { name: 'orderRank', title: 'Order', type: 'number', initialValue: 100 },
+    englishField([
+      textField('title', 'Title'),
+      textField('description', 'Description', 'text'),
+      textField('category', 'Category'),
+      textField('status', 'Status'),
+      textField('role', 'Role'),
+      textField('imageAlt', 'Image alt text'),
+      stringArrayField('tags', 'Tags'),
+    ]),
   ],
   preview: {
     select: {

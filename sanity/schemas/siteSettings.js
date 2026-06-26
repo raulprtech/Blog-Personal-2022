@@ -1,5 +1,10 @@
 ﻿const simpleText = (name, title, type = 'string') => ({ name, title, type })
 
+const languageOptions = [
+  { title: 'Spanish', value: 'es' },
+  { title: 'English', value: 'en' },
+]
+
 const socialKinds = [
   'mail',
   'linkedin',
@@ -24,6 +29,20 @@ export default {
     simpleText('title', 'Site title'),
     simpleText('author', 'Author'),
     simpleText('headerTitle', 'Header title'),
+    {
+      name: 'defaultLanguage',
+      title: 'Default language',
+      type: 'string',
+      options: { list: languageOptions },
+      initialValue: 'es',
+    },
+    {
+      name: 'enabledLanguages',
+      title: 'Enabled languages',
+      type: 'array',
+      of: [{ type: 'string', options: { list: languageOptions } }],
+      initialValue: ['es', 'en'],
+    },
     {
       name: 'logoImage',
       title: 'Header logo image',

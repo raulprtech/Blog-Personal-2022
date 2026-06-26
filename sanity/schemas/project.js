@@ -1,4 +1,5 @@
-﻿export default {
+import { englishField, stringArrayField, textField } from './localization'
+export default {
   name: 'project',
   title: 'Project',
   type: 'document',
@@ -36,6 +37,14 @@
       of: [{ type: 'reference', to: [{ type: 'venture' }] }],
     },
     { name: 'orderRank', title: 'Order rank', type: 'number' },
+    englishField([
+      textField('title', 'Title'),
+      textField('description', 'Description', 'text'),
+      textField('category', 'Category'),
+      textField('status', 'Status'),
+      textField('role', 'Role'),
+      stringArrayField('tags', 'Tags'),
+    ]),
   ],
   preview: {
     select: { title: 'title', subtitle: 'category', media: 'image' },
