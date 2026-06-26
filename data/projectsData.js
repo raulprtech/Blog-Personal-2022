@@ -1,30 +1,30 @@
 ﻿const projectsData = [
   {
-    title: 'Aceleracion hardware para Softmax',
+    title: 'Aceleraci?n hardware para Softmax',
     description:
-      'Acelerador de la funcion de activacion para bloques Shifted Window Transformers, pensado para reducir costos de inferencia en modelos de vision profunda.',
+      'Acelerador de la funci?n de activaci?n para bloques Shifted Window Transformers, pensado para reducir costos de inferencia en modelos de visi?n profunda.',
     imgSrc: '/static/images/fp32/project-logo.png',
     href: 'https://github.com/RaulprTech/Pseudo-Softmax-with-parameters',
     category: 'Hardware-aware AI',
     status: 'Research prototype',
-    role: 'Diseno digital, Verilog, FPGA y deep learning',
+    role: 'Dise?o digital, Verilog, FPGA y deep learning',
     tags: ['Verilog', 'FPGA', 'PyTorch', 'Transformers'],
   },
   {
-    title: 'Analisis histologico con Machine Learning',
+    title: 'An?lisis histol?gico con Machine Learning',
     description:
-      'Trabajo en colaboracion orientado a mejorar sistemas de clasificacion de tejido benigno y cancerigeno mediante modelos de aprendizaje profundo.',
+      'Trabajo en colaboraci?n orientado a mejorar sistemas de clasificaci?n de tejido benigno y cancer?geno mediante modelos de aprendizaje profundo.',
     imgSrc: '/static/images/Hero.png',
     href: '/research',
     category: 'Medical AI',
     status: 'En desarrollo',
-    role: 'Modelado, evaluacion y arquitectura ML',
+    role: 'Modelado, evaluaci?n y arquitectura ML',
     tags: ['PyTorch', 'CUDA', 'TensorFlow', 'Medical AI'],
   },
   {
     title: 'FP32',
     description:
-      'Newsletter y laboratorio editorial para convertir lectura tecnica, investigacion y practica con IA en ensayos, recursos y futuros libros.',
+      'Newsletter y laboratorio editorial para convertir lectura t?cnica, investigaci?n y pr?ctica con IA en ensayos, recursos y futuros libros.',
     imgSrc: '/static/images/fp32/fp32-code.png',
     href: 'https://fp32.io/',
     category: 'Editorial lab',

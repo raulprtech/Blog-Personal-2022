@@ -1,0 +1,157 @@
+[
+  {
+    "_id": "update-fp32-editorial-lab",
+    "set": {
+      "summary": "FP32 es el espacio donde pruebo ideas, series técnicas y borradores que después pueden convertirse en libros, cursos o material de investigación."
+    }
+  },
+  {
+    "_id": "drafts.update-roadmap-2026-2032",
+    "set": {
+      "title": "Mapa de investigación 2026-2032",
+      "eyebrow": "Dirección académica",
+      "summary": "Borrador del plan doctoral y postdoctoral alrededor de IA eficiente, optimización hardware-aware y evaluación reproducible en problemas médicos exigentes."
+    }
+  },
+  {
+    "_id": "drafts.update-clinical-core",
+    "set": {
+      "title": "Clinical-Core y evaluación anti-leakage",
+      "eyebrow": "IA médica reproducible",
+      "summary": "Borrador de una línea de trabajo sobre pipelines médicos auditables, manifests temporales y evaluación honesta de modelos multimodales."
+    }
+  },
+  {
+    "_id": "drafts.update-hardware-verificable",
+    "set": {
+      "title": "De cuantización a hardware verificable",
+      "eyebrow": "FPGA, RTL y sistemas eficientes",
+      "summary": "Borrador de dirección técnica de largo plazo: modelos cuantizados, primitivas rotacionales, implementaciones RTL y posible migración a silicio."
+    }
+  },
+  {
+    "_id": "project-fp32",
+    "set": {
+      "description": "Newsletter y laboratorio editorial para convertir lectura técnica, investigación y práctica con IA en ensayos, recursos y futuros libros."
+    }
+  },
+  {
+    "_id": "project-softmax-accelerator",
+    "set": {
+      "title": "Aceleración hardware para Softmax",
+      "description": "Acelerador de la función de activación para bloques Shifted Window Transformers, pensado para reducir costos de inferencia en modelos de visión profunda.",
+      "role": "Diseño digital, Verilog, FPGA y deep learning"
+    }
+  },
+  {
+    "_id": "drafts.project-histology-ml",
+    "set": {
+      "title": "Análisis histológico con Machine Learning",
+      "description": "Trabajo en colaboración orientado a mejorar sistemas de clasificación de tejido benigno y cancerígeno mediante modelos de aprendizaje profundo.",
+      "role": "Modelado, evaluación y arquitectura ML"
+    }
+  },
+  {
+    "_id": "resource-fp32",
+    "set": {
+      "summary": "El espacio separado para ensayos, notas largas, series técnicas y futuros libros. El sitio personal funciona como hub; FP32 vive como publicación propia."
+    }
+  },
+  {
+    "_id": "resource-ml-blogs-worth-reading",
+    "set": {
+      "summary": "Una lista curada de blogs personales, laboratorios y recursos sobre machine learning. Es una referencia útil para organizar lecturas sin convertirlas en posts largos."
+    }
+  },
+  {
+    "_id": "drafts.resource-research-systems-notebook",
+    "set": {
+      "summary": "Borrador para guardar enlaces, repositorios, papers y herramientas que alimentan trabajo doctoral: evaluación anti-leakage, cuantización y hardware-aware AI."
+    }
+  },
+  {
+    "_id": "trajectory-master-cinvestav",
+    "set": {
+      "title": "Maestría en Ciencias en Ingeniería Eléctrica",
+      "summary": "Formación de posgrado en diseño electrónico, deep learning, aceleración de hardware y sistemas digitales."
+    }
+  },
+  {
+    "_id": "trajectory-electronics-degree",
+    "set": {
+      "title": "Ingeniería Electrónica",
+      "summary": "Formación base en electrónica, telemática, sistemas digitales, programación y hardware."
+    }
+  },
+  {
+    "_id": "drafts.trajectory-doctorado-cinvestav",
+    "set": {
+      "title": "Doctorado en Ciencias en Ingeniería Eléctrica",
+      "summary": "Borrador de trayectoria doctoral orientada a IA eficiente, optimización hardware-aware, cuantización y evaluación reproducible."
+    }
+  },
+  {
+    "_id": "page-home",
+    "set": {
+      "seoDescription": "Sitio personal de Raúl Pacheco Rodríguez sobre IA eficiente, investigación reproducible, sistemas digitales y escritura técnica.",
+      "hero.eyebrow": "Raúl Pacheco Rodríguez",
+      "hero.description": "Investigo IA eficiente, reproducible y hardware-aware en la frontera entre machine learning, cuantización y sistemas digitales.",
+      "hero.primaryCtaLabel": "Ver investigación",
+      "sections[0].eyebrow": "Carrera y actividad reciente",
+      "sections[1].eyebrow": "Biblioteca técnica",
+      "sections[1].description": "Lecturas, repositorios y referencias que alimentan mi investigación, mi escritura y mi trabajo de programación.",
+      "sections[2].description": "Experimentos, repositorios y piezas técnicas que conectan software, hardware e IA aplicada."
+    }
+  },
+  {
+    "_id": "page-research",
+    "set": {
+      "seoDescription": "Líneas de investigación de Raúl Pacheco Rodríguez en IA eficiente, evaluación anti-leakage y co-diseño algoritmo-hardware.",
+      "eyebrow": "Dirección 2026-2032",
+      "description": "Uso problemas médicos exigentes como banco de prueba para desarrollar optimización hardware-aware, evaluación rigurosa y herramientas que conecten machine learning, cuantización, RTL y sistemas verificables."
+    }
+  },
+  {
+    "_id": "page-about",
+    "set": {
+      "seoDescription": "Perfil profesional, trayectoria, investigación, proyectos y escritura técnica de Raúl Pacheco Rodríguez.",
+      "title": "Investigación, sistemas y escritura técnica.",
+      "description": "Un resumen de mi perfil profesional: qué construyo, qué investigo y cómo conecto electrónica, software, IA eficiente y divulgación técnica.",
+      "occupation": "Ingeniero electrónico e investigador en IA eficiente"
+    }
+  },
+  {
+    "_id": "research-hardware-aware-ai",
+    "set": {
+      "description": "Cuantización, rotaciones, primitivas implementables y co-diseño algoritmo-hardware para modelos de IA más eficientes."
+    }
+  },
+  {
+    "_id": "research-anti-leakage",
+    "set": {
+      "title": "Evaluación anti-leakage",
+      "description": "Métodos, manifests y benchmarks para detectar atajos temporales y evaluar modelos médicos con mayor rigor."
+    }
+  },
+  {
+    "_id": "paper-anti-leakage-medical-ai",
+    "set": {
+      "title": "Evaluación anti-leakage para modelos médicos reproducibles",
+      "summary": "Línea de manuscrito sobre manifests temporales, particiones honestas y controles de fuga de información en pipelines de IA médica.",
+      "projects": []
+    }
+  },
+  {
+    "_id": "note-anti-leakage-medical-ai",
+    "set": {
+      "title": "Evaluación anti-leakage para IA médica reproducible",
+      "summary": "Notas iniciales sobre cómo evitar atajos temporales, fugas de información y evaluaciones demasiado optimistas en modelos médicos."
+    }
+  },
+  {
+    "_id": "note-pseudo-softmax-hardware-aware",
+    "set": {
+      "summary": "Una nota breve para organizar la intuición detrás de aproximar Softmax cuando el objetivo no es solo entrenar un modelo, sino llevarlo a hardware eficiente."
+    }
+  }
+]

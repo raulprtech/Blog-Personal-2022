@@ -28,7 +28,9 @@ async function mutate(batch) {
       mutations: batch.map((patch) => ({
         patch: {
           id: patch._id,
-          set: patch.set,
+          ...(patch.set ? { set: patch.set } : {}),
+          ...(patch.unset ? { unset: patch.unset } : {}),
+          ...(patch.setIfMissing ? { setIfMissing: patch.setIfMissing } : {}),
         },
       })),
     }),

@@ -45,3 +45,19 @@ SANITY_API_WRITE_TOKEN=your_write_token_here
 ```
 
 Do not commit this token. The migration files contain content only, not secrets.
+
+## Spanish accent fixes and referenced draft cleanup
+
+If Sanity shows broken accents such as `t??cnicas`, apply the Spanish fixes patch from the `studio` folder:
+
+```txt
+pnpm run patch:spanish-fixes
+```
+
+This patch also removes the reference from `paper-anti-leakage-medical-ai` to `drafts.project-histology-ml`. Sanity blocks deleting a document while another document references it, so this unlink step lets you delete the histology draft project if you no longer want it.
+
+You still need a local write token in your shell:
+
+```txt
+SANITY_API_WRITE_TOKEN=your_write_token_here
+```

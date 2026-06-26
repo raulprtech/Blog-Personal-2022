@@ -2,7 +2,7 @@ const venturesData = [
   {
     title: 'FP32',
     description:
-      'Publicacion y laboratorio editorial para convertir lectura tecnica, investigacion y practica con IA en ensayos, recursos y futuros libros.',
+      'Publicacion y laboratorio editorial para convertir lectura t?cnica, investigaci?n y pr?ctica con IA en ensayos, recursos y futuros libros.',
     href: 'https://fp32.io/',
     category: 'Editorial lab',
     status: 'Activo',
@@ -12,12 +12,12 @@ const venturesData = [
     tags: ['AI', 'Writing', 'Research', 'Books'],
     featured: true,
     orderRank: 10,
-    researchItems: [{ title: 'FP32 y libros tecnicos', href: 'https://fp32.io/' }],
+    researchItems: [{ title: 'FP32 y libros t?cnicos', href: 'https://fp32.io/' }],
   },
   {
     title: 'Clinical-Core',
     description:
-      'Iniciativa en borrador para organizar pipelines medicos auditables: datos, manifests, evaluacion anti-leakage y componentes reutilizables.',
+      'Iniciativa en borrador para organizar pipelines m?dicos auditables: datos, manifests, evaluacion anti-leakage y componentes reutilizables.',
     href: '/research',
     category: 'Research tooling',
     status: 'Draft',

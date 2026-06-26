@@ -1,8 +1,8 @@
 const papersData = [
   {
-    title: 'Pseudo-Softmax con parametros para aceleracion hardware',
+    title: 'Pseudo-Softmax con par?metros para aceleraci?n hardware',
     summary:
-      'Trabajo base sobre aproximaciones de Softmax pensadas para bloques tipo transformer, con foco en costo de inferencia, implementacion RTL y evaluacion reproducible.',
+      'Trabajo base sobre aproximaciones de Softmax pensadas para bloques tipo transformer, con foco en costo de inferencia, implementaci?n RTL y evaluaci?n reproducible.',
     venue: 'Research note',
     year: 2026,
     status: 'Draft',
@@ -14,7 +14,7 @@ const papersData = [
     researchItems: [{ title: 'IA eficiente y hardware-aware', href: '/research' }],
     projects: [
       {
-        title: 'Aceleracion hardware para Softmax',
+        title: 'Aceleraci?n hardware para Softmax',
         href: 'https://github.com/RaulprTech/Pseudo-Softmax-with-parameters',
         category: 'Hardware-aware AI',
         status: 'Research prototype',
@@ -22,9 +22,9 @@ const papersData = [
     ],
   },
   {
-    title: 'Evaluacion anti-leakage para modelos medicos reproducibles',
+    title: 'Evaluaci?n anti-leakage para modelos m?dicos reproducibles',
     summary:
-      'Linea de manuscrito sobre manifests temporales, particiones honestas y controles de fuga de informacion en pipelines de IA medica.',
+      'L?nea de manuscrito sobre manifests temporales, particiones honestas y controles de fuga de informaci?n en pipelines de IA m?dica.',
     venue: 'Working paper',
     year: 2026,
     status: 'Draft',
@@ -38,7 +38,7 @@ const papersData = [
     ],
     projects: [
       {
-        title: 'Analisis histologico con Machine Learning',
+        title: 'An?lisis histol?gico con Machine Learning',
         href: '/research',
         category: 'Medical AI',
         status: 'En desarrollo',
@@ -46,9 +46,9 @@ const papersData = [
     ],
   },
   {
-    title: 'Cuantizacion y primitivas rotacionales para modelos eficientes',
+    title: 'Cuantizaci?n y primitivas rotacionales para modelos eficientes',
     summary:
-      'Borrador de exploracion para conectar cuantizacion, rotaciones, kernels eficientes y posibles implementaciones verificables en hardware.',
+      'Borrador de exploraci?n para conectar cuantizaci?n, rotaciones, kernels eficientes y posibles implementaciones verificables en hardware.',
     venue: 'Exploration memo',
     year: 2026,
     status: 'Draft',

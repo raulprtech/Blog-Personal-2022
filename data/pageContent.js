@@ -13,7 +13,7 @@
       eyebrow: 'FP32',
       title: 'Una bitacora tecnica para pensar mejor la IA.',
       description:
-        'Ensayos, papers, notas de investigacion y aprendizajes sobre deep learning, IA medica, sistemas eficientes y herramientas para investigadores aumentados.',
+        'Ensayos, papers, notas de investigaci?n y aprendizajes sobre deep learning, IA medica, sistem?s eficientes y herramientas para investigadores aumentados.',
       primaryCtaLabel: 'Suscribirme a FP32',
       primaryCtaHref: 'https://fp32.io/',
       secondaryCtaLabel: 'Ver updates',
@@ -25,8 +25,8 @@
       eyebrow: 'Raul Pacheco Rodriguez',
       title: 'Efficient AI for systems that need evidence.',
       description:
-        'Investigo IA eficiente, reproducible y hardware-aware en la frontera entre machine learning, cuantizacion y sistemas digitales.',
-      primaryCtaLabel: 'Ver investigacion',
+        'Investigo IA eficiente, reproducible y hardware-aware en la frontera entre machine learning, cuantizaci?n y sistemas digitales.',
+      primaryCtaLabel: 'Ver investigaci?n',
       primaryCtaHref: '/research',
       secondaryCtaLabel: 'Ver updates',
       secondaryCtaHref: '/updates',
@@ -47,36 +47,36 @@
         hrefLabel: 'Ver todos',
       },
       blog: {
-        eyebrow: 'Bitacora de investigacion',
+        eyebrow: 'Bitacora de investigaci?n',
         title: 'Notas cercanas al trabajo en curso',
         description:
-          'Apuntes cortos sobre papers, decisiones tecnicas, experimentos y preguntas que todavia estan tomando forma.',
+          'Apuntes cortos sobre papers, decisiones t?cnicas, experimentos y preguntas que todavia estan tomando forma.',
         hrefLabel: 'Leer notas',
       },
       resources: {
         eyebrow: 'Biblioteca tecnica',
         title: 'Recursos',
         description:
-          'Lecturas, repositorios y referencias que alimentan mi investigacion, mi escritura y mi trabajo de programacion.',
+          'Lecturas, repositorios y referencias que alimentan mi investigaci?n, mi escritura y mi trabajo de programaci?n.',
         hrefLabel: 'Ver recursos',
       },
       projects: {
         eyebrow: 'Trabajo seleccionado',
         title: 'Proyectos',
         description:
-          'Experimentos, repositorios y piezas tecnicas que conectan software, hardware e IA aplicada.',
+          'Experimentos, repositorios y piezas t?cnicas que conectan software, hardware e IA aplicada.',
         hrefLabel: 'Ver proyectos',
       },
     },
   },
   blog: {
-    seoTitle: 'Notas de investigacion - Raul Pacheco Rodriguez',
+    seoTitle: 'Notas de investigaci?n - Raul Pacheco Rodriguez',
     seoDescription:
-      'Notas cercanas a investigacion, papers, sistemas eficientes e IA reproducible de Raul Pacheco Rodriguez.',
-    eyebrow: 'Bitacora de investigacion',
+      'Notas cercanas a investigaci?n, papers, sistem?s eficientes e IA reproducible de Raul Pacheco Rodriguez.',
+    eyebrow: 'Bitacora de investigaci?n',
     title: 'Notas cercanas al trabajo en curso',
     description:
-      'Apuntes cortos sobre papers, decisiones tecnicas, experimentos y preguntas que todavia estan tomando forma.',
+      'Apuntes cortos sobre papers, decisiones t?cnicas, experimentos y preguntas que todavia estan tomando forma.',
   },
   updates: {
     seoDescription:
@@ -90,9 +90,9 @@
     seoDescription:
       'Proyectos tecnicos de Raul Pacheco Rodriguez en IA, hardware-aware ML, FPGA, web y productos educativos.',
     eyebrow: 'Portfolio tecnico',
-    title: 'Proyectos que conectan investigacion, producto y sistemas.',
+    title: 'Proyectos que conectan investigaci?n, producto y sistemas.',
     description:
-      'Una seleccion de trabajo en aceleracion hardware, IA medica, productos educativos y escritura tecnica. La estructura esta pensada para migrar cada proyecto a Sanity con imagen, estado, rol, tags y enlaces.',
+      'Una seleccion de trabajo en aceleracion hardware, IA medica, productos educativos y escritura t?cnica. La estructura esta pensada para migrar cada proyecto a Sanity con imagen, estado, rol, tags y enlaces.',
   },
   credentials: {
     seoDescription:
@@ -100,69 +100,69 @@
     eyebrow: 'Constancias destacadas',
     title: 'Cursos que sostienen mi trabajo entre frontend, IA y producto.',
     description:
-      'Una seleccion breve de credenciales utiles para entender mi perfil tecnico. El resto vive en mi perfil publico de Platzi.',
+      'Una seleccion breve de credenciales ?tiles para entender mi perfil tecnico. El resto vive en mi perfil publico de Platzi.',
   },
   papers: {
     seoDescription:
-      'Publicaciones, preprints y borradores de investigacion relacionados con IA eficiente, sistemas y evaluacion reproducible.',
+      'Publicaciones, preprints y borradores de investigaci?n relacionados con IA eficiente, sistemas y evaluacion reproducible.',
     eyebrow: 'Publicaciones',
-    title: 'Papers y manuscritos conectados con mi investigacion.',
+    title: 'Papers y manuscritos conectados con mi investigaci?n.',
     description:
-      'Una lista editorial de trabajos publicados, preprints y borradores que se conectan con lineas de investigacion, proyectos y colaboradores.',
+      'Una lista editorial de trabajos publicados, preprints y borradores que se conectan con lineas de investigaci?n, proyectos y colaboradores.',
   },
   ventures: {
     seoDescription:
       'Emprendimientos, productos y laboratorios editoriales conectados con el trabajo profesional de Raul Pacheco Rodriguez.',
     eyebrow: 'Emprendimientos',
-    title: 'Iniciativas que convierten investigacion y software en productos.',
+    title: 'Iniciativas que convierten investigaci?n y software en productos.',
     description:
       'Un espacio para productos, laboratorios editoriales y proyectos con vocacion de convertirse en organizaciones o herramientas sostenibles.',
   },
   resources: {
     seoDescription:
-      'Biblioteca tecnica y recursos curados de Raul Pacheco Rodriguez sobre IA, sistemas, investigacion y programacion.',
+      'Biblioteca tecnica y recursos curados de Raul Pacheco Rodriguez sobre IA, sistemas, investigaci?n y programaci?n.',
     eyebrow: 'Biblioteca tecnica',
     title: 'Lecturas, herramientas y referencias para construir mejor.',
     description:
-      'Una pagina viva para recursos de investigacion, programacion y escritura tecnica. La idea es que pueda crecer como un indice curado: util para mi flujo de trabajo y util para quien quiera seguir las mismas rutas de aprendizaje.',
+      'Una pagina viva para recursos de investigaci?n, programaci?n y escritura t?cnica. La idea es que pueda crecer como un indice curado: util para mi flujo de trabajo y util para quien quiera seguir las mismas rutas de aprendizaje.',
     categories: ['papers', 'repos', 'blogs', 'books', 'talks', 'datasets'],
   },
   research: {
     seoDescription:
-      'Lineas de investigacion de Raul Pacheco Rodriguez en IA eficiente, evaluacion anti-leakage y co-diseno algoritmo-hardware.',
+      'Lineas de investigaci?n de Raul Pacheco Rodriguez en IA eficiente, evaluacion anti-leakage y co-diseno algoritmo-hardware.',
     eyebrow: 'Direccion 2026-2032',
     title: 'IA eficiente, reproducible y desplegable.',
     description:
-      'Uso problemas medicos exigentes como banco de prueba para desarrollar optimizacion hardware-aware, evaluacion rigurosa y herramientas que conecten machine learning, cuantizacion, RTL y sistemas verificables.',
+      'Uso problemas m?dicos exigentes como banco de prueba para desarrollar optimizacion hardware-aware, evaluacion rigurosa y herramientas que conecten machine learning, cuantizaci?n, RTL y sistemas verificables.',
     cards: [
       {
         name: 'IA eficiente y hardware-aware',
         description:
-          'Cuantizacion, rotaciones, primitivas implementables y co-diseno algoritmo-hardware para modelos de IA mas eficientes.',
+          'Cuantizacion, rotaciones, primitivas implementables y co-diseno algoritmo-hardware para modelos de IA m?s eficientes.',
       },
       {
         name: 'Evaluacion anti-leakage',
         description:
-          'Metodos, manifests y benchmarks para detectar atajos temporales y evaluar modelos medicos con mayor rigor.',
+          'Metodos, manifests y benchmarks para detectar atajos temporales y evaluar modelos m?dicos con mayor rigor.',
       },
       {
         name: 'Clinical-Core',
         description:
-          'Arquitecturas modulares para investigacion medica reproducible, trazable y preparada para validacion multimodal.',
+          'Arquitecturas modulares para investigaci?n medica reproducible, trazable y preparada para validacion multimodal.',
       },
       {
-        name: 'FP32 y libros tecnicos',
+        name: 'FP32 y libros t?cnicos',
         description:
-          'Un laboratorio editorial para convertir lectura, investigacion y practica tecnica en ensayos, libros y recursos formativos.',
+          'Un laboratorio editorial para convertir lectura, investigaci?n y practica tecnica en ensayos, libros y recursos formativos.',
       },
     ],
   },
   trajectory: {
     seoDescription: 'Trayectoria profesional, academica y editorial de Raul Pacheco Rodriguez.',
     eyebrow: 'Trayectoria',
-    title: 'De electronica y web hacia IA eficiente y sistemas verificables.',
+    title: 'De electr?nica y web hacia IA eficiente y sistemas verificables.',
     description:
-      'Una linea de tiempo de mi formacion, trabajo, investigacion, productos y actividad editorial. Esta pagina funciona como puente entre el CV, los proyectos y la direccion de investigacion del sitio.',
+      'Una linea de tiempo de mi formacion, trabajo, investigaci?n, productos y actividad editorial. Esta pagina funciona como puente entre el CV, los proyectos y la direccion de investigaci?n del sitio.',
     summaryStats: [
       { value: '2024+', label: 'Doctorado CINVESTAV' },
       { value: 'FPGA', label: 'Hardware-aware AI' },
@@ -173,36 +173,36 @@
   },
   about: {
     seoDescription:
-      'Perfil profesional, trayectoria, investigacion, proyectos y escritura tecnica de Raul Pacheco Rodriguez.',
+      'Perfil profesional, trayectoria, investigaci?n, proyectos y escritura t?cnica de Raul Pacheco Rodriguez.',
     eyebrow: 'Acerca de',
-    title: 'Investigacion, sistemas y escritura tecnica.',
+    title: 'Investigacion, sistemas y escritura t?cnica.',
     description:
-      'Un resumen de mi perfil profesional: que construyo, que investigo y como conecto electronica, software, IA eficiente y divulgacion tecnica.',
+      'Un resumen de mi perfil profesional: que construyo, que investigo y como conecto electr?nica, software, IA eficiente y divulgacion tecnica.',
     bodySections: [
       {
         eyebrow: 'Perfil',
-        heading: 'Construyo entre software, electronica e investigacion aplicada.',
-        text: 'Soy ingeniero electronico y desarrollador frontend con interes en sistemas de IA que no solo funcionen en una demo, sino que puedan explicarse, medirse y desplegarse con restricciones reales. Mi trabajo conecta interfaces, sistemas digitales, machine learning y escritura tecnica para convertir ideas complejas en herramientas utiles.',
+        heading: 'Construyo entre software, electr?nica e investigaci?n aplicada.',
+        text: 'Soy ingeniero electr?nico y desarrollador frontend con interes en sistemas de IA que no solo funcionen en una demo, sino que puedan explicarse, medirse y desplegarse con restricciones reales. Mi trabajo conecta interfaces, sistemas digitales, machine learning y escritura t?cnica para convertir ideas complejas en herramientas ?tiles.',
       },
       {
         eyebrow: 'Foco actual',
         heading: 'IA eficiente con evidencia, no solo demos.',
-        text: 'Actualmente concentro mi investigacion en machine learning hardware-aware, evaluacion anti-leakage, cuantizacion y flujos reproducibles para problemas medicos. Me interesa entender como llevar modelos desde notebooks experimentales hacia sistemas verificables, auditables y mas eficientes.',
+        text: 'Actualmente concentro mi investigaci?n en machine learning hardware-aware, evaluacion anti-leakage, cuantizaci?n y flujos reproducibles para problemas m?dicos. Me interesa entender como llevar modelos desde notebooks experimentales hacia sistemas verificables, auditables y m?s eficientes.',
       },
       {
         eyebrow: 'Forma de trabajo',
         heading: 'Me gusta construir mapas, prototipos y sistemas que otros puedan revisar.',
-        text: 'Trabajo mejor cuando puedo unir investigacion, producto y documentacion: leer papers, convertirlos en experimentos, disenar interfaces para explorarlos y dejar una ruta clara para que otras personas entiendan las decisiones tecnicas. Por eso este sitio funciona como hub de trayectoria, notas, proyectos, papers y recursos.',
+        text: 'Trabajo mejor cuando puedo unir investigaci?n, producto y documentacion: leer papers, convertirlos en experimentos, dise?ar interfaces para explorarlos y dejar una ruta clara para que otras personas entiendan las decisiones t?cnicas. Por eso este sitio funciona como hub de trayectoria, notas, proyectos, papers y recursos.',
       },
       {
         eyebrow: 'Biblioteca tecnica',
         heading: 'Recursos para seguir el mapa de trabajo.',
-        text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigacion y mis notas tecnicas. Es una forma de mostrar no solo resultados, sino tambien el contexto que los hace posibles.',
+        text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigaci?n y mis notas t?cnicas. Es una forma de mostrar no solo resultados, sino tambien el contexto que los hace posibles.',
         href: '/resources',
         linkLabel: 'Ver recursos',
       },
     ],
-    occupation: 'Ingeniero electronico e investigador en IA eficiente',
+    occupation: 'Ingeniero electr?nico e investigador en IA eficiente',
   },
 }
 

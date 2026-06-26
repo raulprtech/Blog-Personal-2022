@@ -15,7 +15,8 @@
     "generate:legacy-blog": "cd .. && node scripts/migrate-local-blog-to-sanity.js",
     "import:legacy-blog:missing": "pnpm run generate:legacy-blog && sanity datasets import --project-id a668buu6 --dataset production --missing import/legacy-blog-notes.ndjson",
     "import:legacy-blog:replace": "pnpm run generate:legacy-blog && sanity datasets import --project-id a668buu6 --dataset production --replace import/legacy-blog-notes.ndjson",
-    "patch:english-content": "cd .. && node scripts/patch-sanity-english-content.js studio/import/english-content-patches.json"
+    "patch:english-content": "cd .. && node scripts/patch-sanity-english-content.js studio/import/english-content-patches.json",
+    "patch:spanish-fixes": "cd .. && node scripts/patch-sanity-english-content.js studio/import/spanish-content-fixes.json"
   },
   "dependencies": {
     "@sanity/vision": "latest",
