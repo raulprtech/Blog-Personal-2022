@@ -3,8 +3,11 @@ import Script from 'next/script'
 
 class MyDocument extends Document {
   render() {
+    const page = this.props?.__NEXT_DATA__?.page || '/'
+    const lang = page === '/en' || page.startsWith('/en/') ? 'en' : 'es'
+
     return (
-      <Html lang="es" className="scroll-smooth">
+      <Html lang={lang} className="scroll-smooth">
         <Head>
           <link rel="apple-touch-icon" sizes="76x76" href="/api/site-icon?kind=apple" />
           <link rel="icon" type="image/png" sizes="32x32" href="/api/site-icon?kind=favicon32" />

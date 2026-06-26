@@ -3,16 +3,27 @@ import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
+import { localizedPath } from '@/lib/i18n'
 import formatDate from '@/lib/utils/formatDate'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
-export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
+export default function PostLayout({
+  frontMatter,
+  authorDetails,
+  next,
+  prev,
+  children,
+  lang = 'es',
+}) {
   const { date, title } = frontMatter
 
   return (
     <SectionContainer>
-      <BlogSEO url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
+      <BlogSEO
+        url={`${siteMetadata.siteUrl}${localizedPath(`/blog/${frontMatter.slug}`, lang)}`}
+        {...frontMatter}
+      />
       <ScrollTopAndComment />
       <article>
         <div>
@@ -44,7 +55,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                 {prev && (
                   <div className="pt-4 xl:pt-8">
                     <Link
-                      href={`/blog/${prev.slug}`}
+                      href={localizedPath(`/blog/${prev.slug}`, lang)}
                       className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400"
                     >
                       &larr; {prev.title}
@@ -54,7 +65,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                 {next && (
                   <div className="pt-4 xl:pt-8">
                     <Link
-                      href={`/blog/${next.slug}`}
+                      href={localizedPath(`/blog/${next.slug}`, lang)}
                       className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400"
                     >
                       {next.title} &rarr;

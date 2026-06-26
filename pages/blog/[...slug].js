@@ -73,6 +73,7 @@ export default function Blog({ source, note, post, authorDetails, prev, next, la
           authorDetails={authorDetails}
           prev={prev}
           next={next}
+          lang={lang}
         />
       ) : (
         <div className="mt-24 text-center">

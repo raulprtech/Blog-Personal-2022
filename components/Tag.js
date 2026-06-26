@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import kebabCase from '@/lib/utils/kebabCase'
+import { localizedPath } from '@/lib/i18n'
 
-const Tag = ({ text, children }) => {
+const Tag = ({ text, children, lang = 'es' }) => {
   return (
     <Link
       className="group m-1 mt-2 cursor-pointer text-center"
-      href={`/tags/${kebabCase(text)}`}
+      href={localizedPath(`/tags/${kebabCase(text)}`, lang)}
       rel="noreferrer"
     >
       {text && (
@@ -23,11 +24,3 @@ const Tag = ({ text, children }) => {
 }
 
 export default Tag
-
-{
-  /* <Link href={`/tags/${kebabCase(text)}`}>
-<span className="mr-3 text-sm font-medium uppercase text-primary-700 hover:text-primary-700 dark:hover:text-primary-400">
-  {text.split(' ').join('-')}
-</span>
-</Link> */
-}

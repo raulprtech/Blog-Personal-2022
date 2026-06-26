@@ -5,6 +5,7 @@ import { BlogSEO } from '@/components/SEO'
 import Image from '@/components/Image'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { localizedPath } from '@/lib/i18n'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
@@ -16,13 +17,20 @@ const discussUrl = (slug) =>
 
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
+export default function PostLayout({
+  frontMatter,
+  authorDetails,
+  next,
+  prev,
+  children,
+  lang = 'es',
+}) {
   const { slug, fileName, date, title, tags, repository, thread } = frontMatter
 
   return (
     <SectionContainer>
       <BlogSEO
-        url={`${siteMetadata.siteUrl}/blog/${slug}`}
+        url={`${siteMetadata.siteUrl}${localizedPath(`/blog/${slug}`, lang)}`}
         authorDetails={authorDetails}
         {...frontMatter}
       />
@@ -46,7 +54,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </div>
               <div className="flex flex-wrap justify-center py-4">
                 {tags.map((tag) => (
-                  <Tag key={tag} text={tag} />
+                  <Tag key={tag} text={tag} lang={lang} />
                 ))}
               </div>
             </div>
@@ -115,7 +123,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     </h2>
                     <div className="flex flex-wrap">
                       {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
+                        <Tag key={tag} text={tag} lang={lang} />
                       ))}
                     </div>
                   </div>
@@ -128,7 +136,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                           Artículo anterior
                         </h2>
                         <div className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400">
-                          <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
+                          <Link href={localizedPath(`/blog/${prev.slug}`, lang)}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
@@ -138,7 +146,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                           Siguiente artículo
                         </h2>
                         <div className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400">
-                          <Link href={`/blog/${next.slug}`}>{next.title}</Link>
+                          <Link href={localizedPath(`/blog/${next.slug}`, lang)}>{next.title}</Link>
                         </div>
                       </div>
                     )}
@@ -147,7 +155,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </div>
               <div className="pt-4 xl:pt-8">
                 <Link
-                  href="/blog"
+                  href={localizedPath('/blog', lang)}
                   className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400"
                 >
                   &larr; Volver al Blog

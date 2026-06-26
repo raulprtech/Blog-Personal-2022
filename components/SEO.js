@@ -1,6 +1,7 @@
 ﻿import Head from 'next/head'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
+import { getPathWithoutLang, localizedPath } from '@/lib/i18n'
 
 const alumniOf = [
   {
@@ -76,12 +77,24 @@ const toAbsoluteUrl = (url) => {
 
 const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl }) => {
   const router = useRouter()
+  const cleanPath = (router.asPath || '/').split('#')[0].split('?')[0]
+  const basePath = getPathWithoutLang(cleanPath)
+  const isEnglish = cleanPath === '/en' || cleanPath.startsWith('/en/')
+  const locale = isEnglish ? 'en_US' : 'es_MX'
+  const alternateLocale = isEnglish ? 'es_MX' : 'en_US'
+  const canonicalHref =
+    canonicalUrl || `${siteMetadata.siteUrl}${localizedPath(basePath, isEnglish ? 'en' : 'es')}`
+  const spanishHref = `${siteMetadata.siteUrl}${localizedPath(basePath, 'es')}`
+  const englishHref = `${siteMetadata.siteUrl}${localizedPath(basePath, 'en')}`
+
   return (
     <Head>
       <title>{title}</title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={description} />
-      <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
+      <meta property="og:url" content={canonicalHref} />
+      <meta property="og:locale" content={locale} />
+      <meta property="og:locale:alternate" content={alternateLocale} />
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={siteMetadata.title} />
       <meta property="og:description" content={description} />
@@ -96,10 +109,10 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
-      <link
-        rel="canonical"
-        href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
-      />
+      <link rel="canonical" href={canonicalHref} />
+      <link rel="alternate" hrefLang="es-MX" href={spanishHref} />
+      <link rel="alternate" hrefLang="en" href={englishHref} />
+      <link rel="alternate" hrefLang="x-default" href={spanishHref} />
     </Head>
   )
 }
