@@ -162,6 +162,16 @@ export default {
       ],
     },
     simpleText('occupation', 'Occupation'),
+    {
+      name: 'profileCard',
+      title: 'About profile card',
+      type: 'object',
+      fields: [
+        ...imageFields,
+        simpleText('affiliation', 'Affiliation'),
+        simpleText('cvNote', 'CV note', 'text'),
+      ],
+    },
     englishField([
       textField('seoTitle', 'SEO title'),
       textField('seoDescription', 'SEO description', 'text'),
@@ -170,6 +180,16 @@ export default {
       textField('description', 'Description', 'text'),
       textField('featuredEyebrow', 'Featured section eyebrow'),
       textField('occupation', 'Occupation'),
+      {
+        name: 'profileCard',
+        title: 'About profile card',
+        type: 'object',
+        fields: [
+          textField('imageAlt', 'Image alt text'),
+          textField('affiliation', 'Affiliation'),
+          textField('cvNote', 'CV note', 'text'),
+        ],
+      },
       {
         name: 'hero',
         title: 'Home hero',

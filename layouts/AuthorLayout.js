@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import SocialLinks from '@/components/SocialLinks'
 import Image from '@/components/Image'
 import { PageSEO } from '@/components/SEO'
@@ -8,18 +8,23 @@ import fallbackSiteSettings from '@/data/siteSettings'
 
 const defaultContent = {
   seoDescription:
-    'Perfil profesional, trayectoria, investigacion, proyectos y escritura tecnica de Raul Pacheco Rodriguez.',
+    'Perfil profesional, trayectoria, investigación, proyectos y escritura técnica de Raúl Pacheco Rodríguez.',
   eyebrow: 'Acerca de',
-  title: 'Investigacion, sistemas y escritura tecnica.',
+  title: 'Investigación, sistemas y escritura técnica.',
   description:
-    'Un resumen de mi perfil profesional: que construyo, que investigo y como conecto electronica, software, IA eficiente y divulgacion tecnica.',
-  occupation: 'Ingeniero electronico e investigador en IA eficiente',
+    'Un resumen de mi perfil profesional: qué construyo, qué investigo y cómo conecto electrónica, software, IA eficiente y divulgación técnica.',
+  occupation: 'Ingeniero electrónico e investigador en IA eficiente',
+  profileCard: {
+    imageAlt: 'Raúl Pacheco Rodríguez',
+    affiliation: 'CINVESTAV / FP32',
+    cvNote: 'Versión breve para revisar trayectoria, proyectos y contacto profesional.',
+  },
 }
 
 const resourcesSection = {
-  eyebrow: 'Biblioteca tecnica',
+  eyebrow: 'Biblioteca técnica',
   heading: 'Recursos para seguir el mapa de trabajo.',
-  text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigacion y mis notas tecnicas.',
+  text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigación y mis notas técnicas.',
   href: '/resources',
   linkLabel: 'Ver recursos',
 }
@@ -67,9 +72,13 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
   const displayName = siteSettings?.author || siteMetadata.author
   const content = { ...defaultContent, ...(pageContent || {}) }
   const settings = siteSettings || fallbackSiteSettings
+  const profileCard = { ...defaultContent.profileCard, ...(content.profileCard || {}) }
   const cvHref = settings.cvHref || CV
   const cvLabel = settings.cvLabel || 'Descargar CV'
   const socialLinks = settings.socialLinks || fallbackSiteSettings.socialLinks
+  const profileImage = profileCard.image || avatar
+  const profileAlt = profileCard.imageAlt || displayName
+  const affiliation = profileCard.affiliation || company
 
   return (
     <>
@@ -109,8 +118,8 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
             <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-950">
               <div className="flex flex-col items-center">
                 <Image
-                  src={avatar}
-                  alt="Raul Alberto Pacheco Rodriguez"
+                  src={profileImage}
+                  alt={profileAlt}
                   width="800"
                   height="800"
                   className="h-48 w-48 rounded-full border border-gray-200 object-cover dark:border-gray-800"
@@ -121,7 +130,9 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
                 <h3 className="text-center text-gray-500 dark:text-gray-400">
                   {content.occupation}
                 </h3>
-                <h4 className="text-center text-gray-500 dark:text-gray-400">{company}</h4>
+                {affiliation && (
+                  <h4 className="text-center text-gray-500 dark:text-gray-400">{affiliation}</h4>
+                )}
                 <SocialLinks links={socialLinks} size="6" className="flex space-x-3 pt-6" />
               </div>
 
@@ -135,9 +146,11 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
                     -&gt;
                   </span>
                 </Link>
-                <p className="mt-3 text-sm leading-6 text-gray-500 dark:text-gray-400">
-                  Version breve para revisar trayectoria, proyectos y contacto profesional.
-                </p>
+                {profileCard.cvNote && (
+                  <p className="mt-3 text-sm leading-6 text-gray-500 dark:text-gray-400">
+                    {profileCard.cvNote}
+                  </p>
+                )}
               </div>
             </div>
             <div className="mt-8">

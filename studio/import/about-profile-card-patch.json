@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "page-about",
+    "set": {
+      "seoDescription": "Perfil profesional, trayectoria, investigación, proyectos y escritura técnica de Raúl Pacheco Rodríguez.",
+      "title": "Investigación, sistemas y escritura técnica.",
+      "description": "Un resumen de mi perfil profesional: qué construyo, qué investigo y cómo conecto electrónica, software, IA eficiente y divulgación técnica.",
+      "occupation": "Ingeniero electrónico e investigador en IA eficiente",
+      "profileCard": {
+        "imageAlt": "Raúl Pacheco Rodríguez",
+        "affiliation": "CINVESTAV / FP32",
+        "cvNote": "Versión breve para revisar trayectoria, proyectos y contacto profesional."
+      }
+    }
+  }
+]
