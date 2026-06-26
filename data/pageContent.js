@@ -182,17 +182,22 @@
       {
         eyebrow: 'Perfil',
         heading: 'Construyo entre software, electronica e investigacion aplicada.',
-        text: 'Mi trabajo conecta experiencia frontend, sistemas digitales e inteligencia artificial eficiente. Me interesa convertir ideas tecnicas complejas en productos, experimentos reproducibles y recursos que otras personas puedan usar.',
+        text: 'Soy ingeniero electronico y desarrollador frontend con interes en sistemas de IA que no solo funcionen en una demo, sino que puedan explicarse, medirse y desplegarse con restricciones reales. Mi trabajo conecta interfaces, sistemas digitales, machine learning y escritura tecnica para convertir ideas complejas en herramientas utiles.',
       },
       {
-        eyebrow: 'Direccion',
+        eyebrow: 'Foco actual',
         heading: 'IA eficiente con evidencia, no solo demos.',
-        text: 'Actualmente concentro mi trabajo en machine learning hardware-aware, evaluacion anti-leakage, cuantizacion y flujos reproducibles para problemas medicos y sistemas verificables.',
+        text: 'Actualmente concentro mi investigacion en machine learning hardware-aware, evaluacion anti-leakage, cuantizacion y flujos reproducibles para problemas medicos. Me interesa entender como llevar modelos desde notebooks experimentales hacia sistemas verificables, auditables y mas eficientes.',
+      },
+      {
+        eyebrow: 'Forma de trabajo',
+        heading: 'Me gusta construir mapas, prototipos y sistemas que otros puedan revisar.',
+        text: 'Trabajo mejor cuando puedo unir investigacion, producto y documentacion: leer papers, convertirlos en experimentos, disenar interfaces para explorarlos y dejar una ruta clara para que otras personas entiendan las decisiones tecnicas. Por eso este sitio funciona como hub de trayectoria, notas, proyectos, papers y recursos.',
       },
       {
         eyebrow: 'Biblioteca tecnica',
         heading: 'Recursos para seguir el mapa de trabajo.',
-        text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigacion y mis notas tecnicas.',
+        text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigacion y mis notas tecnicas. Es una forma de mostrar no solo resultados, sino tambien el contexto que los hace posibles.',
         href: '/resources',
         linkLabel: 'Ver recursos',
       },
