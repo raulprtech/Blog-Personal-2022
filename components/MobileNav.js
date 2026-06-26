@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import headerNavLinks from '@/data/headerNavLinks'
 import { alternateLanguagePath, localizedPath } from '@/lib/i18n'
 
-const MobileNav = ({ lang = 'es', currentPath = '/' }) => {
+function getNavigationLabel(link, lang) {
+  if (lang === 'en') return link.labelEn || link.titleEn || link.label || link.title
+  return link.label || link.title
+}
+
+const MobileNav = ({ lang = 'es', currentPath = '/', navigationLinks = [] }) => {
   const [navShow, setNavShow] = useState(false)
 
   const onToggleNav = () => {
@@ -59,10 +63,10 @@ const MobileNav = ({ lang = 'es', currentPath = '/' }) => {
           onClick={onToggleNav}
         ></button>
         <nav className="fixed mt-8 h-full">
-          {headerNavLinks.map((link) => {
-            const title = lang === 'en' ? link.titleEn || link.title : link.title
+          {navigationLinks.map((link) => {
+            const title = getNavigationLabel(link, lang)
             return (
-              <div key={link.title} className="px-12 py-4">
+              <div key={`${link.href}-${title}`} className="px-12 py-4">
                 <Link
                   href={localizedPath(link.href, lang)}
                   className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"

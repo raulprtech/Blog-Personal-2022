@@ -1,4 +1,4 @@
-﻿const simpleText = (name, title, type = 'string') => ({ name, title, type })
+const simpleText = (name, title, type = 'string') => ({ name, title, type })
 
 const languageOptions = [
   { title: 'Spanish', value: 'es' },
@@ -84,6 +84,34 @@ export default {
       },
     },
     simpleText('footerCredit', 'Footer credit text'),
+    {
+      name: 'navigationLinks',
+      title: 'Header navigation',
+      type: 'array',
+      description: 'Main navigation links. The order here controls the order in the header.',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            simpleText('label', 'Label in Spanish'),
+            simpleText('labelEn', 'Label in English'),
+            simpleText('href', 'URL or path'),
+            {
+              name: 'visible',
+              title: 'Visible',
+              type: 'boolean',
+              initialValue: true,
+            },
+          ],
+          preview: {
+            select: {
+              title: 'label',
+              subtitle: 'href',
+            },
+          },
+        },
+      ],
+    },
     {
       name: 'socialLinks',
       title: 'Footer social links',

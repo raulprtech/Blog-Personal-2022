@@ -16,7 +16,7 @@ if (!token) {
 const absoluteFile = path.resolve(process.cwd(), patchesFile)
 const patches = JSON.parse(fs.readFileSync(absoluteFile, 'utf8'))
 
-async function mutate(batch) {
+async function mutate(patch) {
   const endpoint = `https://${projectId}.api.sanity.io/v${apiVersion}/data/mutate/${dataset}`
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -25,14 +25,16 @@ async function mutate(batch) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      mutations: batch.map((patch) => ({
-        patch: {
-          id: patch._id,
-          ...(patch.set ? { set: patch.set } : {}),
-          ...(patch.unset ? { unset: patch.unset } : {}),
-          ...(patch.setIfMissing ? { setIfMissing: patch.setIfMissing } : {}),
+      mutations: [
+        {
+          patch: {
+            id: patch._id,
+            ...(patch.set ? { set: patch.set } : {}),
+            ...(patch.unset ? { unset: patch.unset } : {}),
+            ...(patch.setIfMissing ? { setIfMissing: patch.setIfMissing } : {}),
+          },
         },
-      })),
+      ],
     }),
   })
 
@@ -44,13 +46,30 @@ async function mutate(batch) {
   return response.json()
 }
 
+function isMissingDocumentError(error) {
+  return /documentNotFoundError|document with the ID/i.test(error.message)
+}
+
 ;(async () => {
-  const batchSize = 20
-  for (let index = 0; index < patches.length; index += batchSize) {
-    const batch = patches.slice(index, index + batchSize)
-    await mutate(batch)
-    console.log(`Patched ${Math.min(index + batchSize, patches.length)} / ${patches.length}`)
+  let patched = 0
+  let skipped = 0
+
+  for (const patch of patches) {
+    try {
+      await mutate(patch)
+      patched += 1
+      console.log(`Patched ${patch._id}`)
+    } catch (error) {
+      if (isMissingDocumentError(error)) {
+        skipped += 1
+        console.warn(`Skipped missing document ${patch._id}`)
+        continue
+      }
+      throw error
+    }
   }
+
+  console.log(`Done. Patched ${patched} / ${patches.length}. Skipped ${skipped}.`)
 })().catch((error) => {
   console.error(error.message)
   process.exit(1)

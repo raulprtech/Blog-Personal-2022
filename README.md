@@ -2,13 +2,11 @@
 
 # BLog + Portfolio 2026
 
-
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
 This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blogging starter template. Probably the most feature-rich Next.js markdown blogging template out there. Comes out of the box configured with the latest technologies to make technical writing a breeze. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
 
 Check out the documentation below to get started.
-
 
 ## Features
 
@@ -70,7 +68,7 @@ npx degit 'timlrx/tailwind-nextjs-starter-blog#typescript'
    any analytics provider or a commenting solution other than giscus.
 4. Personalize `authors/default.md` (main author)
 5. Modify `projectsData.js`
-6. Modify `headerNavLinks.js` to customize navigation links
+6. Edit `Site settings > Header navigation` in Sanity to customize navigation links
 7. Add blog posts
 8. Deploy on Vercel
 
@@ -106,7 +104,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 `data/projectsData.js` - data used to generate styled card on the projects page.
 
-`data/headerNavLinks.js` - navigation links.
+`sanity/schemas/siteSettings.js` - editable site settings, including header navigation, footer links, logos and CV.
 
 `data/logo.svg` - replace with your own logo.
 
@@ -182,11 +180,10 @@ As the template uses `next/image` for image optimization, additional configurati
 
 The API routes used in the newsletter component cannot be used in a static site export. You will need to use a form API endpoint provider and substitute the route in the newsletter component accordingly. Other hosting platforms such as Netlify also offer alternative solutions - please refer to their docs for more information.
 
-
 ## Licence
 
 MIT
 
 ## Credits
-This projects is made with the template [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
+This projects is made with the template [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)

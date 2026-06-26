@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 import fallbackSiteSettings from '@/data/siteSettings'
-import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
 import Link from 'next/link'
 import SectionContainer from './SectionContainer'
@@ -11,6 +10,11 @@ import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import { alternateLanguagePath, localizedPath } from '@/lib/i18n'
+
+function getNavigationLabel(link, lang) {
+  if (lang === 'en') return link.labelEn || link.titleEn || link.label || link.title
+  return link.label || link.title
+}
 
 function LanguageSwitch({ lang, currentPath }) {
   const options = [
@@ -29,7 +33,7 @@ function LanguageSwitch({ lang, currentPath }) {
               ? 'bg-gray-950 text-white dark:bg-white dark:text-gray-950'
               : 'text-gray-500 hover:text-gray-950 dark:text-gray-400 dark:hover:text-white'
           }`}
-          aria-label={option.lang === 'en' ? 'View site in English' : 'Ver sitio en espa\u00f1ol'}
+          aria-label={option.lang === 'en' ? 'View site in English' : 'Ver sitio en español'}
         >
           {option.label}
         </Link>
@@ -59,6 +63,11 @@ const LayoutWrapper = ({ children, bgImage, header = true, lang = 'es' }) => {
 
   const headerTitle = siteSettings.headerTitle || siteMetadata.headerTitle
   const logoAlt = siteSettings.logoAlt || headerTitle
+  const navigationLinks = (
+    siteSettings.navigationLinks ||
+    fallbackSiteSettings.navigationLinks ||
+    []
+  ).filter((link) => link && link.href && link.visible !== false)
 
   return (
     <SectionContainer bgImage={bgImage}>
@@ -92,11 +101,11 @@ const LayoutWrapper = ({ children, bgImage, header = true, lang = 'es' }) => {
             </div>
             <div className="flex items-center text-base leading-5">
               <div className="hidden sm:block">
-                {headerNavLinks.map((link) => {
-                  const title = lang === 'en' ? link.titleEn || link.title : link.title
+                {navigationLinks.map((link) => {
+                  const title = getNavigationLabel(link, lang)
                   return (
                     <Link
-                      key={link.title}
+                      key={`${link.href}-${title}`}
                       href={localizedPath(link.href, lang)}
                       className="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
                       aria-label={title}
@@ -108,7 +117,7 @@ const LayoutWrapper = ({ children, bgImage, header = true, lang = 'es' }) => {
               </div>
               <LanguageSwitch lang={lang} currentPath={currentPath} />
               <ThemeSwitch />
-              <MobileNav lang={lang} currentPath={currentPath} />
+              <MobileNav lang={lang} currentPath={currentPath} navigationLinks={navigationLinks} />
             </div>
           </header>
         )}
