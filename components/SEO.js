@@ -86,6 +86,28 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
     canonicalUrl || `${siteMetadata.siteUrl}${localizedPath(basePath, isEnglish ? 'en' : 'es')}`
   const spanishHref = `${siteMetadata.siteUrl}${localizedPath(basePath, 'es')}`
   const englishHref = `${siteMetadata.siteUrl}${localizedPath(basePath, 'en')}`
+  const breadcrumbSegments = basePath.split('/').filter(Boolean)
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: isEnglish ? 'Home' : 'Inicio',
+        item: `${siteMetadata.siteUrl}${localizedPath('/', isEnglish ? 'en' : 'es')}`,
+      },
+      ...breadcrumbSegments.map((segment, index) => {
+        const route = `/${breadcrumbSegments.slice(0, index + 1).join('/')}`
+        return {
+          '@type': 'ListItem',
+          position: index + 2,
+          name: segment.replace(/-/g, ' '),
+          item: `${siteMetadata.siteUrl}${localizedPath(route, isEnglish ? 'en' : 'es')}`,
+        }
+      }),
+    ],
+  }
 
   return (
     <Head>
@@ -113,6 +135,12 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
       <link rel="alternate" hrefLang="es-MX" href={spanishHref} />
       <link rel="alternate" hrefLang="en" href={englishHref} />
       <link rel="alternate" hrefLang="x-default" href={spanishHref} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbStructuredData, null, 2),
+        }}
+      />
     </Head>
   )
 }

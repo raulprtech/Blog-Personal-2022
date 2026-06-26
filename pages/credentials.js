@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
@@ -21,12 +22,38 @@ export async function getStaticProps({ lang = 'es' } = {}) {
 }
 
 export default function Credentials({ credentialsData, pageContent, lang = 'es' }) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: pageContent?.title || 'Credentials',
+    itemListElement: credentialsData.map((credential, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'EducationalOccupationalCredential',
+        name: credential.title,
+        description: credential.summary,
+        credentialCategory: credential.credentialCategory || 'Course certificate',
+        url: credential.href,
+        recognizedBy: credential.issuer
+          ? { '@type': 'Organization', name: credential.issuer }
+          : undefined,
+      },
+    })),
+  }
+
   return (
     <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Constancias - ${siteMetadata.author}`}
         description={pageContent?.seoDescription}
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData, null, 2) }}
+        />
+      </Head>
       <section className="pb-16 pt-8">
         <EditablePageHeader content={pageContent}>
           <div className="mt-7">
@@ -34,7 +61,7 @@ export default function Credentials({ credentialsData, pageContent, lang = 'es' 
               href={platziProfileUrl}
               className="inline-flex items-center justify-center rounded-md bg-gray-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-primary-700 dark:bg-white dark:text-gray-950 dark:hover:bg-secondary-300"
             >
-              Ver perfil completo en Platzi
+              {lang === 'en' ? 'View full Platzi profile' : 'Ver perfil completo en Platzi'}
             </Link>
           </div>
         </EditablePageHeader>

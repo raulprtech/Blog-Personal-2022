@@ -1,0 +1,224 @@
+[
+  {
+    "_id": "page-home",
+    "set": {
+      "english": {
+        "seoTitle": "Raul Pacheco Rodriguez - Efficient AI, research and systems",
+        "seoDescription": "Personal site of Raul Pacheco Rodriguez on efficient AI, reproducible research, digital systems and technical writing.",
+        "hero": {
+          "eyebrow": "Raul Pacheco Rodriguez",
+          "title": "AI is for everyone",
+          "description": "I work to make intelligent, efficient, traceable and reproducible technology useful in the places where large language models cannot reach.",
+          "primaryCtaLabel": "View research",
+          "secondaryCtaLabel": "View updates",
+          "focusAreas": ["Hardware-aware AI", "Anti-leakage evaluation", "Clinical-Core"],
+          "visualEyebrow": "Research direction",
+          "visualTitle": "Machine learning, quantization, RTL and reproducible medical AI.",
+          "stats": [
+            { "value": "2026", "label": "Doctoral sprint" },
+            { "value": "FP32", "label": "Editorial lab" },
+            { "value": "HW", "label": "Aware AI" }
+          ]
+        },
+        "newsletterCta": {
+          "eyebrow": "FP32",
+          "title": "A technical notebook for thinking better about AI.",
+          "description": "Essays, papers, research notes and lessons on deep learning, medical AI, efficient systems and tools for augmented researchers.",
+          "primaryCtaLabel": "Subscribe to FP32",
+          "secondaryCtaLabel": "View updates"
+        },
+        "sections": [
+          {
+            "key": "updates",
+            "eyebrow": "Career and recent activity",
+            "title": "Updates",
+            "hrefLabel": "View all"
+          },
+          {
+            "key": "blog",
+            "eyebrow": "Research notebook",
+            "title": "Notes close to work in progress",
+            "description": "Short notes on papers, technical decisions, experiments and questions that are still taking shape.",
+            "hrefLabel": "Read notes"
+          },
+          {
+            "key": "resources",
+            "eyebrow": "Technical library",
+            "title": "Resources",
+            "description": "Readings, repositories and references that feed my research, writing and programming practice.",
+            "hrefLabel": "View resources"
+          },
+          {
+            "key": "projects",
+            "eyebrow": "Selected work",
+            "title": "Projects",
+            "description": "Experiments, repositories and technical pieces connecting software, hardware and applied AI.",
+            "hrefLabel": "View projects"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "_id": "page-about",
+    "set": {
+      "english": {
+        "seoDescription": "Professional profile, trajectory, research, projects and technical writing by Raul Pacheco Rodriguez.",
+        "eyebrow": "About",
+        "title": "Research, systems and technical writing.",
+        "description": "A compact view of what I build, what I research and how I connect electronics, software, efficient AI and technical communication.",
+        "occupation": "Electronic engineer and efficient AI researcher",
+        "bodySections": [
+          {
+            "eyebrow": "Profile",
+            "heading": "I build between software, electronics and applied research.",
+            "text": "I am an electronic engineer and frontend developer interested in AI systems that do more than work in a demo: they should be explainable, measurable and deployable under real constraints."
+          },
+          {
+            "eyebrow": "Current focus",
+            "heading": "Efficient AI with evidence, not only demos.",
+            "text": "My current work focuses on hardware-aware machine learning, anti-leakage evaluation, quantization and reproducible workflows for demanding medical problems."
+          },
+          {
+            "eyebrow": "How I work",
+            "heading": "I like building maps, prototypes and systems that others can inspect.",
+            "text": "I work best when research, product and documentation meet: reading papers, turning them into experiments, designing interfaces to explore them and leaving a clear route for others to understand the technical decisions."
+          },
+          {
+            "eyebrow": "Technical library",
+            "heading": "Resources for following the work map.",
+            "text": "I maintain a living library of readings, repositories, references and tools that feed my research and technical notes.",
+            "href": "/resources",
+            "linkLabel": "View resources"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "_id": "page-research",
+    "set": {
+      "english": {
+        "seoDescription": "Research lines by Raul Pacheco Rodriguez in efficient AI, anti-leakage evaluation and algorithm-hardware co-design.",
+        "eyebrow": "Direction 2026-2032",
+        "title": "Efficient, reproducible and deployable AI.",
+        "description": "I use demanding medical problems as a testbed for hardware-aware optimization, rigorous evaluation and tools that connect machine learning, quantization, RTL and verifiable systems.",
+        "cards": [
+          {
+            "name": "Efficient and hardware-aware AI",
+            "description": "Quantization, rotations, implementable primitives and algorithm-hardware co-design for more efficient AI models."
+          },
+          {
+            "name": "Anti-leakage evaluation",
+            "description": "Methods, manifests and benchmarks for detecting temporal shortcuts and evaluating medical models with more rigor."
+          },
+          {
+            "name": "Clinical-Core",
+            "description": "Modular architectures for reproducible, traceable medical research prepared for multimodal validation."
+          },
+          {
+            "name": "FP32 and technical books",
+            "description": "An editorial lab for turning reading, research and technical practice into essays, books and learning resources."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "_id": "page-blog",
+    "set": {
+      "english": {
+        "seoTitle": "Research notes - Raul Pacheco Rodriguez",
+        "seoDescription": "Notes close to research, papers, efficient systems and reproducible AI by Raul Pacheco Rodriguez.",
+        "eyebrow": "Research notebook",
+        "title": "Notes close to work in progress",
+        "description": "Short notes on papers, technical decisions, experiments and questions that are still taking shape."
+      }
+    }
+  },
+  {
+    "_id": "page-updates",
+    "set": {
+      "english": {
+        "seoDescription": "Short notes on publications, talks, projects, teaching and professional progress by Raul Pacheco Rodriguez.",
+        "eyebrow": "Professional updates",
+        "title": "What is new, without turning everything into a blog post.",
+        "description": "Talks, publications, projects, books, software and career notes. This section is designed for short editable updates."
+      }
+    }
+  },
+  {
+    "_id": "page-projects",
+    "set": {
+      "english": {
+        "seoDescription": "Technical projects by Raul Pacheco Rodriguez in AI, hardware-aware ML, FPGA, web and educational products.",
+        "eyebrow": "Technical portfolio",
+        "title": "Projects connecting research, product and systems.",
+        "description": "Selected work in hardware acceleration, medical AI, educational products and technical writing."
+      }
+    }
+  },
+  {
+    "_id": "page-papers",
+    "set": {
+      "english": {
+        "seoDescription": "Publications, preprints and research drafts related to efficient AI, systems and reproducible evaluation.",
+        "eyebrow": "Publications",
+        "title": "Papers and manuscripts connected with my research.",
+        "description": "An editorial list of published work, preprints and drafts connected with research lines, projects and collaborators."
+      }
+    }
+  },
+  {
+    "_id": "page-credentials",
+    "set": {
+      "english": {
+        "seoDescription": "Highlighted courses and credentials by Raul Pacheco Rodriguez in AI, frontend, cloud and product.",
+        "eyebrow": "Highlighted credentials",
+        "title": "Courses that support my work across frontend, AI and product.",
+        "description": "A short selection of credentials useful for understanding my technical profile. The rest lives in my public Platzi profile."
+      }
+    }
+  },
+  {
+    "_id": "page-resources",
+    "set": {
+      "english": {
+        "seoDescription": "Technical library and curated resources by Raul Pacheco Rodriguez on AI, systems, research and programming.",
+        "eyebrow": "Technical library",
+        "title": "Readings, tools and references for building better.",
+        "description": "A living page for research, programming and technical writing resources. It can grow as a curated index for my workflow and for anyone following similar learning paths.",
+        "categories": ["papers", "repos", "blogs", "books", "talks", "datasets"]
+      }
+    }
+  },
+  {
+    "_id": "page-trajectory",
+    "set": {
+      "english": {
+        "seoDescription": "Professional, academic and editorial trajectory of Raul Pacheco Rodriguez.",
+        "eyebrow": "Trajectory",
+        "title": "From electronics and web toward efficient AI and verifiable systems.",
+        "description": "A timeline of my education, work, research, products and editorial activity. This page connects the CV, projects and research direction of the site.",
+        "summaryStats": [
+          { "value": "2024+", "label": "Cinvestav PhD" },
+          { "value": "FPGA", "label": "Hardware-aware AI" },
+          { "value": "FP32", "label": "Editorial lab" },
+          { "value": "AI", "label": "Research and product" }
+        ],
+        "featuredEyebrow": "Selected milestones"
+      }
+    }
+  },
+  {
+    "_id": "page-ventures",
+    "set": {
+      "english": {
+        "seoDescription": "Ventures, products and editorial labs connected with Raul Pacheco Rodriguez's professional work.",
+        "eyebrow": "Ventures",
+        "title": "Initiatives that turn research and software into products.",
+        "description": "A space for products, editorial labs and projects with the potential to become sustainable organizations or tools."
+      }
+    }
+  }
+]

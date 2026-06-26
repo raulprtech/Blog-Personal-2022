@@ -19,3 +19,29 @@ SANITY_API_READ_TOKEN=
 ```
 
 A token is optional for public datasets. Use `SANITY_API_READ_TOKEN` only if the dataset is private. Do not commit the token; add it only to `.env.local` and to your hosting provider environment variables.
+
+## English content and legacy blog migration
+
+The site supports optional English fields through the `english` object in Sanity documents.
+
+Useful commands from the `studio` folder:
+
+```txt
+pnpm run patch:english-content
+pnpm run generate:legacy-blog
+pnpm run import:legacy-blog:missing
+pnpm run import:legacy-blog:replace
+```
+
+- `patch:english-content` updates only the `english` fields for the main editable pages. It preserves the rest of each document.
+- `generate:legacy-blog` converts local Markdown posts from `data/blog` into `studio/import/legacy-blog-notes.ndjson`.
+- `import:legacy-blog:missing` imports only notes that do not already exist in Sanity.
+- `import:legacy-blog:replace` replaces matching note documents, useful when you want to update existing migrated notes with the generated English drafts.
+
+For `patch:english-content`, set a write token only in your local shell:
+
+```txt
+SANITY_API_WRITE_TOKEN=your_write_token_here
+```
+
+Do not commit this token. The migration files contain content only, not secrets.

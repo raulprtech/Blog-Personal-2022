@@ -11,7 +11,11 @@
     "import:initial:missing": "sanity datasets import --project-id a668buu6 --dataset production --missing import/initial-content.ndjson",
     "verify:production": "sanity documents query --project-id a668buu6 --dataset production \"*[!(_id in path(\\\"_.**\\\")) && !(_id in path(\\\"drafts.**\\\"))]{_id,_type,title,slug}[0...50]\" --pretty",
     "verify:site-settings": "sanity documents query --project-id a668buu6 --dataset production \"*[_type == \\\"siteSettings\\\"]{_id,_type,title,headerTitle,cvHref,socialLinks}\" --pretty",
-    "verify:count": "sanity documents query --project-id a668buu6 --dataset production \"count(*[!(_id in path(\\\"_.**\\\")) && !(_id in path(\\\"drafts.**\\\"))])\" --pretty"
+    "verify:count": "sanity documents query --project-id a668buu6 --dataset production \"count(*[!(_id in path(\\\"_.**\\\")) && !(_id in path(\\\"drafts.**\\\"))])\" --pretty",
+    "generate:legacy-blog": "cd .. && node scripts/migrate-local-blog-to-sanity.js",
+    "import:legacy-blog:missing": "pnpm run generate:legacy-blog && sanity datasets import --project-id a668buu6 --dataset production --missing import/legacy-blog-notes.ndjson",
+    "import:legacy-blog:replace": "pnpm run generate:legacy-blog && sanity datasets import --project-id a668buu6 --dataset production --replace import/legacy-blog-notes.ndjson",
+    "patch:english-content": "cd .. && node scripts/patch-sanity-english-content.js studio/import/english-content-patches.json"
   },
   "dependencies": {
     "@sanity/vision": "latest",
