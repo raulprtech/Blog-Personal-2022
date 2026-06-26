@@ -5,17 +5,20 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 import ProjectCard from '@/components/ProjectCard'
 import EditablePageHeader from '@/components/EditablePageHeader'
 
-export async function getStaticProps() {
-  const [projectsData, pageContent] = await Promise.all([getProjects(), getPageContent('projects')])
+export async function getStaticProps({ lang = 'es' } = {}) {
+  const [projectsData, pageContent] = await Promise.all([
+    getProjects(lang),
+    getPageContent('projects', lang),
+  ])
   return {
-    props: { projectsData, pageContent },
+    props: { projectsData, pageContent, lang },
     revalidate: 60,
   }
 }
 
-export default function Projects({ projectsData, pageContent }) {
+export default function Projects({ projectsData, pageContent, lang = 'es' }) {
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={
           pageContent?.seoTitle || `Proyectos - ${siteMetadata.author} - ${siteMetadata.nickname}`

@@ -11,7 +11,7 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 const root = process.cwd()
 
 export async function getStaticPaths() {
-  const tags = await getAllNoteTags()
+  const tags = await getAllNoteTags('es')
 
   return {
     paths: Object.keys(tags).map((tag) => ({
@@ -23,8 +23,8 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
-  const allPosts = await getAllNotesFrontMatter()
+export async function getStaticProps({ params, lang = 'es' }) {
+  const allPosts = await getAllNotesFrontMatter(lang)
   const filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
   )
@@ -38,21 +38,21 @@ export async function getStaticProps({ params }) {
   }
 
   // getAllTags for tag section
-  const tags = await getAllNoteTags()
+  const tags = await getAllNoteTags(lang)
 
-  return { props: { posts: filteredPosts, tag: params.tag, tags: tags } }
+  return { props: { posts: filteredPosts, tag: params.tag, tags: tags, lang } }
 }
 
-export default function Tag({ posts, tag, tags }) {
+export default function Tag({ posts, tag, tags, lang = 'es' }) {
   // Capitalize first letter and convert space to dash
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <TagSEO
         title={`${tag} - ${siteMetadata.author} - ${siteMetadata.nickname}`}
         description={`Articulos sobre ${tag} - ${siteMetadata.author}`}
       />
-      <ListLayout posts={posts} title={title} tags={tags} />
+      <ListLayout posts={posts} title={title} tags={tags} lang={lang} />
     </LayoutWrapper>
   )
 }

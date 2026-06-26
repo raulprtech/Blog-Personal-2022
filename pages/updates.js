@@ -5,19 +5,22 @@ import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
 import { getPageContent, getUpdates } from '@/lib/content'
 
-export async function getStaticProps() {
-  const [updatesData, pageContent] = await Promise.all([getUpdates(), getPageContent('updates')])
+export async function getStaticProps({ lang = 'es' } = {}) {
+  const [updatesData, pageContent] = await Promise.all([
+    getUpdates(lang),
+    getPageContent('updates', lang),
+  ])
   return {
-    props: { updatesData, pageContent },
+    props: { updatesData, pageContent, lang },
     revalidate: 60,
   }
 }
 
-export default function Updates({ updatesData, pageContent }) {
+export default function Updates({ updatesData, pageContent, lang = 'es' }) {
   const [featuredUpdate, ...updates] = updatesData
 
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Updates - ${siteMetadata.author}`}
         description={pageContent?.seoDescription}

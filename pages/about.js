@@ -7,20 +7,20 @@ const DEFAULT_LAYOUT = 'AuthorLayout'
 
 import LayoutWrapper from '@/components/LayoutWrapper'
 
-export async function getStaticProps() {
+export async function getStaticProps({ lang = 'es' } = {}) {
   const [authorDetails, pageContent, siteSettings] = await Promise.all([
     getFileBySlug('authors', ['default']),
-    getPageContent('about'),
+    getPageContent('about', lang),
     getSiteSettings(),
   ])
-  return { props: { authorDetails, pageContent, siteSettings }, revalidate: 60 }
+  return { props: { authorDetails, pageContent, siteSettings, lang }, revalidate: 60 }
 }
 
-export default function About({ authorDetails, pageContent, siteSettings }) {
+export default function About({ authorDetails, pageContent, siteSettings, lang = 'es' }) {
   const { mdxSource, frontMatter } = authorDetails
 
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <MDXLayoutRenderer
         layout={frontMatter.layout || DEFAULT_LAYOUT}
         mdxSource={mdxSource}

@@ -12,8 +12,9 @@ import ResourceCard from '@/components/ResourceCard'
 import { Eyebrow } from '@/components/ContentMeta'
 import { getHomeContent } from '@/lib/content'
 import { getAllNotesFrontMatter } from '@/lib/notes'
+import { localizedPath } from '@/lib/i18n'
 
-function SectionHeading({ section, href }) {
+function SectionHeading({ section, href, lang = 'es' }) {
   return (
     <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-end">
       <div>
@@ -27,7 +28,7 @@ function SectionHeading({ section, href }) {
           </p>
         )}
         <Link
-          href={href}
+          href={localizedPath(href, lang)}
           className="mt-5 inline-flex text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:hidden"
         >
           {section.hrefLabel} -&gt;
@@ -47,7 +48,7 @@ function SectionHeading({ section, href }) {
               </div>
             </div>
             <Link
-              href={href}
+              href={localizedPath(href, lang)}
               className="mt-4 hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:inline-flex"
             >
               {section.hrefLabel} -&gt;
@@ -55,7 +56,7 @@ function SectionHeading({ section, href }) {
           </div>
         ) : (
           <Link
-            href={href}
+            href={localizedPath(href, lang)}
             className="hidden text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400 md:block"
           >
             {section.hrefLabel} -&gt;
@@ -66,14 +67,14 @@ function SectionHeading({ section, href }) {
   )
 }
 
-function BlogNoteCard({ post }) {
+function BlogNoteCard({ post, lang = 'es' }) {
   return (
     <article className="h-full rounded-md border border-gray-200 bg-white p-6 transition hover:border-gray-400 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-600">
       <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-700 dark:text-secondary-400">
         {post.date}
       </p>
       <h3 className="mt-4 text-2xl font-black tracking-tight text-gray-950 dark:text-white">
-        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+        <Link href={localizedPath(`/blog/${post.slug}`, lang)}>{post.title}</Link>
       </h3>
       <p className="mt-4 leading-8 text-gray-600 dark:text-gray-300">{post.summary}</p>
       {post.tags && (
@@ -92,19 +93,30 @@ function BlogNoteCard({ post }) {
   )
 }
 
-export async function getStaticProps() {
-  const [homeContent, blogPosts] = await Promise.all([getHomeContent(), getAllNotesFrontMatter()])
+export async function getStaticProps({ lang = 'es' } = {}) {
+  const [homeContent, blogPosts] = await Promise.all([
+    getHomeContent(lang),
+    getAllNotesFrontMatter(lang),
+  ])
 
   return {
     props: {
       ...homeContent,
       blogPosts: blogPosts.slice(0, 3),
+      lang,
     },
     revalidate: 60,
   }
 }
 
-export default function Home({ updates, projects, resources, blogPosts, pageContent }) {
+export default function Home({
+  updates,
+  projects,
+  resources,
+  blogPosts,
+  pageContent,
+  lang = 'es',
+}) {
   const sections = pageContent?.sections || {}
   const updatesSection = sections.updates || {}
   const resourcesSection = sections.resources || {}
@@ -122,7 +134,7 @@ export default function Home({ updates, projects, resources, blogPosts, pageCont
           emoji={pageContent.announcementBanner.emoji}
         />
       )}
-      <LayoutWrapper bgImage="">
+      <LayoutWrapper bgImage="" lang={lang}>
         <PageSEO
           title={
             pageContent?.seoTitle ||
@@ -132,7 +144,7 @@ export default function Home({ updates, projects, resources, blogPosts, pageCont
         />
         <Hero content={pageContent?.hero} />
         <section className="py-12">
-          <SectionHeading section={updatesSection} href="/updates" />
+          <SectionHeading section={updatesSection} href="/updates" lang={lang} />
           <div className="grid gap-6 lg:grid-cols-3">
             {updates.slice(0, 3).map((update, index) => (
               <UpdateCard key={update.title} update={update} large={index === 0} />
@@ -143,16 +155,16 @@ export default function Home({ updates, projects, resources, blogPosts, pageCont
         <NewsletterCTA content={pageContent?.newsletterCta} />
 
         <section className="py-12">
-          <SectionHeading section={blogSection} href="/blog" />
+          <SectionHeading section={blogSection} href="/blog" lang={lang} />
           <div className="grid gap-6 md:grid-cols-3">
             {(blogPosts || []).map((post) => (
-              <BlogNoteCard key={post.slug} post={post} />
+              <BlogNoteCard key={post.slug} post={post} lang={lang} />
             ))}
           </div>
         </section>
 
         <section className="py-12">
-          <SectionHeading section={resourcesSection} href="/resources" />
+          <SectionHeading section={resourcesSection} href="/resources" lang={lang} />
           <div className="grid gap-6 md:grid-cols-3">
             {resources.map((resource) => (
               <ResourceCard key={resource.title} resource={resource} compact />
@@ -161,7 +173,7 @@ export default function Home({ updates, projects, resources, blogPosts, pageCont
         </section>
 
         <section className="py-12">
-          <SectionHeading section={projectsSection} href="/projects" />
+          <SectionHeading section={projectsSection} href="/projects" lang={lang} />
           <div className="grid gap-6 md:grid-cols-2">
             {projects.slice(0, 4).map((project) => (
               <ProjectCard key={project.title} project={project} />

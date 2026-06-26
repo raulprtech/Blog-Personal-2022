@@ -7,22 +7,22 @@ import { getPageContent, getResources } from '@/lib/content'
 
 const fallbackCategories = ['papers', 'repos', 'blogs', 'books', 'talks', 'datasets']
 
-export async function getStaticProps() {
+export async function getStaticProps({ lang = 'es' } = {}) {
   const [resourcesData, pageContent] = await Promise.all([
-    getResources(),
-    getPageContent('resources'),
+    getResources(lang),
+    getPageContent('resources', lang),
   ])
   return {
-    props: { resourcesData, pageContent },
+    props: { resourcesData, pageContent, lang },
     revalidate: 60,
   }
 }
 
-export default function Resources({ resourcesData, pageContent }) {
+export default function Resources({ resourcesData, pageContent, lang = 'es' }) {
   const categories = pageContent?.categories || fallbackCategories
 
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Recursos - ${siteMetadata.author}`}
         description={pageContent?.seoDescription}

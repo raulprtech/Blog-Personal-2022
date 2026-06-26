@@ -5,18 +5,21 @@ import PaperCard from '@/components/PaperCard'
 import siteMetadata from '@/data/siteMetadata'
 import { getPageContent, getPapers } from '@/lib/content'
 
-export async function getStaticProps() {
-  const [papersData, pageContent] = await Promise.all([getPapers(), getPageContent('papers')])
+export async function getStaticProps({ lang = 'es' } = {}) {
+  const [papersData, pageContent] = await Promise.all([
+    getPapers(lang),
+    getPageContent('papers', lang),
+  ])
 
   return {
-    props: { papersData, pageContent },
+    props: { papersData, pageContent, lang },
     revalidate: 60,
   }
 }
 
-export default function Papers({ papersData, pageContent }) {
+export default function Papers({ papersData, pageContent, lang = 'es' }) {
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Papers - ${siteMetadata.author}`}
         description={pageContent?.seoDescription}

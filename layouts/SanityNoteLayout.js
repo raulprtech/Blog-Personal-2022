@@ -4,10 +4,11 @@ import Image from '@/components/Image'
 import SanityPortableText from '@/components/SanityPortableText'
 import { ContentBadge, ContentTags, RelatedLinks } from '@/components/ContentMeta'
 import siteMetadata from '@/data/siteMetadata'
+import { localizedPath } from '@/lib/i18n'
 
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 
-function AuthorLine({ authors }) {
+function AuthorLine({ authors, lang = 'es' }) {
   if (!Array.isArray(authors) || authors.length === 0) return null
 
   return (
@@ -27,7 +28,7 @@ function AuthorLine({ authors }) {
             />
           )}
           <span>
-            Por{' '}
+            {lang === 'en' ? 'By' : 'Por'}{' '}
             {author.href ? (
               <Link href={author.href} className="font-semibold text-gray-800 dark:text-gray-100">
                 {author.name}
@@ -42,7 +43,7 @@ function AuthorLine({ authors }) {
   )
 }
 
-export default function SanityNoteLayout({ note, prev, next }) {
+export default function SanityNoteLayout({ note, prev, next, lang = 'es' }) {
   const dateLabel = note.date
     ? new Date(note.date).toLocaleDateString(siteMetadata.locale, postDateTemplate)
     : null
@@ -50,7 +51,7 @@ export default function SanityNoteLayout({ note, prev, next }) {
   return (
     <>
       <BlogSEO
-        url={`${siteMetadata.siteUrl}/blog/${note.slug}`}
+        url={`${siteMetadata.siteUrl}${localizedPath(`/blog/${note.slug}`, lang)}`}
         title={note.title}
         summary={note.summary}
         date={note.date}
@@ -61,7 +62,7 @@ export default function SanityNoteLayout({ note, prev, next }) {
         <header className="grid gap-10 border-b border-gray-200 pb-10 dark:border-gray-800 lg:grid-cols-[1fr_360px] lg:items-end">
           <div>
             <div className="mb-5 flex flex-wrap gap-2">
-              <ContentBadge tone="accent">Nota</ContentBadge>
+              <ContentBadge tone="accent">{lang === 'en' ? 'Note' : 'Nota'}</ContentBadge>
               {dateLabel && <ContentBadge tone="muted">{dateLabel}</ContentBadge>}
             </div>
             <h1 className="text-4xl font-black tracking-tight text-gray-950 dark:text-white md:text-6xl">
@@ -72,7 +73,7 @@ export default function SanityNoteLayout({ note, prev, next }) {
                 {note.summary}
               </p>
             )}
-            <AuthorLine authors={note.authors} />
+            <AuthorLine authors={note.authors} lang={lang} />
           </div>
           {note.image && (
             <div className="overflow-hidden rounded-md border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
@@ -98,15 +99,19 @@ export default function SanityNoteLayout({ note, prev, next }) {
               </p>
               <ContentTags tags={note.tags} />
             </div>
-            <RelatedLinks title="Lineas de investigacion" items={note.researchItems} />
-            <RelatedLinks title="Proyectos" items={note.projects} />
+            <RelatedLinks
+              title={lang === 'en' ? 'Research lines' : 'Lineas de investigacion'}
+              items={note.researchItems}
+            />
+            <RelatedLinks title={lang === 'en' ? 'Projects' : 'Proyectos'} items={note.projects} />
             <RelatedLinks title="Papers" items={note.papers} />
             {note.canonicalUrl && (
               <Link
                 href={note.canonicalUrl}
                 className="inline-flex text-sm font-semibold text-primary-700 hover:text-primary-800 dark:text-secondary-400"
               >
-                Ver version canonica <span aria-hidden="true">-&gt;</span>
+                {lang === 'en' ? 'View canonical version' : 'Ver version canonica'}{' '}
+                <span aria-hidden="true">-&gt;</span>
               </Link>
             )}
           </aside>
@@ -116,22 +121,22 @@ export default function SanityNoteLayout({ note, prev, next }) {
           <footer className="mt-12 grid gap-4 border-t border-gray-200 pt-8 dark:border-gray-800 md:grid-cols-2">
             {prev && (
               <Link
-                href={`/blog/${prev.slug}`}
+                href={localizedPath(`/blog/${prev.slug}`, lang)}
                 className="rounded-md border border-gray-200 p-4 text-sm font-semibold text-gray-700 hover:border-primary-400 dark:border-gray-800 dark:text-gray-200"
               >
                 <span className="block text-xs uppercase tracking-widest text-gray-400">
-                  Anterior
+                  {lang === 'en' ? 'Previous' : 'Anterior'}
                 </span>
                 {prev.title}
               </Link>
             )}
             {next && (
               <Link
-                href={`/blog/${next.slug}`}
+                href={localizedPath(`/blog/${next.slug}`, lang)}
                 className="rounded-md border border-gray-200 p-4 text-sm font-semibold text-gray-700 hover:border-primary-400 dark:border-gray-800 dark:text-gray-200 md:text-right"
               >
                 <span className="block text-xs uppercase tracking-widest text-gray-400">
-                  Siguiente
+                  {lang === 'en' ? 'Next' : 'Siguiente'}
                 </span>
                 {next.title}
               </Link>

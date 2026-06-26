@@ -8,21 +8,21 @@ import { getCredentials, getPageContent } from '@/lib/content'
 
 const platziProfileUrl = 'https://platzi.com/p/raulprtech/'
 
-export async function getStaticProps() {
+export async function getStaticProps({ lang = 'es' } = {}) {
   const [credentialsData, pageContent] = await Promise.all([
-    getCredentials(),
-    getPageContent('credentials'),
+    getCredentials(lang),
+    getPageContent('credentials', lang),
   ])
 
   return {
-    props: { credentialsData, pageContent },
+    props: { credentialsData, pageContent, lang },
     revalidate: 60,
   }
 }
 
-export default function Credentials({ credentialsData, pageContent }) {
+export default function Credentials({ credentialsData, pageContent, lang = 'es' }) {
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Constancias - ${siteMetadata.author}`}
         description={pageContent?.seoDescription}

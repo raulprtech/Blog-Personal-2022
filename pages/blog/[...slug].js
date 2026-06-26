@@ -10,7 +10,7 @@ import SanityNoteLayout from '@/layouts/SanityNoteLayout'
 const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
-  const slugs = await getNoteSlugs()
+  const slugs = await getNoteSlugs('es')
   return {
     paths: slugs.map((slug) => ({
       params: {
@@ -21,18 +21,18 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, lang = 'es' }) {
   const slug = params.slug.join('/')
-  const allPosts = await getAllNotesFrontMatter()
+  const allPosts = await getAllNotesFrontMatter(lang)
   const postIndex = allPosts.findIndex((post) => post.slug === slug)
   const prev = allPosts[postIndex + 1] || null
   const next = allPosts[postIndex - 1] || null
-  const result = await getNoteBySlug(slug)
+  const result = await getNoteBySlug(slug, lang)
 
   if (!result) return { notFound: true }
 
   if (result.kind === 'sanity') {
-    return { props: { source: 'sanity', note: result.note, prev, next }, revalidate: 60 }
+    return { props: { source: 'sanity', note: result.note, prev, next, lang }, revalidate: 60 }
   }
 
   const post = result.post
@@ -48,14 +48,14 @@ export async function getStaticProps({ params }) {
     fs.writeFileSync('./public/feed.xml', rss)
   }
 
-  return { props: { source: 'mdx', post, authorDetails, prev, next }, revalidate: 60 }
+  return { props: { source: 'mdx', post, authorDetails, prev, next, lang }, revalidate: 60 }
 }
 
-export default function Blog({ source, note, post, authorDetails, prev, next }) {
+export default function Blog({ source, note, post, authorDetails, prev, next, lang = 'es' }) {
   if (source === 'sanity') {
     return (
-      <LayoutWrapper>
-        <SanityNoteLayout note={note} prev={prev} next={next} />
+      <LayoutWrapper lang={lang}>
+        <SanityNoteLayout note={note} prev={prev} next={next} lang={lang} />
       </LayoutWrapper>
     )
   }
@@ -63,7 +63,7 @@ export default function Blog({ source, note, post, authorDetails, prev, next }) 
   const { mdxSource, toc, frontMatter } = post
 
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       {frontMatter.draft !== true ? (
         <MDXLayoutRenderer
           layout={frontMatter.layout || DEFAULT_LAYOUT}

@@ -5,18 +5,21 @@ import VentureCard from '@/components/VentureCard'
 import siteMetadata from '@/data/siteMetadata'
 import { getPageContent, getVentures } from '@/lib/content'
 
-export async function getStaticProps() {
-  const [venturesData, pageContent] = await Promise.all([getVentures(), getPageContent('ventures')])
+export async function getStaticProps({ lang = 'es' } = {}) {
+  const [venturesData, pageContent] = await Promise.all([
+    getVentures(lang),
+    getPageContent('ventures', lang),
+  ])
 
   return {
-    props: { venturesData, pageContent },
+    props: { venturesData, pageContent, lang },
     revalidate: 60,
   }
 }
 
-export default function Ventures({ venturesData, pageContent }) {
+export default function Ventures({ venturesData, pageContent, lang = 'es' }) {
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Emprendimientos - ${siteMetadata.author}`}
         description={pageContent?.seoDescription}

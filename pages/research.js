@@ -6,23 +6,23 @@ import siteMetadata from '@/data/siteMetadata'
 import { CardLink, CollaboratorLine, RelatedLinks } from '@/components/ContentMeta'
 import { getPageContent, getResearchItems } from '@/lib/content'
 
-export async function getStaticProps() {
+export async function getStaticProps({ lang = 'es' } = {}) {
   const [pageContent, researchItems] = await Promise.all([
-    getPageContent('research'),
-    getResearchItems(),
+    getPageContent('research', lang),
+    getResearchItems(lang),
   ])
 
   return {
-    props: { pageContent, researchItems },
+    props: { pageContent, researchItems, lang },
     revalidate: 60,
   }
 }
 
-export default function Research({ pageContent, researchItems }) {
+export default function Research({ pageContent, researchItems, lang = 'es' }) {
   const cards = researchItems || pageContent?.cards || []
 
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Investigacion - ${siteMetadata.author}`}
         description={pageContent?.seoDescription}

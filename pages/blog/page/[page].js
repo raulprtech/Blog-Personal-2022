@@ -7,7 +7,7 @@ import { getAllNoteTags, getAllNotesFrontMatter } from '@/lib/notes'
 import { getPageContent } from '@/lib/content'
 
 export async function getStaticPaths() {
-  const totalPosts = await getAllNotesFrontMatter()
+  const totalPosts = await getAllNotesFrontMatter('es')
   const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({
     params: { page: (i + 1).toString() },
@@ -20,13 +20,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+  const lang = context.lang || 'es'
   const {
     params: { page },
   } = context
   const [posts, tags, pageContent] = await Promise.all([
-    getAllNotesFrontMatter(),
-    getAllNoteTags(),
-    getPageContent('blog'),
+    getAllNotesFrontMatter(lang),
+    getAllNoteTags(lang),
+    getPageContent('blog', lang),
   ])
   const pageNumber = parseInt(page)
   const initialDisplayPosts = posts.slice(
@@ -45,14 +46,22 @@ export async function getStaticProps(context) {
       pagination,
       tags,
       pageContent,
+      lang,
     },
     revalidate: 60,
   }
 }
 
-export default function PostPage({ posts, initialDisplayPosts, pagination, tags, pageContent }) {
+export default function PostPage({
+  posts,
+  initialDisplayPosts,
+  pagination,
+  tags,
+  pageContent,
+  lang = 'es',
+}) {
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Notas de investigacion - ${siteMetadata.author}`}
         description={pageContent?.seoDescription || pageContent?.description}
@@ -65,6 +74,7 @@ export default function PostPage({ posts, initialDisplayPosts, pagination, tags,
         eyebrow={pageContent?.eyebrow || 'Bitacora de investigacion'}
         description={pageContent?.description}
         tags={tags}
+        lang={lang}
       />
     </LayoutWrapper>
   )

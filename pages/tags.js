@@ -4,17 +4,18 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllNoteTags } from '@/lib/notes'
 import kebabCase from '@/lib/utils/kebabCase'
 import LayoutWrapper from '@/components/LayoutWrapper'
+import { localizedPath } from '@/lib/i18n'
 
-export async function getStaticProps() {
-  const tags = await getAllNoteTags()
+export async function getStaticProps({ lang = 'es' } = {}) {
+  const tags = await getAllNoteTags(lang)
 
-  return { props: { tags } }
+  return { props: { tags, lang } }
 }
 
-export default function Tags({ tags }) {
+export default function Tags({ tags, lang = 'es' }) {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <section>
         <PageSEO
           title={`Tags - ${siteMetadata.author}`}
@@ -31,7 +32,10 @@ export default function Tags({ tags }) {
             {sortedTags.map((t) => {
               return (
                 <div key={t} className="mr-2 capitalize">
-                  <Tag text={t} link={`/tags/${kebabCase(t)}`}>{` (${tags[t]})`}</Tag>
+                  <Tag
+                    text={t}
+                    link={localizedPath(`/tags/${kebabCase(t)}`, lang)}
+                  >{` (${tags[t]})`}</Tag>
                 </div>
               )
             })}

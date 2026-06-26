@@ -7,11 +7,11 @@ import { getPageContent } from '@/lib/content'
 
 export const POSTS_PER_PAGE = 5
 
-export async function getStaticProps() {
+export async function getStaticProps({ lang = 'es' } = {}) {
   const [posts, tags, pageContent] = await Promise.all([
-    getAllNotesFrontMatter(),
-    getAllNoteTags(),
-    getPageContent('blog'),
+    getAllNotesFrontMatter(lang),
+    getAllNoteTags(lang),
+    getPageContent('blog', lang),
   ])
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
   const pagination = {
@@ -19,12 +19,22 @@ export async function getStaticProps() {
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  return { props: { initialDisplayPosts, posts, pagination, tags, pageContent }, revalidate: 60 }
+  return {
+    props: { initialDisplayPosts, posts, pagination, tags, pageContent, lang },
+    revalidate: 60,
+  }
 }
 
-export default function Blog({ posts, initialDisplayPosts, pagination, tags, pageContent }) {
+export default function Blog({
+  posts,
+  initialDisplayPosts,
+  pagination,
+  tags,
+  pageContent,
+  lang = 'es',
+}) {
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={pageContent?.seoTitle || `Notas de investigacion - ${siteMetadata.author}`}
         description={pageContent?.seoDescription || pageContent?.description}
@@ -37,6 +47,7 @@ export default function Blog({ posts, initialDisplayPosts, pagination, tags, pag
         eyebrow={pageContent?.eyebrow || 'Bitacora de investigacion'}
         description={pageContent?.description}
         tags={tags}
+        lang={lang}
       />
     </LayoutWrapper>
   )

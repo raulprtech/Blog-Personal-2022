@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import headerNavLinks from '@/data/headerNavLinks'
+import { alternateLanguagePath, localizedPath } from '@/lib/i18n'
 
-const MobileNav = () => {
+const MobileNav = ({ lang = 'es', currentPath = '/' }) => {
   const [navShow, setNavShow] = useState(false)
 
   const onToggleNav = () => {
@@ -58,18 +59,37 @@ const MobileNav = () => {
           onClick={onToggleNav}
         ></button>
         <nav className="fixed mt-8 h-full">
-          {headerNavLinks.map((link) => (
-            <div key={link.title} className="px-12 py-4">
+          {headerNavLinks.map((link) => {
+            const title = lang === 'en' ? link.titleEn || link.title : link.title
+            return (
+              <div key={link.title} className="px-12 py-4">
+                <Link
+                  href={localizedPath(link.href, lang)}
+                  className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+                  onClick={onToggleNav}
+                  aria-label={title}
+                >
+                  {title}
+                </Link>
+              </div>
+            )
+          })}
+          <div className="mt-6 flex gap-2 px-12">
+            {['es', 'en'].map((option) => (
               <Link
-                href={link.href}
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+                key={option}
+                href={alternateLanguagePath(currentPath, option)}
                 onClick={onToggleNav}
-                aria-label={link.title}
+                className={`rounded-full border px-4 py-2 text-sm font-bold ${
+                  lang === option
+                    ? 'border-gray-950 bg-gray-950 text-white dark:border-white dark:bg-white dark:text-gray-950'
+                    : 'border-gray-300 text-gray-700 dark:border-gray-700 dark:text-gray-200'
+                }`}
               >
-                {link.title}
+                {option.toUpperCase()}
               </Link>
-            </div>
-          ))}
+            ))}
+          </div>
         </nav>
       </div>
     </div>

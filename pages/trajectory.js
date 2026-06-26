@@ -57,23 +57,23 @@ function Milestone({ item }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ lang = 'es' } = {}) {
   const [trajectoryData, pageContent] = await Promise.all([
-    getTrajectory(),
-    getPageContent('trajectory'),
+    getTrajectory(lang),
+    getPageContent('trajectory', lang),
   ])
   return {
-    props: { trajectoryData, pageContent },
+    props: { trajectoryData, pageContent, lang },
     revalidate: 60,
   }
 }
 
-export default function Trajectory({ trajectoryData, pageContent }) {
+export default function Trajectory({ trajectoryData, pageContent, lang = 'es' }) {
   const featured = trajectoryData.filter((item) => item.featured)
   const summaryStats = pageContent?.summaryStats || []
 
   return (
-    <LayoutWrapper>
+    <LayoutWrapper lang={lang}>
       <PageSEO
         title={
           pageContent?.seoTitle || `Trayectoria - ${siteMetadata.author} - ${siteMetadata.nickname}`
