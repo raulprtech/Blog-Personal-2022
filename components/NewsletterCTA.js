@@ -31,6 +31,9 @@ const NewsletterCTA = ({ content }) => {
                 alt={cta.imageAlt || cta.title}
                 width={1200}
                 height={630}
+                sizes="(min-width: 1024px) 52vw, 100vw"
+                quality={72}
+                loading="lazy"
                 className="h-full w-full object-cover object-center opacity-90"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/20" />

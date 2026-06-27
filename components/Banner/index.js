@@ -37,7 +37,15 @@ export default function SocialBanner({ title, link = '/', image, emoji, bgColor 
         )} px-4 py-2`}
       >
         {image && (
-          <Image src={image} alt="" width={800} height={200} className="h-10 w-20 rounded-lg" />
+          <Image
+            src={image}
+            alt=""
+            width={160}
+            height={80}
+            sizes="80px"
+            quality={70}
+            className="h-10 w-20 rounded-lg object-cover"
+          />
         )}
         <span className="text-md w-full md:text-lg">{title}</span>
         {emoji && <span className="text-2xl">{emoji}</span>}

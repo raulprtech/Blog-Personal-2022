@@ -84,6 +84,7 @@ const LayoutWrapper = ({ children, bgImage, header = true, lang = 'es' }) => {
                         alt={logoAlt}
                         width={44}
                         height={44}
+                        sizes="44px"
                         className="h-11 w-auto object-contain"
                         priority
                       />

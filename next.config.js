@@ -56,7 +56,12 @@ module.exports = withBundleAnalyzer({
   images: {
     formats: ['image/avif', 'image/webp'],
     domains: ['res.cloudinary.com', 'cdn.sanity.io'],
+    minimumCacheTTL: 31536000,
+    deviceSizes: [640, 768, 1024, 1280, 1536],
+    imageSizes: [32, 48, 64, 96, 160, 320],
   },
+  compress: true,
+  poweredByHeader: false,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   eslint: {

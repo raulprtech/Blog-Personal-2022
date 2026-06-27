@@ -43,6 +43,8 @@ function SectionHeading({ section, href, lang = 'es' }) {
                   src={section.image}
                   alt={section.imageAlt || section.title || 'Section visual'}
                   fill
+                  sizes="(min-width: 1024px) 320px, 100vw"
+                  quality={72}
                   className="object-cover object-center"
                 />
               </div>

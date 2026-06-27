@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
       <Analytics />
-      <Hotjar />
+      {process.env.NEXT_PUBLIC_HOTJAR_ID && <Hotjar />}
       {/* <LayoutWrapper> */}
       <Component {...pageProps} />
       {/* </LayoutWrapper> */}

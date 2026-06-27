@@ -37,6 +37,8 @@ export default function EditablePageHeader({
                 src={content.image}
                 alt={content.imageAlt || title || 'Page visual'}
                 fill
+                sizes="(min-width: 1024px) 56vw, 100vw"
+                quality={76}
                 className="object-cover object-center"
               />
             </div>

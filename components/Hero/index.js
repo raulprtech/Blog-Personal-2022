@@ -78,6 +78,8 @@ export default function Presentation({ content }) {
                 alt={hero.visualImageAlt || hero.visualTitle || 'Research visual'}
                 fill
                 priority
+                sizes="(min-width: 1024px) 46vw, 100vw"
+                quality={82}
                 className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/10 to-transparent" />
