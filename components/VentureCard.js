@@ -4,7 +4,7 @@ import {
   CollaboratorLine,
   ContentBadge,
   ContentTags,
-  RelatedLinks,
+  RelatedConnections,
 } from '@/components/ContentMeta'
 
 const VentureCard = ({ venture }) => {
@@ -46,9 +46,17 @@ const VentureCard = ({ venture }) => {
             <ContentTags tags={venture.tags} />
           </div>
         )}
-        <div className="mt-6 grid gap-5">
-          <RelatedLinks title="Lineas de investigacion" items={venture.researchItems} />
-          <RelatedLinks title="Papers" items={venture.papers} />
+        <div className="mt-6">
+          <RelatedConnections
+            groups={[
+              { title: 'Líneas de investigación', items: venture.researchItems },
+              { title: 'Papers', items: venture.papers },
+              { title: 'Proyectos', items: venture.projects },
+              { title: 'Educación y credenciales', items: venture.credentials },
+              { title: 'Recursos', items: venture.resources },
+              { title: 'Trayectoria', items: venture.trajectoryItems },
+            ]}
+          />
         </div>
         {venture.href && (
           <div className="mt-7">

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { BlogSEO } from '@/components/SEO'
 import Image from '@/components/Image'
 import SanityPortableText from '@/components/SanityPortableText'
-import { ContentBadge, ContentTags, RelatedLinks } from '@/components/ContentMeta'
+import { ContentBadge, ContentTags, RelatedConnections } from '@/components/ContentMeta'
 import siteMetadata from '@/data/siteMetadata'
 import { localizedPath } from '@/lib/i18n'
 
@@ -99,12 +99,26 @@ export default function SanityNoteLayout({ note, prev, next, lang = 'es' }) {
               </p>
               <ContentTags tags={note.tags} />
             </div>
-            <RelatedLinks
-              title={lang === 'en' ? 'Research lines' : 'Lineas de investigacion'}
-              items={note.researchItems}
+            <RelatedConnections
+              groups={[
+                {
+                  title: lang === 'en' ? 'Research lines' : 'Líneas de investigación',
+                  items: note.researchItems,
+                },
+                { title: lang === 'en' ? 'Projects' : 'Proyectos', items: note.projects },
+                { title: 'Papers', items: note.papers },
+                {
+                  title: lang === 'en' ? 'Education and credentials' : 'Educación y credenciales',
+                  items: note.credentials,
+                },
+                { title: lang === 'en' ? 'Resources' : 'Recursos', items: note.resources },
+                {
+                  title: lang === 'en' ? 'Trajectory' : 'Trayectoria',
+                  items: note.trajectoryItems,
+                },
+                { title: lang === 'en' ? 'Ventures' : 'Emprendimientos', items: note.ventures },
+              ]}
             />
-            <RelatedLinks title={lang === 'en' ? 'Projects' : 'Proyectos'} items={note.projects} />
-            <RelatedLinks title="Papers" items={note.papers} />
             {note.canonicalUrl && (
               <Link
                 href={note.canonicalUrl}

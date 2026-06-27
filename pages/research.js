@@ -1,9 +1,9 @@
-﻿import Image from 'next/image'
+import Image from 'next/image'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
-import { CardLink, CollaboratorLine, RelatedLinks } from '@/components/ContentMeta'
+import { CardLink, CollaboratorLine, RelatedConnections } from '@/components/ContentMeta'
 import { getPageContent, getResearchItems } from '@/lib/content'
 
 export async function getStaticProps({ lang = 'es' } = {}) {
@@ -58,10 +58,17 @@ export default function Research({ pageContent, researchItems, lang = 'es' }) {
                     <CollaboratorLine collaborators={line.collaborators} />
                   </div>
                 )}
-                <div className="mt-6 grid gap-5">
-                  <RelatedLinks title="Papers" items={line.papers} />
-                  <RelatedLinks title="Proyectos" items={line.projects} />
-                  <RelatedLinks title="Emprendimientos" items={line.ventures} />
+                <div className="mt-6">
+                  <RelatedConnections
+                    groups={[
+                      { title: 'Papers', items: line.papers },
+                      { title: 'Proyectos', items: line.projects },
+                      { title: 'Emprendimientos', items: line.ventures },
+                      { title: 'Educación y credenciales', items: line.credentials },
+                      { title: 'Recursos', items: line.resources },
+                      { title: 'Trayectoria', items: line.trajectoryItems },
+                    ]}
+                  />
                 </div>
                 {line.href && (
                   <div className="mt-5">

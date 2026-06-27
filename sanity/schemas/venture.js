@@ -38,6 +38,30 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'paper' }] }],
     },
     {
+      name: 'projects',
+      title: 'Related projects',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'project' }] }],
+    },
+    {
+      name: 'credentials',
+      title: 'Related credentials / education',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'credential' }] }],
+    },
+    {
+      name: 'resources',
+      title: 'Related resources',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'resource' }] }],
+    },
+    {
+      name: 'trajectoryItems',
+      title: 'Related trajectory / education items',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'trajectoryItem' }] }],
+    },
+    {
       name: 'tags',
       title: 'Tags',
       type: 'array',

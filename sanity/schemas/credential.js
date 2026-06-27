@@ -37,6 +37,24 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'researchItem' }] }],
     },
+    {
+      name: 'relatedPapers',
+      title: 'Related papers',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'paper' }] }],
+    },
+    {
+      name: 'relatedResources',
+      title: 'Related resources',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'resource' }] }],
+    },
+    {
+      name: 'relatedTrajectoryItems',
+      title: 'Related trajectory / education items',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'trajectoryItem' }] }],
+    },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: true },
     { name: 'orderRank', title: 'Order', type: 'number', initialValue: 100 },
     englishField([

@@ -1,5 +1,5 @@
 import Image from '@/components/Image'
-import { CardLink, ContentBadge, ContentTags, RelatedLinks } from '@/components/ContentMeta'
+import { CardLink, ContentBadge, ContentTags, RelatedConnections } from '@/components/ContentMeta'
 
 const CredentialCard = ({ credential }) => {
   return (
@@ -29,9 +29,16 @@ const CredentialCard = ({ credential }) => {
             <ContentTags tags={credential.skills} />
           </div>
         )}
-        <div className="mt-6 grid gap-5">
-          <RelatedLinks title="Lineas de investigacion" items={credential.relatedResearchItems} />
-          <RelatedLinks title="Proyectos" items={credential.relatedProjects} />
+        <div className="mt-6">
+          <RelatedConnections
+            groups={[
+              { title: 'Líneas de investigación', items: credential.relatedResearchItems },
+              { title: 'Proyectos', items: credential.relatedProjects },
+              { title: 'Papers', items: credential.relatedPapers },
+              { title: 'Recursos', items: credential.relatedResources },
+              { title: 'Trayectoria', items: credential.relatedTrajectoryItems },
+            ]}
+          />
         </div>
         {credential.href && (
           <div className="mt-7">

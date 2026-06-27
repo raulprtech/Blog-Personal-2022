@@ -42,6 +42,24 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'venture' }] }],
     },
     {
+      name: 'credentials',
+      title: 'Related credentials / education',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'credential' }] }],
+    },
+    {
+      name: 'resources',
+      title: 'Related resources',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'resource' }] }],
+    },
+    {
+      name: 'trajectoryItems',
+      title: 'Related trajectory / education items',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'trajectoryItem' }] }],
+    },
+    {
       name: 'orderRank',
       title: 'Order',
       type: 'number',

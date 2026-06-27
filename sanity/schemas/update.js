@@ -13,6 +13,48 @@ export default {
     { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
     { name: 'accent', title: 'Tailwind accent gradient', type: 'string' },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
+    {
+      name: 'researchItems',
+      title: 'Related research lines',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'researchItem' }] }],
+    },
+    {
+      name: 'projects',
+      title: 'Related projects',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'project' }] }],
+    },
+    {
+      name: 'papers',
+      title: 'Related papers',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'paper' }] }],
+    },
+    {
+      name: 'credentials',
+      title: 'Related credentials / education',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'credential' }] }],
+    },
+    {
+      name: 'resources',
+      title: 'Related resources',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'resource' }] }],
+    },
+    {
+      name: 'trajectoryItems',
+      title: 'Related trajectory / education items',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'trajectoryItem' }] }],
+    },
+    {
+      name: 'ventures',
+      title: 'Related ventures',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'venture' }] }],
+    },
     englishField([
       textField('title', 'Title'),
       textField('type', 'Type'),

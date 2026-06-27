@@ -4,7 +4,7 @@ import {
   CollaboratorLine,
   ContentBadge,
   ContentTags,
-  RelatedLinks,
+  RelatedConnections,
 } from '@/components/ContentMeta'
 
 const PaperCard = ({ paper }) => {
@@ -41,9 +41,17 @@ const PaperCard = ({ paper }) => {
             <ContentTags tags={paper.tags} />
           </div>
         )}
-        <div className="mt-6 grid gap-5">
-          <RelatedLinks title="Lineas de investigacion" items={paper.researchItems} />
-          <RelatedLinks title="Proyectos" items={paper.projects} />
+        <div className="mt-6">
+          <RelatedConnections
+            groups={[
+              { title: 'Líneas de investigación', items: paper.researchItems },
+              { title: 'Proyectos', items: paper.projects },
+              { title: 'Emprendimientos', items: paper.ventures },
+              { title: 'Educación y credenciales', items: paper.credentials },
+              { title: 'Recursos', items: paper.resources },
+              { title: 'Trayectoria', items: paper.trajectoryItems },
+            ]}
+          />
         </div>
         <div className="mt-7 flex flex-wrap gap-4">
           <CardLink href={paper.href}>Abrir paper</CardLink>

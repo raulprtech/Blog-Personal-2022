@@ -1,8 +1,9 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
+import { RelatedConnections } from '@/components/ContentMeta'
 import { getPageContent, getTrajectory } from '@/lib/content'
 
 const categoryStyles = {
@@ -44,6 +45,18 @@ function Milestone({ item }) {
           {item.organization}
         </p>
         <p className="mt-4 max-w-3xl leading-8 text-gray-600 dark:text-gray-300">{item.summary}</p>
+        <div className="mt-5">
+          <RelatedConnections
+            groups={[
+              { title: 'Líneas de investigación', items: item.researchItems },
+              { title: 'Proyectos', items: item.projects },
+              { title: 'Papers', items: item.papers },
+              { title: 'Educación y credenciales', items: item.credentials },
+              { title: 'Recursos', items: item.resources },
+              { title: 'Emprendimientos', items: item.ventures },
+            ]}
+          />
+        </div>
         {item.href && (
           <Link
             href={item.href}

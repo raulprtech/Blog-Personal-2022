@@ -36,6 +36,24 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'venture' }] }],
     },
+    {
+      name: 'credentials',
+      title: 'Related credentials / education',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'credential' }] }],
+    },
+    {
+      name: 'resources',
+      title: 'Related resources',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'resource' }] }],
+    },
+    {
+      name: 'trajectoryItems',
+      title: 'Related trajectory / education items',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'trajectoryItem' }] }],
+    },
     { name: 'orderRank', title: 'Order rank', type: 'number' },
     englishField([
       textField('title', 'Title'),

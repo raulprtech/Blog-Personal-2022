@@ -1,10 +1,9 @@
-﻿import Image from '@/components/Image'
-import Link from 'next/link'
+import Image from '@/components/Image'
 import formatDate from '@/lib/utils/formatDate'
-import { ContentBadge, Eyebrow } from '@/components/ContentMeta'
+import { CardLink, ContentBadge, Eyebrow, RelatedConnections } from '@/components/ContentMeta'
 
 const UpdateCard = ({ update, large = false }) => {
-  const content = (
+  return (
     <article className="group h-full overflow-hidden rounded-md border border-gray-200 bg-white transition duration-300 hover:border-gray-400 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-600">
       {update.image && (
         <div className="relative aspect-[16/9] overflow-hidden border-b border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
@@ -46,21 +45,26 @@ const UpdateCard = ({ update, large = false }) => {
             {update.summary}
           </p>
         </div>
+        <div className="mt-6">
+          <RelatedConnections
+            groups={[
+              { title: 'Líneas de investigación', items: update.researchItems },
+              { title: 'Proyectos', items: update.projects },
+              { title: 'Papers', items: update.papers },
+              { title: 'Educación y credenciales', items: update.credentials },
+              { title: 'Recursos', items: update.resources },
+              { title: 'Trayectoria', items: update.trajectoryItems },
+              { title: 'Emprendimientos', items: update.ventures },
+            ]}
+          />
+        </div>
         {update.href && (
-          <p className="mt-8 text-sm font-semibold text-primary-700 transition group-hover:text-primary-800 dark:text-secondary-400">
-            Ver contexto <span aria-hidden="true">-&gt;</span>
-          </p>
+          <div className="mt-8">
+            <CardLink href={update.href}>Ver contexto</CardLink>
+          </div>
         )}
       </div>
     </article>
-  )
-
-  if (!update.href) return content
-
-  return (
-    <Link href={update.href} aria-label={update.title} className="block h-full">
-      {content}
-    </Link>
   )
 }
 

@@ -1,9 +1,8 @@
-﻿import Link from 'next/link'
 import Image from '@/components/Image'
-import { ContentBadge, ContentTags } from '@/components/ContentMeta'
+import { CardLink, ContentBadge, ContentTags, RelatedConnections } from '@/components/ContentMeta'
 
 const ResourceCard = ({ resource, compact = false }) => {
-  const content = (
+  return (
     <article className="group grid h-full overflow-hidden rounded-md border border-gray-200 bg-white transition duration-300 hover:border-gray-400 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-600">
       {resource.image && (
         <div className="relative aspect-[16/9] overflow-hidden border-b border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
@@ -30,21 +29,25 @@ const ResourceCard = ({ resource, compact = false }) => {
             <ContentTags tags={resource.tags} />
           </div>
         )}
+        <div className="mt-6">
+          <RelatedConnections
+            groups={[
+              { title: 'Líneas de investigación', items: resource.researchItems },
+              { title: 'Proyectos', items: resource.projects },
+              { title: 'Papers', items: resource.papers },
+              { title: 'Educación y credenciales', items: resource.credentials },
+              { title: 'Trayectoria', items: resource.trajectoryItems },
+              { title: 'Emprendimientos', items: resource.ventures },
+            ]}
+          />
+        </div>
         {resource.href && (
-          <p className="mt-7 text-sm font-semibold text-primary-700 transition group-hover:text-primary-800 dark:text-secondary-400">
-            Abrir recurso <span aria-hidden="true">-&gt;</span>
-          </p>
+          <div className="mt-7">
+            <CardLink href={resource.href}>Abrir recurso</CardLink>
+          </div>
         )}
       </div>
     </article>
-  )
-
-  if (!resource.href) return content
-
-  return (
-    <Link href={resource.href} aria-label={resource.title} className="block h-full">
-      {content}
-    </Link>
   )
 }
 

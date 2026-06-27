@@ -1,10 +1,10 @@
-﻿import Image from '@/components/Image'
+import Image from '@/components/Image'
 import {
   CardLink,
   CollaboratorLine,
   ContentBadge,
   ContentTags,
-  RelatedLinks,
+  RelatedConnections,
 } from '@/components/ContentMeta'
 
 const ProjectCard = ({ project }) => {
@@ -46,10 +46,17 @@ const ProjectCard = ({ project }) => {
             <ContentTags tags={project.tags} />
           </div>
         )}
-        <div className="mt-6 grid gap-5">
-          <RelatedLinks title="Lineas de investigacion" items={project.researchItems} />
-          <RelatedLinks title="Papers" items={project.papers} />
-          <RelatedLinks title="Emprendimientos" items={project.ventures} />
+        <div className="mt-6">
+          <RelatedConnections
+            groups={[
+              { title: 'Líneas de investigación', items: project.researchItems },
+              { title: 'Papers', items: project.papers },
+              { title: 'Emprendimientos', items: project.ventures },
+              { title: 'Educación y credenciales', items: project.credentials },
+              { title: 'Recursos', items: project.resources },
+              { title: 'Trayectoria', items: project.trajectoryItems },
+            ]}
+          />
         </div>
         {project.href && (
           <div className="mt-7">

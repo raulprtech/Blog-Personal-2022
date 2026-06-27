@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 
 export function Eyebrow({ children }) {
   if (!children) return null
@@ -119,6 +119,21 @@ export function RelatedLinks({ title = 'Relacionado', items }) {
           )
         })}
       </div>
+    </div>
+  )
+}
+export function RelatedConnections({ groups }) {
+  const visibleGroups = Array.isArray(groups)
+    ? groups.filter((group) => Array.isArray(group.items) && group.items.length > 0)
+    : []
+
+  if (!visibleGroups.length) return null
+
+  return (
+    <div className="grid gap-5">
+      {visibleGroups.map((group) => (
+        <RelatedLinks key={group.title} title={group.title} items={group.items} />
+      ))}
     </div>
   )
 }
