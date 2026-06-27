@@ -154,7 +154,7 @@ export default {
           fields: [
             simpleText('eyebrow', 'Eyebrow'),
             simpleText('heading', 'Heading'),
-            simpleText('text', 'Text', 'text'),
+            simpleText('text', 'Text (Markdown)', 'text'),
             simpleText('href', 'Link or path'),
             simpleText('linkLabel', 'Link label'),
           ],
@@ -169,7 +169,7 @@ export default {
       fields: [
         ...imageFields,
         simpleText('affiliation', 'Affiliation'),
-        simpleText('cvNote', 'CV note', 'text'),
+        simpleText('cvNote', 'CV note (Markdown)', 'text'),
       ],
     },
     englishField([
@@ -187,7 +187,7 @@ export default {
         fields: [
           textField('imageAlt', 'Image alt text'),
           textField('affiliation', 'Affiliation'),
-          textField('cvNote', 'CV note', 'text'),
+          textField('cvNote', 'CV note (Markdown)', 'text'),
         ],
       },
       {
@@ -243,7 +243,7 @@ export default {
             fields: [
               textField('eyebrow', 'Eyebrow'),
               textField('heading', 'Heading'),
-              textField('text', 'Text', 'text'),
+              textField('text', 'Text (Markdown)', 'text'),
               textField('linkLabel', 'Link label'),
             ],
           },

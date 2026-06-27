@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import SocialLinks from '@/components/SocialLinks'
 import Image from '@/components/Image'
+import MarkdownText from '@/components/MarkdownText'
 import { PageSEO } from '@/components/SEO'
 import Quote from '@/components/Quotes/quote'
 import siteMetadata from '@/data/siteMetadata'
@@ -51,7 +52,12 @@ function AboutBody({ sections, children }) {
             </h2>
           )}
           {section.text && (
-            <p className="mt-4 leading-8 text-gray-600 dark:text-gray-300">{section.text}</p>
+            <MarkdownText
+              className="mt-4 space-y-4"
+              paragraphClassName="leading-8 text-gray-600 dark:text-gray-300"
+            >
+              {section.text}
+            </MarkdownText>
           )}
           {section.href && section.linkLabel && (
             <Link
@@ -97,9 +103,12 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
             </h1>
           </div>
           <div>
-            <p className="max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <MarkdownText
+              className="max-w-2xl space-y-4"
+              paragraphClassName="text-lg leading-8 text-gray-600 dark:text-gray-300"
+            >
               {content.description}
-            </p>
+            </MarkdownText>
             {content.image && (
               <div className="mt-8 overflow-hidden rounded-lg border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
                 <Image
@@ -147,9 +156,12 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
                   </span>
                 </Link>
                 {profileCard.cvNote && (
-                  <p className="mt-3 text-sm leading-6 text-gray-500 dark:text-gray-400">
+                  <MarkdownText
+                    className="mt-3 space-y-3"
+                    paragraphClassName="text-sm leading-6 text-gray-500 dark:text-gray-400"
+                  >
                     {profileCard.cvNote}
-                  </p>
+                  </MarkdownText>
                 )}
               </div>
             </div>
