@@ -11,6 +11,7 @@ const pathsByType = {
     '/credentials',
     '/ventures',
     '/talks',
+    '/me',
   ],
   siteSettings: [
     '/',
@@ -24,6 +25,7 @@ const pathsByType = {
     '/ventures',
     '/credentials',
     '/talks',
+    '/me',
   ],
   credential: [
     '/credentials',

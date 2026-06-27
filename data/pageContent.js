@@ -69,6 +69,57 @@ const pageContent = {
       },
     },
   },
+  me: {
+    seoTitle: 'Links - Raúl Pacheco Rodríguez',
+    seoDescription: 'Enlaces principales, redes y recursos de Raúl Pacheco Rodríguez.',
+    title: 'Raúl Pacheco Rodríguez',
+    description: 'IA eficiente, frontend, investigación aplicada y escritura técnica desde FP32.',
+    linkPage: {
+      handle: '@RaulprTech',
+      bio: 'Investigo y construyo sistemas de IA eficientes, trazables y reproducibles. Aquí reúno mis enlaces principales, proyectos, notas y canales de contacto.',
+      avatar: '/static/images/avatar_nblue.png',
+      imageAlt: 'Raúl Pacheco Rodríguez',
+      links: [
+        {
+          title: 'Sitio personal',
+          href: '/',
+          description: 'Investigación, proyectos, trayectoria y notas.',
+          image: '/static/images/twitter-card.png',
+          bgColor: 'default',
+          emoji: '->',
+        },
+        {
+          title: 'FP32 newsletter',
+          href: 'https://fp32.io/',
+          description: 'Ensayos y notas sobre IA, papers y sistemas eficientes.',
+          image: '/static/images/fp32/fp32-code.png',
+          bgColor: 'cyan',
+          emoji: '->',
+        },
+        {
+          title: 'Notas de investigación',
+          href: '/blog',
+          description: 'Apuntes cercanos al trabajo en curso.',
+          bgColor: 'blue',
+          emoji: '->',
+        },
+        {
+          title: 'Charlas y talleres',
+          href: '/talks',
+          description: 'Presentaciones, talleres y actividad pública.',
+          bgColor: 'green',
+          emoji: '->',
+        },
+        {
+          title: 'Descargar CV',
+          href: '/static/CV/CV.pdf',
+          description: 'Resumen profesional, educación y experiencia.',
+          bgColor: 'dark',
+          emoji: 'CV',
+        },
+      ],
+    },
+  },
   blog: {
     seoTitle: 'Notas de investigación - Raúl Pacheco Rodríguez',
     seoDescription:

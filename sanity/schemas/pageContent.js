@@ -196,6 +196,63 @@ export default {
         },
       ],
     },
+    {
+      name: 'linkPage',
+      title: 'Link page (/me)',
+      type: 'object',
+      fields: [
+        simpleText('handle', 'Handle'),
+        simpleText('bio', 'Bio', 'text'),
+        {
+          name: 'avatar',
+          title: 'Avatar',
+          type: 'image',
+          options: { hotspot: true },
+        },
+        simpleText('imageAlt', 'Avatar alt text'),
+        {
+          name: 'socialLinks',
+          title: 'Social links for /me',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                simpleText('kind', 'Icon kind'),
+                simpleText('label', 'Label'),
+                simpleText('href', 'URL'),
+                {
+                  name: 'image',
+                  title: 'Custom icon image',
+                  type: 'image',
+                  options: { hotspot: true },
+                },
+                simpleText('imageAlt', 'Custom icon alt text'),
+              ],
+            },
+          ],
+        },
+        {
+          name: 'links',
+          title: 'Link buttons',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                simpleText('title', 'Title'),
+                simpleText('href', 'URL or path'),
+                simpleText('description', 'Description', 'text'),
+                simpleText('emoji', 'Icon / short marker'),
+                simpleText('bgColor', 'Color key'),
+                { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
+                ...imageFields,
+              ],
+            },
+          ],
+        },
+      ],
+    },
     simpleText('occupation', 'Occupation'),
     {
       name: 'profileCard',
@@ -236,6 +293,45 @@ export default {
                       textField('imageAlt', 'Custom icon alt text'),
                     ],
                   },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'linkPage',
+        title: 'Link page (/me)',
+        type: 'object',
+        fields: [
+          textField('handle', 'Handle'),
+          textField('bio', 'Bio', 'text'),
+          textField('imageAlt', 'Avatar alt text'),
+          {
+            name: 'socialLinks',
+            title: 'Social links for /me',
+            type: 'array',
+            of: [
+              {
+                type: 'object',
+                fields: [
+                  textField('label', 'Label'),
+                  textField('imageAlt', 'Custom icon alt text'),
+                ],
+              },
+            ],
+          },
+          {
+            name: 'links',
+            title: 'Link buttons',
+            type: 'array',
+            of: [
+              {
+                type: 'object',
+                fields: [
+                  textField('title', 'Title'),
+                  textField('description', 'Description', 'text'),
+                  textField('emoji', 'Icon / short marker'),
                 ],
               },
             ],
