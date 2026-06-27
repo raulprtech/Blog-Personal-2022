@@ -117,6 +117,10 @@ export default function SanityNoteLayout({ note, prev, next, lang = 'es' }) {
                   items: note.trajectoryItems,
                 },
                 { title: lang === 'en' ? 'Ventures' : 'Emprendimientos', items: note.ventures },
+                {
+                  title: lang === 'en' ? 'Talks and workshops' : 'Charlas y talleres',
+                  items: note.talks,
+                },
               ]}
             />
             {note.canonicalUrl && (

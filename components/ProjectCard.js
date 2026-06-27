@@ -55,6 +55,7 @@ const ProjectCard = ({ project }) => {
               { title: 'Educación y credenciales', items: project.credentials },
               { title: 'Recursos', items: project.resources },
               { title: 'Trayectoria', items: project.trajectoryItems },
+              { title: 'Charlas y talleres', items: project.talks },
             ]}
           />
         </div>

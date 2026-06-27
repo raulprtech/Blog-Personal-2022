@@ -161,6 +161,41 @@ export default {
         },
       ],
     },
+    {
+      name: 'skillGroups',
+      title: 'About skill groups',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            simpleText('title', 'Title'),
+            simpleText('description', 'Description', 'text'),
+            {
+              name: 'skills',
+              title: 'Skills',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    simpleText('name', 'Name'),
+                    simpleText('iconKind', 'Icon kind'),
+                    {
+                      name: 'icon',
+                      title: 'Custom icon',
+                      type: 'image',
+                      options: { hotspot: true },
+                    },
+                    simpleText('imageAlt', 'Custom icon alt text'),
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
     simpleText('occupation', 'Occupation'),
     {
       name: 'profileCard',
@@ -179,6 +214,34 @@ export default {
       textField('title', 'Title'),
       textField('description', 'Description', 'text'),
       textField('featuredEyebrow', 'Featured section eyebrow'),
+      {
+        name: 'skillGroups',
+        title: 'About skill groups',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [
+              textField('title', 'Title'),
+              textField('description', 'Description', 'text'),
+              {
+                name: 'skills',
+                title: 'Skills',
+                type: 'array',
+                of: [
+                  {
+                    type: 'object',
+                    fields: [
+                      textField('name', 'Name'),
+                      textField('imageAlt', 'Custom icon alt text'),
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
       textField('occupation', 'Occupation'),
       {
         name: 'profileCard',

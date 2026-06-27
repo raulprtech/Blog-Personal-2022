@@ -55,6 +55,7 @@ const UpdateCard = ({ update, large = false }) => {
               { title: 'Recursos', items: update.resources },
               { title: 'Trayectoria', items: update.trajectoryItems },
               { title: 'Emprendimientos', items: update.ventures },
+              { title: 'Charlas y talleres', items: update.talks },
             ]}
           />
         </div>

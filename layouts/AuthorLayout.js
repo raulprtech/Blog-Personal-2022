@@ -2,6 +2,7 @@ import Link from 'next/link'
 import SocialLinks from '@/components/SocialLinks'
 import Image from '@/components/Image'
 import MarkdownText from '@/components/MarkdownText'
+import AboutSkillGroups from '@/components/AboutSkillGroups'
 import { PageSEO } from '@/components/SEO'
 import Quote from '@/components/Quotes/quote'
 import siteMetadata from '@/data/siteMetadata'
@@ -171,6 +172,7 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
           </aside>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-dark xl:col-span-2">
             <AboutBody sections={content.bodySections}>{children}</AboutBody>
+            <AboutSkillGroups groups={content.skillGroups} />
           </div>
         </article>
       </section>

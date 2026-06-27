@@ -10,6 +10,7 @@ const pathsByType = {
     '/papers',
     '/credentials',
     '/ventures',
+    '/talks',
   ],
   siteSettings: [
     '/',
@@ -22,6 +23,7 @@ const pathsByType = {
     '/papers',
     '/ventures',
     '/credentials',
+    '/talks',
   ],
   credential: [
     '/credentials',
@@ -32,9 +34,29 @@ const pathsByType = {
     '/resources',
     '/trajectory',
     '/ventures',
+    '/talks',
   ],
-  note: ['/', '/blog', '/tags', '/research', '/projects', '/papers', '/resources', '/trajectory'],
-  update: ['/', '/updates', '/research', '/projects', '/papers', '/resources', '/trajectory'],
+  note: [
+    '/',
+    '/blog',
+    '/tags',
+    '/research',
+    '/projects',
+    '/papers',
+    '/resources',
+    '/trajectory',
+    '/talks',
+  ],
+  update: [
+    '/',
+    '/updates',
+    '/research',
+    '/projects',
+    '/papers',
+    '/resources',
+    '/trajectory',
+    '/talks',
+  ],
   project: [
     '/',
     '/projects',
@@ -44,6 +66,7 @@ const pathsByType = {
     '/credentials',
     '/resources',
     '/trajectory',
+    '/talks',
   ],
   researchItem: [
     '/research',
@@ -53,6 +76,7 @@ const pathsByType = {
     '/credentials',
     '/resources',
     '/trajectory',
+    '/talks',
   ],
   paper: [
     '/papers',
@@ -62,6 +86,7 @@ const pathsByType = {
     '/credentials',
     '/resources',
     '/trajectory',
+    '/talks',
   ],
   venture: [
     '/ventures',
@@ -71,6 +96,7 @@ const pathsByType = {
     '/credentials',
     '/resources',
     '/trajectory',
+    '/talks',
   ],
   collaborator: ['/papers', '/research', '/projects', '/ventures'],
   resource: [
@@ -82,6 +108,19 @@ const pathsByType = {
     '/credentials',
     '/trajectory',
     '/ventures',
+    '/talks',
+  ],
+  talk: [
+    '/',
+    '/talks',
+    '/trajectory',
+    '/research',
+    '/projects',
+    '/papers',
+    '/credentials',
+    '/resources',
+    '/ventures',
+    '/blog',
   ],
   trajectoryItem: [
     '/trajectory',
@@ -91,6 +130,7 @@ const pathsByType = {
     '/credentials',
     '/resources',
     '/ventures',
+    '/talks',
   ],
 }
 export default async function handler(req, res) {

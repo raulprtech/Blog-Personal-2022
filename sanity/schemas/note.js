@@ -112,6 +112,12 @@ export default {
     },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
     { name: 'orderRank', title: 'Order', type: 'number', initialValue: 100 },
+    {
+      name: 'talks',
+      title: 'Related talks / public activity',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'talk' }] }],
+    },
     englishField([
       textField('title', 'Title'),
       textField('summary', 'Summary', 'text'),

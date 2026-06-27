@@ -53,6 +53,12 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'venture' }] }],
     },
+    {
+      name: 'talks',
+      title: 'Related talks / public activity',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'talk' }] }],
+    },
     englishField([
       textField('period', 'Period label'),
       textField('title', 'Title'),

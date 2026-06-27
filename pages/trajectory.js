@@ -4,7 +4,7 @@ import { PageSEO } from '@/components/SEO'
 import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
 import { RelatedConnections } from '@/components/ContentMeta'
-import { getPageContent, getTrajectory } from '@/lib/content'
+import { getPageContent, getTimelineItems } from '@/lib/content'
 
 const categoryStyles = {
   Education:
@@ -20,9 +20,19 @@ const categoryStyles = {
     'border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-300',
   Teaching:
     'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300',
+  Talk: 'border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-900 dark:bg-sky-950 dark:text-sky-300',
 }
 
-const categories = ['Research', 'Education', 'Project', 'Work', 'Editorial', 'Product', 'Teaching']
+const categories = [
+  'Research',
+  'Talk',
+  'Education',
+  'Project',
+  'Work',
+  'Editorial',
+  'Product',
+  'Teaching',
+]
 
 function Milestone({ item }) {
   return (
@@ -54,6 +64,7 @@ function Milestone({ item }) {
               { title: 'Educación y credenciales', items: item.credentials },
               { title: 'Recursos', items: item.resources },
               { title: 'Emprendimientos', items: item.ventures },
+              { title: 'Charlas y talleres', items: item.talks },
             ]}
           />
         </div>
@@ -72,7 +83,7 @@ function Milestone({ item }) {
 
 export async function getStaticProps({ lang = 'es' } = {}) {
   const [trajectoryData, pageContent] = await Promise.all([
-    getTrajectory(lang),
+    getTimelineItems(lang),
     getPageContent('trajectory', lang),
   ])
   return {

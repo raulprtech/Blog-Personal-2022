@@ -55,6 +55,22 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'trajectoryItem' }] }],
     },
     { name: 'orderRank', title: 'Order rank', type: 'number' },
+    {
+      name: 'showInTimeline',
+      title: 'Show in trajectory timeline',
+      type: 'boolean',
+      initialValue: false,
+    },
+    { name: 'timelineDate', title: 'Timeline date', type: 'date' },
+    { name: 'timelineLabel', title: 'Timeline label', type: 'string' },
+    { name: 'timelineCategory', title: 'Timeline category', type: 'string' },
+    { name: 'timelineSummary', title: 'Timeline summary', type: 'text' },
+    {
+      name: 'talks',
+      title: 'Related talks / public activity',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'talk' }] }],
+    },
     englishField([
       textField('title', 'Title'),
       textField('description', 'Description', 'text'),

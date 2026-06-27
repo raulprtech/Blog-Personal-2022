@@ -48,6 +48,12 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'venture' }] }],
     },
     { name: 'orderRank', title: 'Order rank', type: 'number' },
+    {
+      name: 'talks',
+      title: 'Related talks / public activity',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'talk' }] }],
+    },
     englishField([
       textField('title', 'Title'),
       textField('type', 'Type'),

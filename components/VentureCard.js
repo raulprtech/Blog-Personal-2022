@@ -55,6 +55,7 @@ const VentureCard = ({ venture }) => {
               { title: 'Educación y credenciales', items: venture.credentials },
               { title: 'Recursos', items: venture.resources },
               { title: 'Trayectoria', items: venture.trajectoryItems },
+              { title: 'Charlas y talleres', items: venture.talks },
             ]}
           />
         </div>

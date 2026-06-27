@@ -50,6 +50,7 @@ const PaperCard = ({ paper }) => {
               { title: 'Educación y credenciales', items: paper.credentials },
               { title: 'Recursos', items: paper.resources },
               { title: 'Trayectoria', items: paper.trajectoryItems },
+              { title: 'Charlas y talleres', items: paper.talks },
             ]}
           />
         </div>

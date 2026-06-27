@@ -38,6 +38,7 @@ const ResourceCard = ({ resource, compact = false }) => {
               { title: 'Educación y credenciales', items: resource.credentials },
               { title: 'Trayectoria', items: resource.trajectoryItems },
               { title: 'Emprendimientos', items: resource.ventures },
+              { title: 'Charlas y talleres', items: resource.talks },
             ]}
           />
         </div>

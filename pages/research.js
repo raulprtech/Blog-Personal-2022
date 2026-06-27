@@ -67,6 +67,7 @@ export default function Research({ pageContent, researchItems, lang = 'es' }) {
                       { title: 'Educación y credenciales', items: line.credentials },
                       { title: 'Recursos', items: line.resources },
                       { title: 'Trayectoria', items: line.trajectoryItems },
+                      { title: 'Charlas y talleres', items: line.talks },
                     ]}
                   />
                 </div>

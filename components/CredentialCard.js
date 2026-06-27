@@ -37,6 +37,7 @@ const CredentialCard = ({ credential }) => {
               { title: 'Papers', items: credential.relatedPapers },
               { title: 'Recursos', items: credential.relatedResources },
               { title: 'Trayectoria', items: credential.relatedTrajectoryItems },
+              { title: 'Charlas y talleres', items: credential.talks },
             ]}
           />
         </div>
