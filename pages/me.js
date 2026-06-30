@@ -8,6 +8,9 @@ import fallbackSiteSettings from '@/data/siteSettings'
 import { getPageContent } from '@/lib/content'
 import { getSiteSettings } from '@/lib/siteSettings'
 
+const fallbackIconClassName =
+  'flex h-12 w-12 items-center justify-center rounded-md border border-current/15 bg-white/50 text-sm font-black dark:bg-black/10'
+
 const colorStyles = {
   blue: 'border-cyan-200 bg-cyan-50 text-cyan-950 hover:border-cyan-400 dark:border-cyan-900 dark:bg-cyan-950 dark:text-cyan-100',
   cyan: 'border-secondary-300 bg-secondary-50 text-gray-950 hover:border-secondary-400 dark:border-secondary-700 dark:bg-secondary-950 dark:text-secondary-100',
@@ -43,7 +46,7 @@ function LinkButton({ item }) {
           className="h-12 w-12 rounded-md object-cover"
         />
       ) : (
-        <span className="flex h-12 w-12 items-center justify-center rounded-md border border-current/15 bg-white/50 text-sm font-black dark:bg-black/10">
+        <span className={fallbackIconClassName}>
           {item.emoji || item.title.slice(0, 2).toUpperCase()}
         </span>
       )}
