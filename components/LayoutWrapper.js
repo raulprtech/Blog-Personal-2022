@@ -63,11 +63,9 @@ const LayoutWrapper = ({ children, bgImage, header = true, lang = 'es' }) => {
 
   const headerTitle = siteSettings.headerTitle || siteMetadata.headerTitle
   const logoAlt = siteSettings.logoAlt || headerTitle
-  const navigationLinks = (
-    siteSettings.navigationLinks ||
-    fallbackSiteSettings.navigationLinks ||
-    []
-  ).filter((link) => link && link.href && link.href !== '/updates' && link.visible !== false)
+  const navigationLinks = (siteSettings.navigationLinks || []).filter(
+    (link) => link && link.href && link.visible !== false
+  )
 
   return (
     <SectionContainer bgImage={bgImage}>
