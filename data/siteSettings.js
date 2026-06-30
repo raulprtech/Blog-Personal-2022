@@ -15,7 +15,7 @@ const siteSettings = {
   cvHref: '/static/CV/CV.pdf',
   footerCredit: 'Hecho con amor por',
   navigationLinks: [
-    { href: '/updates', label: 'Updates', labelEn: 'Updates', visible: true },
+    { href: '/updates', label: 'Updates', labelEn: 'Updates', visible: false },
     { href: '/research', label: 'Investigación', labelEn: 'Research', visible: true },
     { href: '/blog', label: 'Notas', labelEn: 'Notes', visible: true },
     { href: '/projects', label: 'Proyectos', labelEn: 'Projects', visible: true },

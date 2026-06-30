@@ -67,7 +67,7 @@ const LayoutWrapper = ({ children, bgImage, header = true, lang = 'es' }) => {
     siteSettings.navigationLinks ||
     fallbackSiteSettings.navigationLinks ||
     []
-  ).filter((link) => link && link.href && link.visible !== false)
+  ).filter((link) => link && link.href && link.href !== '/updates' && link.visible !== false)
 
   return (
     <SectionContainer bgImage={bgImage}>
