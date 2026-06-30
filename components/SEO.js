@@ -87,6 +87,37 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
   const spanishHref = `${siteMetadata.siteUrl}${localizedPath(basePath, 'es')}`
   const englishHref = `${siteMetadata.siteUrl}${localizedPath(basePath, 'en')}`
   const breadcrumbSegments = basePath.split('/').filter(Boolean)
+  const webSiteStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteMetadata.siteUrl}/#website`,
+    name: siteMetadata.title,
+    url: siteMetadata.siteUrl,
+    inLanguage: ['es-MX', 'en'],
+    author: {
+      '@id': `${siteMetadata.siteUrl}/#person`,
+    },
+  }
+
+  const webPageStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': canonicalHref,
+    url: canonicalHref,
+    name: title,
+    description,
+    inLanguage: isEnglish ? 'en' : 'es-MX',
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': `${siteMetadata.siteUrl}/#website`,
+      name: siteMetadata.title,
+      url: siteMetadata.siteUrl,
+    },
+    author: {
+      '@id': `${siteMetadata.siteUrl}/#person`,
+    },
+  }
+
   const breadcrumbStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -112,7 +143,14 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
   return (
     <Head>
       <title>{title}</title>
-      <meta name="robots" content="follow, index" />
+      <meta
+        name="robots"
+        content="follow, index, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+      />
+      <meta
+        name="googlebot"
+        content="follow, index, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+      />
       <meta name="description" content={description} />
       <meta property="og:url" content={canonicalHref} />
       <meta property="og:locale" content={locale} />
@@ -135,6 +173,19 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
       <link rel="alternate" hrefLang="es-MX" href={spanishHref} />
       <link rel="alternate" hrefLang="en" href={englishHref} />
       <link rel="alternate" hrefLang="x-default" href={spanishHref} />
+      <link rel="alternate" type="text/markdown" href={`${siteMetadata.siteUrl}/llms.txt`} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webSiteStructuredData, null, 2),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webPageStructuredData, null, 2),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

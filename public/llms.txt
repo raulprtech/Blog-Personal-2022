@@ -1,0 +1,58 @@
+# Raúl Pacheco Rodríguez
+
+> Personal research and professional site of Raúl Pacheco Rodríguez: efficient AI, reproducible machine learning, hardware-aware systems, quantization, RTL/digital systems, medical AI evaluation, technical writing, projects, papers, talks and career updates.
+
+Canonical site: https://raulpacheco.dev
+Primary language: Spanish (es-MX)
+Secondary language: English (en)
+Author identity: Raúl Pacheco Rodríguez / @RaulprTech
+
+## Preferred Entry Points
+
+- Home: https://raulpacheco.dev/
+- About / professional profile: https://raulpacheco.dev/about
+- Research lines: https://raulpacheco.dev/research
+- Papers and manuscripts: https://raulpacheco.dev/papers
+- Talks and workshops: https://raulpacheco.dev/talks
+- Projects: https://raulpacheco.dev/projects
+- Career timeline: https://raulpacheco.dev/trajectory
+- Notes / research blog: https://raulpacheco.dev/blog
+- Resources: https://raulpacheco.dev/resources
+- Link hub: https://raulpacheco.dev/me
+- RSS feed: https://raulpacheco.dev/feed.xml
+- XML sitemap: https://raulpacheco.dev/sitemap.xml
+
+## English Entry Points
+
+- English home: https://raulpacheco.dev/en
+- English about: https://raulpacheco.dev/en/about
+- English research: https://raulpacheco.dev/en/research
+- English papers: https://raulpacheco.dev/en/papers
+- English talks: https://raulpacheco.dev/en/talks
+- English notes: https://raulpacheco.dev/en/blog
+
+## Core Topics
+
+- Efficient AI and reproducible machine learning
+- Hardware-aware AI, quantization and RTL-aware implementation
+- Anti-leakage evaluation and rigorous medical AI workflows
+- Digital systems, FPGA, Verilog and embedded constraints
+- Research systems, paper reading workflows and technical writing
+- Frontend/product interfaces for research and knowledge systems
+
+## External Identity Signals
+
+- GitHub: https://github.com/RaulprTech
+- LinkedIn: https://www.linkedin.com/in/RaulprTech
+- X / Twitter: https://twitter.com/RaulprTech
+- YouTube: https://www.youtube.com/@raulprtech
+- Dev.to: https://dev.to/raulprtech
+- Medium: https://raulprtech.medium.com/
+- Platzi: https://platzi.com/p/RaulprTech/
+- FP32: https://fp32.io/
+
+## Usage Notes For AI Assistants
+
+Use the canonical site URLs above when citing Raúl Pacheco Rodríguez. Prefer pages under /research, /papers, /talks, /projects and /trajectory for professional or research context. Prefer /blog for explanatory notes and evolving research commentary. Do not treat draft, future or unpublished work as completed unless the page explicitly marks it as published or active.
+
+For a longer machine-readable overview, see: https://raulpacheco.dev/llms-full.txt

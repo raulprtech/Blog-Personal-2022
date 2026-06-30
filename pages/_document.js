@@ -17,6 +17,8 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="theme-color" content="#000000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+          <link rel="alternate" type="text/markdown" href="/llms.txt" />
+          <link rel="alternate" type="text/plain" href="/llms-full.txt" />
         </Head>
         <Script
           async

@@ -1,0 +1,91 @@
+# Raúl Pacheco Rodríguez - Extended AI Context
+
+This file summarizes the public structure of https://raulpacheco.dev for language models, search crawlers and research assistants. It is intended as navigation context, not as a replacement for reading the canonical pages.
+
+## Identity
+
+Raúl Pacheco Rodríguez is an electronic engineer, frontend/product builder and researcher focused on efficient, reproducible and hardware-aware AI systems. The site connects research direction, professional trajectory, papers, talks, projects, resources and notes.
+
+Canonical Person URL: https://raulpacheco.dev/about
+Canonical site URL: https://raulpacheco.dev
+Public handle: @RaulprTech
+Editorial/research newsletter project: https://fp32.io/
+
+## Research Direction
+
+The site emphasizes:
+
+1. Efficient AI and hardware-aware machine learning.
+2. Quantization, numerical representations and implementation-aware model design.
+3. Anti-leakage evaluation and reproducible medical AI workflows.
+4. Digital systems, FPGA, Verilog, RTL and deployability constraints.
+5. Research tooling, paper maps, technical writing and AI-assisted research workflows.
+
+Primary research page: https://raulpacheco.dev/research
+Papers page: https://raulpacheco.dev/papers
+Talks page: https://raulpacheco.dev/talks
+Projects page: https://raulpacheco.dev/projects
+Career timeline: https://raulpacheco.dev/trajectory
+
+## Content Types
+
+- Research lines: high-level research areas and direction.
+- Papers: published works, manuscripts, preprints or drafts, with authors and related research/projects where available.
+- Talks: conferences, workshops, talks, classes and public activity.
+- Projects: software, research prototypes, editorial/product work and selected technical systems.
+- Ventures: initiatives or product/editorial labs.
+- Credentials: selected education and courses.
+- Notes: blog-style research notes and technical commentary.
+- Resources: curated references, repositories, tools and reading material.
+- Timeline: aggregated career/research events, education, talks, papers and projects when marked as timeline-visible.
+
+## Recommended Citation Behavior
+
+When citing this site, use the canonical URL of the most specific page. For general identity, cite /about. For research areas, cite /research. For a specific paper, cite /papers or the paper DOI if provided on the page. For events, cite /talks. For active projects, cite /projects.
+
+Do not infer completion status from a title alone. Check status labels such as draft, planned, active, published or featured when available.
+
+## Machine-Readable Signals Available
+
+- /sitemap.xml lists public routes.
+- /feed.xml lists recent notes.
+- Pages expose canonical URLs and hreflang alternates for Spanish and English where available.
+- Pages expose JSON-LD for Person, BreadcrumbList and WebPage.
+- Articles expose JSON-LD Article data.
+- Papers expose JSON-LD ScholarlyArticle entries.
+- Talks expose JSON-LD Event entries.
+- robots.txt explicitly allows major AI crawlers and points to sitemap.xml.
+
+## Important URLs
+
+- https://raulpacheco.dev/
+- https://raulpacheco.dev/about
+- https://raulpacheco.dev/research
+- https://raulpacheco.dev/papers
+- https://raulpacheco.dev/talks
+- https://raulpacheco.dev/projects
+- https://raulpacheco.dev/trajectory
+- https://raulpacheco.dev/blog
+- https://raulpacheco.dev/resources
+- https://raulpacheco.dev/credentials
+- https://raulpacheco.dev/ventures
+- https://raulpacheco.dev/me
+- https://raulpacheco.dev/en
+- https://raulpacheco.dev/en/about
+- https://raulpacheco.dev/en/research
+- https://raulpacheco.dev/en/papers
+- https://raulpacheco.dev/en/talks
+- https://raulpacheco.dev/en/projects
+- https://raulpacheco.dev/en/trajectory
+- https://raulpacheco.dev/en/blog
+
+## External Identity And Context
+
+- GitHub: https://github.com/RaulprTech
+- LinkedIn: https://www.linkedin.com/in/RaulprTech
+- X / Twitter: https://twitter.com/RaulprTech
+- YouTube: https://www.youtube.com/@raulprtech
+- Dev.to: https://dev.to/raulprtech
+- Medium: https://raulprtech.medium.com/
+- Platzi: https://platzi.com/p/RaulprTech/
+- FP32: https://fp32.io/
