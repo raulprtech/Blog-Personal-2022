@@ -14,7 +14,12 @@ const siteSettings = {
   cvLabel: 'Descargar CV',
   cvHref: '/static/CV/CV.pdf',
   footerCredit: 'Hecho con amor por',
-  navigationLinks: [],
+  navigationLinks: [
+    { href: '/research', label: 'Investigación', labelEn: 'Research', visible: true },
+    { href: '/projects', label: 'Proyectos', labelEn: 'Projects', visible: true },
+    { href: '/blog', label: 'Blog', labelEn: 'Blog', visible: true },
+    { href: '/about', label: 'Acerca', labelEn: 'About', visible: true },
+  ],
   socialLinks: [
     { kind: 'mail', label: 'Email', href: `mailto:${siteMetadata.email}` },
     { kind: 'linkedin', label: 'LinkedIn', href: siteMetadata.linkedin },
