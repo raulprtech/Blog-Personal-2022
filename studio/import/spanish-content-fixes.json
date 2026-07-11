@@ -84,13 +84,6 @@
     }
   },
   {
-    "_id": "drafts.trajectory-doctorado-cinvestav",
-    "set": {
-      "title": "Doctorado en Ciencias en Ingeniería Eléctrica",
-      "summary": "Borrador de trayectoria doctoral orientada a IA eficiente, optimización hardware-aware, cuantización y evaluación reproducible."
-    }
-  },
-  {
     "_id": "page-home",
     "set": {
       "seoDescription": "Sitio personal de Raúl Pacheco Rodríguez sobre IA eficiente, investigación reproducible, sistemas digitales y escritura técnica.",
