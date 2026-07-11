@@ -1,5 +1,8 @@
 const fs = require('fs')
 const path = require('path')
+const { loadEnvConfig } = require('@next/env')
+
+loadEnvConfig(process.cwd())
 
 const patchesFile = process.argv[2] || 'studio/import/english-content-patches.json'
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'a668buu6'
