@@ -1,2 +1,14 @@
+packages:
+  - '.'
+
+# These native dependencies are already part of the reviewed site and Studio lockfiles.
 allowBuilds:
+  '@netlify/esbuild': true
+  '@parcel/watcher': true
+  deasync: true
   esbuild: true
+  sharp: true
+  unrs-resolver: true
+
+# Running a content command should not trigger an implicit reinstall first.
+verifyDepsBeforeRun: false
