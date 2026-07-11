@@ -152,6 +152,15 @@ const pageContent = {
     title: 'Cursos que sostienen mi trabajo entre frontend, IA y producto.',
     description:
       'Una seleccion breve de credenciales útiles para entender mi perfil tecnico. El resto vive en mi perfil publico de Platzi.',
+    educationProfilesTitle: 'Perfiles educativos',
+    educationProfiles: [
+      {
+        provider: 'Platzi',
+        label: 'Ver perfil de Platzi',
+        href: 'https://platzi.com/p/RaulprTech/',
+        description: 'Cursos y constancias públicas de formación continua.',
+      },
+    ],
   },
   papers: {
     seoDescription:

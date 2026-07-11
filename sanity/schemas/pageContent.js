@@ -253,6 +253,29 @@ export default {
         },
       ],
     },
+    simpleText('educationProfilesTitle', 'Educational profiles section title'),
+    {
+      name: 'educationProfiles',
+      title: 'Educational profiles',
+      description: 'External learning profiles shown as buttons on the credentials page.',
+      hidden: ({ document }) => document?.slug !== 'credentials',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            simpleText('provider', 'Provider'),
+            simpleText('label', 'Button label'),
+            simpleText('href', 'Profile URL'),
+            simpleText('description', 'Description', 'text'),
+            ...imageFields,
+          ],
+          preview: {
+            select: { title: 'provider', subtitle: 'label', media: 'image' },
+          },
+        },
+      ],
+    },
     simpleText('occupation', 'Occupation'),
     {
       name: 'profileCard',
@@ -334,6 +357,23 @@ export default {
                   textField('emoji', 'Icon / short marker'),
                 ],
               },
+            ],
+          },
+        ],
+      },
+      textField('educationProfilesTitle', 'Educational profiles section title'),
+      {
+        name: 'educationProfiles',
+        title: 'Educational profiles',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [
+              textField('provider', 'Provider'),
+              textField('label', 'Button label'),
+              textField('description', 'Description', 'text'),
+              textField('imageAlt', 'Image alt text'),
             ],
           },
         ],

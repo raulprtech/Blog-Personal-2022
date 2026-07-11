@@ -1,0 +1,28 @@
+[
+  {
+    "_id": "page-credentials",
+    "set": {
+      "educationProfiles": [
+        {
+          "_key": "platzi-profile",
+          "_type": "object",
+          "provider": "Platzi",
+          "label": "Ver perfil de Platzi",
+          "href": "https://platzi.com/p/RaulprTech/",
+          "description": "Cursos y constancias públicas de formación continua."
+        }
+      ],
+      "english.educationProfiles": [
+        {
+          "_key": "platzi-profile",
+          "_type": "object",
+          "provider": "Platzi",
+          "label": "View Platzi profile",
+          "description": "Public courses and continuing-education credentials."
+        }
+      ],
+      "educationProfilesTitle": "Perfiles educativos",
+      "english.educationProfilesTitle": "Learning profiles"
+    }
+  }
+]
