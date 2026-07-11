@@ -1,8 +1,25 @@
 const fs = require('fs')
 const path = require('path')
-const { loadEnvConfig } = require('@next/env')
 
-loadEnvConfig(process.cwd())
+function parseEnvFile(filePath) {
+  if (!fs.existsSync(filePath)) return
+
+  if (typeof process.loadEnvFile === 'function') {
+    process.loadEnvFile(filePath)
+    return
+  }
+
+  for (const line of fs.readFileSync(filePath, 'utf8').split(/\r?\n/)) {
+    const match = line.match(/^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/)
+    if (!match || Object.prototype.hasOwnProperty.call(process.env, match[1])) continue
+
+    const value = match[2].replace(/^(['"])(.*)\1$/, '$2')
+    process.env[match[1]] = value
+  }
+}
+
+parseEnvFile(path.resolve(process.cwd(), '.env.local'))
+parseEnvFile(path.resolve(process.cwd(), '.env'))
 
 const patchesFile = process.argv[2] || 'studio/import/english-content-patches.json'
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'a668buu6'
