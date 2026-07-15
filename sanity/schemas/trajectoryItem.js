@@ -18,6 +18,21 @@ export default {
     { name: 'href', title: 'Link or path', type: 'string' },
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
     {
+      name: 'showInTimeline',
+      title: 'Show in trajectory timeline',
+      description:
+        'Disable this to keep the item in its archive without showing it on /trajectory.',
+      type: 'boolean',
+      initialValue: true,
+    },
+    {
+      name: 'showOnEducationPage',
+      title: 'Show on education page',
+      description: 'Use for academic degrees, technical education and other formal studies.',
+      type: 'boolean',
+      initialValue: false,
+    },
+    {
       name: 'researchItems',
       title: 'Related research lines',
       type: 'array',

@@ -67,6 +67,12 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+  async redirects() {
+    return [
+      { source: '/credentials', destination: '/education', permanent: true },
+      { source: '/en/credentials', destination: '/en/education', permanent: true },
+    ]
+  },
   async headers() {
     return [
       {

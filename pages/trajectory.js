@@ -5,6 +5,7 @@ import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
 import { RelatedConnections } from '@/components/ContentMeta'
 import { getPageContent, getTimelineItems } from '@/lib/content'
+import { localizedPath } from '@/lib/i18n'
 
 const categoryStyles = {
   Education:
@@ -95,6 +96,10 @@ export async function getStaticProps({ lang = 'es' } = {}) {
 export default function Trajectory({ trajectoryData, pageContent, lang = 'es' }) {
   const featured = trajectoryData.filter((item) => item.featured)
   const summaryStats = pageContent?.summaryStats || []
+  const archiveLinks = pageContent?.archiveLinks || []
+  const visibleCategories = categories.filter((category) =>
+    trajectoryData.some((item) => item.category === category)
+  )
 
   return (
     <LayoutWrapper lang={lang}>
@@ -119,8 +124,39 @@ export default function Trajectory({ trajectoryData, pageContent, lang = 'es' })
           ))}
         </div>
 
-        <div className="mb-10 flex flex-wrap gap-2">
-          {categories.map((category) => (
+        {archiveLinks.length > 0 && (
+          <section className="border-y border-gray-200 py-10 dark:border-gray-800">
+            <h2 className="text-2xl font-black tracking-tight text-gray-950 dark:text-white">
+              {pageContent?.archiveLinksTitle ||
+                (lang === 'en' ? 'Explore by category' : 'Explorar por categoría')}
+            </h2>
+            <div className="mt-6 grid gap-px overflow-hidden rounded-md border border-gray-200 bg-gray-200 dark:border-gray-800 dark:bg-gray-800 md:grid-cols-2 lg:grid-cols-3">
+              {archiveLinks.map((link) => (
+                <Link
+                  key={link.href || link.label}
+                  href={localizedPath(link.href, lang)}
+                  className="group bg-white p-6 transition hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-900"
+                >
+                  <span className="font-black text-gray-950 dark:text-white">{link.label}</span>
+                  {link.description && (
+                    <span className="mt-2 block text-sm leading-6 text-gray-500 dark:text-gray-400">
+                      {link.description}
+                    </span>
+                  )}
+                  <span className="mt-4 block text-sm font-semibold text-primary-700 dark:text-secondary-400">
+                    {lang === 'en' ? 'View all' : 'Ver todo'}{' '}
+                    <span aria-hidden="true" className="transition group-hover:translate-x-0.5">
+                      -&gt;
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <div className="my-10 flex flex-wrap gap-2">
+          {visibleCategories.map((category) => (
             <span
               key={category}
               className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryStyles[category]}`}

@@ -58,6 +58,16 @@ export default {
     { name: 'featured', title: 'Featured', type: 'boolean', initialValue: true },
     { name: 'orderRank', title: 'Order', type: 'number', initialValue: 100 },
     {
+      name: 'showInTimeline',
+      title: 'Show in trajectory timeline',
+      type: 'boolean',
+      initialValue: false,
+    },
+    simpleText('timelineDate', 'Timeline date', 'date'),
+    simpleText('timelineLabel', 'Timeline label'),
+    simpleText('timelineCategory', 'Timeline category'),
+    simpleText('timelineSummary', 'Timeline summary', 'text'),
+    {
       name: 'talks',
       title: 'Related talks / public activity',
       type: 'array',
@@ -70,6 +80,9 @@ export default {
       textField('credentialCategory', 'Category'),
       textField('imageAlt', 'Image alt text'),
       stringArrayField('skills', 'Skills'),
+      textField('timelineLabel', 'Timeline label'),
+      textField('timelineCategory', 'Timeline category'),
+      textField('timelineSummary', 'Timeline summary', 'text'),
     ]),
   ],
   preview: {

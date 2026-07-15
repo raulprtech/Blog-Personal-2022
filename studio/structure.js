@@ -27,7 +27,7 @@
                 .title('Blog page')
                 .child(S.document().schemaType('pageContent').documentId('page-blog')),
               S.listItem()
-                .title('Credentials page')
+                .title('Education page')
                 .child(S.document().schemaType('pageContent').documentId('page-credentials')),
               S.listItem()
                 .title('Papers page')

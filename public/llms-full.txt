@@ -67,7 +67,7 @@ Do not infer completion status from a title alone. Check status labels such as d
 - https://raulpacheco.dev/trajectory
 - https://raulpacheco.dev/blog
 - https://raulpacheco.dev/resources
-- https://raulpacheco.dev/credentials
+- https://raulpacheco.dev/education
 - https://raulpacheco.dev/ventures
 - https://raulpacheco.dev/me
 - https://raulpacheco.dev/en

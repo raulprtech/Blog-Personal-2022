@@ -147,11 +147,13 @@ const pageContent = {
   },
   credentials: {
     seoDescription:
-      'Constancias, cursos y credenciales destacadas de Raúl Pacheco Rodríguez en IA, frontend, cloud y producto.',
-    eyebrow: 'Constancias destacadas',
-    title: 'Cursos que sostienen mi trabajo entre frontend, IA y producto.',
+      'Formación académica, certificados y cursos destacados de Raúl Pacheco Rodríguez en electrónica, IA, frontend y producto.',
+    eyebrow: 'Educación',
+    title: 'Formación académica y aprendizaje continuo.',
     description:
-      'Una seleccion breve de credenciales útiles para entender mi perfil tecnico. El resto vive en mi perfil publico de Platzi.',
+      'Grados académicos, especialización técnica y cursos seleccionados que ayudan a entender la evolución de mi perfil profesional y de investigación.',
+    academicEducationTitle: 'Formación académica',
+    credentialsTitle: 'Certificados y cursos',
     educationProfilesTitle: 'Perfiles educativos',
     educationProfiles: [
       {
@@ -230,7 +232,36 @@ const pageContent = {
     eyebrow: 'Trayectoria',
     title: 'De electrónica y web hacia IA eficiente y sistemas verificables.',
     description:
-      'Una línea de tiempo de mi formación, trabajo, investigación, productos y actividad editorial. Esta página funciona como puente entre el CV, los proyectos y la dirección de investigación del sitio.',
+      'Una selección de los hitos más importantes de mi experiencia, investigación, proyectos, educación y actividad pública. Cada categoría enlaza con su archivo completo.',
+    archiveLinksTitle: 'Explorar por categoría',
+    archiveLinks: [
+      {
+        label: 'Educación',
+        href: '/education',
+        description: 'Grados académicos, certificados y formación continua.',
+      },
+      {
+        label: 'Investigación',
+        href: '/research',
+        description: 'Líneas de investigación y trabajo en curso.',
+      },
+      {
+        label: 'Proyectos',
+        href: '/projects',
+        description: 'Software, hardware y sistemas seleccionados.',
+      },
+      { label: 'Papers', href: '/papers', description: 'Publicaciones, preprints y manuscritos.' },
+      {
+        label: 'Charlas y talleres',
+        href: '/talks',
+        description: 'Ponencias, talleres y actividad pública.',
+      },
+      {
+        label: 'Emprendimientos',
+        href: '/ventures',
+        description: 'Productos e iniciativas independientes.',
+      },
+    ],
     summaryStats: [
       { value: '2024+', label: 'Doctorado CINVESTAV' },
       { value: 'FPGA', label: 'Hardware-aware AI' },

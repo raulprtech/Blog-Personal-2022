@@ -253,11 +253,31 @@ export default {
         },
       ],
     },
+    simpleText('archiveLinksTitle', 'Archive links section title'),
+    {
+      name: 'archiveLinks',
+      title: 'Archive links',
+      description: 'Links from the trajectory overview to complete category pages.',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            simpleText('label', 'Label'),
+            simpleText('href', 'Link or path'),
+            simpleText('description', 'Description', 'text'),
+          ],
+          preview: { select: { title: 'label', subtitle: 'href' } },
+        },
+      ],
+    },
+    simpleText('academicEducationTitle', 'Academic education section title'),
+    simpleText('credentialsTitle', 'Certificates section title'),
     simpleText('educationProfilesTitle', 'Educational profiles section title'),
     {
       name: 'educationProfiles',
       title: 'Educational profiles',
-      description: 'External learning profiles shown as buttons on the credentials page.',
+      description: 'External learning profiles shown as buttons on the education page.',
       hidden: ({ document }) => document?.slug !== 'credentials',
       type: 'array',
       of: [
@@ -361,6 +381,20 @@ export default {
           },
         ],
       },
+      textField('archiveLinksTitle', 'Archive links section title'),
+      {
+        name: 'archiveLinks',
+        title: 'Archive links',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [textField('label', 'Label'), textField('description', 'Description', 'text')],
+          },
+        ],
+      },
+      textField('academicEducationTitle', 'Academic education section title'),
+      textField('credentialsTitle', 'Certificates section title'),
       textField('educationProfilesTitle', 'Educational profiles section title'),
       {
         name: 'educationProfiles',
