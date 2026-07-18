@@ -50,12 +50,20 @@ const sameAs = [
   siteMetadata.platzi,
 ].filter(Boolean)
 
+const personLogoUrl = `${siteMetadata.siteUrl}/api/site-icon/512`
+
 const personStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${siteMetadata.siteUrl}/#person`,
   name: siteMetadata.author,
   url: siteMetadata.siteUrl,
+  image: {
+    '@type': 'ImageObject',
+    url: personLogoUrl,
+    width: 512,
+    height: 512,
+  },
   sameAs,
   alumniOf,
   hasCredential,
@@ -64,6 +72,7 @@ const personStructuredData = {
 const personAuthor = (name = siteMetadata.author) => ({
   '@type': 'Person',
   name,
+  ...(name === siteMetadata.author ? { image: personLogoUrl } : {}),
   sameAs,
   alumniOf,
   hasCredential,
@@ -294,7 +303,7 @@ export const BlogSEO = ({
       name: siteMetadata.author,
       logo: {
         '@type': 'ImageObject',
-        url: toAbsoluteUrl(siteMetadata.siteLogo),
+        url: personLogoUrl,
       },
     },
     description: summary,

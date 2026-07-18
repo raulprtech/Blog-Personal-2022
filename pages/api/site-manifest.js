@@ -9,14 +9,15 @@ export default async function handler(req, res) {
     short_name: settings.headerTitle || settings.title,
     icons: [
       {
-        src: '/api/site-icon?kind=favicon32',
-        sizes: '32x32',
+        src: '/api/site-icon/192',
+        sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: '/api/site-icon?kind=apple',
-        sizes: '180x180',
+        src: '/api/site-icon/512',
+        sizes: '512x512',
         type: 'image/png',
+        purpose: 'any',
       },
     ],
     theme_color: settings.themeColor || '#000000',

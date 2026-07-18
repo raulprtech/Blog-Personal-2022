@@ -45,24 +45,26 @@ export default {
     },
     {
       name: 'logoImage',
-      title: 'Header logo image',
+      title: 'Site logo image',
       type: 'image',
       options: { hotspot: true },
+      description:
+        'Primary logo for the header, browser tabs, installed app icons and search engines. Square PNG recommended.',
     },
     simpleText('logoAlt', 'Logo alt text'),
     {
       name: 'faviconImage',
-      title: 'Browser/search favicon image',
+      title: 'Legacy favicon fallback',
       type: 'image',
       options: { hotspot: true },
-      description: 'Icon used for browser tabs and search result favicon. Square PNG recommended.',
+      description: 'Optional fallback used only when the primary site logo is empty.',
     },
     {
       name: 'appleTouchIconImage',
-      title: 'Apple touch icon image',
+      title: 'Legacy Apple icon fallback',
       type: 'image',
       options: { hotspot: true },
-      description: 'Large square icon used when saving the site to a device home screen.',
+      description: 'Optional fallback used only when the primary site logo is empty.',
     },
     {
       name: 'socialBannerImage',
