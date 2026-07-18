@@ -10,7 +10,7 @@ class MyDocument extends Document {
       <Html lang={lang} className="scroll-smooth">
         <Head>
           <link rel="apple-touch-icon" sizes="180x180" href="/api/site-icon/180" />
-          <link rel="icon" type="image/png" sizes="48x48" href="/api/site-icon/48" />
+          <link rel="icon" type="image/png" sizes="48x48" href="/favicon.ico" />
           <link rel="icon" type="image/png" sizes="32x32" href="/api/site-icon/32" />
           <link rel="icon" type="image/png" sizes="16x16" href="/api/site-icon/16" />
           <link rel="manifest" href="/api/site-manifest" />

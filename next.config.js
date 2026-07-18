@@ -67,6 +67,9 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+  async rewrites() {
+    return [{ source: '/favicon.ico', destination: '/api/site-icon/48' }]
+  },
   async redirects() {
     return [
       { source: '/credentials', destination: '/education', permanent: true },
