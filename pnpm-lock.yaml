@@ -17,12 +17,6 @@ importers:
       '@mailchimp/mailchimp_marketing':
         specifier: ^3.0.80
         version: 3.0.80
-      '@netlify/blobs':
-        specifier: 2.2.0
-        version: 2.2.0
-      '@netlify/plugin-nextjs':
-        specifier: ^4.39.2
-        version: 4.41.6
       '@tailwindcss/forms':
         specifier: ^0.5.3
         version: 0.5.11(tailwindcss@3.4.19)
