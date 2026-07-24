@@ -18,6 +18,9 @@
                 .title('About')
                 .child(S.document().schemaType('pageContent').documentId('page-about')),
               S.listItem()
+                .title('Contact page')
+                .child(S.document().schemaType('pageContent').documentId('page-contact')),
+              S.listItem()
                 .title('Updates page')
                 .child(S.document().schemaType('pageContent').documentId('page-updates')),
               S.listItem()

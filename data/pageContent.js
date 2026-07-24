@@ -68,6 +68,25 @@ const pageContent = {
         hrefLabel: 'Ver proyectos',
       },
     },
+    collaborationCta: {
+      eyebrow: 'Colaboraciones y oportunidades',
+      title: 'Disponible para conversaciones científicas y técnicas con propósito.',
+      description:
+        'Busco colaboraciones científicas, oportunidades de investigación, conferencias, docencia especializada y un número limitado de proyectos de consultoría técnica donde la IA eficiente y los sistemas rigurosos sean centrales.',
+      href: '/contact',
+      linkLabel: 'Compartir una propuesta',
+      areas: ['Investigación', 'Conferencias', 'Docencia especializada', 'Consultoría selectiva'],
+    },
+    english: {
+      collaborationCta: {
+        eyebrow: 'Collaborations and opportunities',
+        title: 'Available for purposeful scientific and technical conversations.',
+        description:
+          'I am looking for scientific collaborations, research opportunities, conferences, specialized teaching and a limited number of technical consulting projects where efficient AI and rigorous systems are central.',
+        linkLabel: 'Share a proposal',
+        areas: ['Research', 'Conferences', 'Specialized teaching', 'Selective consulting'],
+      },
+    },
   },
   me: {
     seoTitle: 'Links - Raúl Pacheco Rodríguez',
@@ -301,6 +320,15 @@ const pageContent = {
         linkLabel: 'Ver recursos',
       },
     ],
+    collaborationCta: {
+      eyebrow: 'Colaboraciones',
+      title: 'Abierto a trabajo científico y técnico con objetivos concretos.',
+      description:
+        'Me interesa conversar sobre colaboraciones científicas, oportunidades de investigación, conferencias, docencia especializada y consultoría técnica selectiva donde mi experiencia en IA eficiente, sistemas digitales y producto pueda aportar valor real.',
+      href: '/contact',
+      linkLabel: 'Proponer una colaboración',
+      areas: ['Investigación', 'Conferencias', 'Docencia especializada', 'Consultoría selectiva'],
+    },
     occupation: 'Ingeniero electrónico e investigador en IA eficiente',
     profileCard: {
       imageAlt: 'Raúl Pacheco Rodríguez',
@@ -345,6 +373,88 @@ const pageContent = {
         ],
       },
     ],
+    english: {
+      collaborationCta: {
+        eyebrow: 'Collaborations',
+        title: 'Open to scientific and technical work with concrete goals.',
+        description:
+          'I welcome conversations about scientific collaborations, research opportunities, conferences, specialized teaching and selective technical consulting where my experience in efficient AI, digital systems and product can create real value.',
+        linkLabel: 'Propose a collaboration',
+        areas: ['Research', 'Conferences', 'Specialized teaching', 'Selective consulting'],
+      },
+    },
+  },
+  contact: {
+    seoTitle: 'Colaboraciones y contacto - Raúl Pacheco Rodríguez',
+    seoDescription:
+      'Propuestas de colaboración científica, investigación, conferencias, docencia especializada y consultoría técnica selectiva con Raúl Pacheco Rodríguez.',
+    eyebrow: 'Colaboraciones y oportunidades',
+    title: 'Hagamos trabajo técnico que merezca existir.',
+    description:
+      'Estoy abierto a conversaciones concretas donde la investigación rigurosa, la ingeniería y una comunicación clara puedan producir resultados útiles. Comparte el contexto, el objetivo y la forma de colaboración que imaginas.',
+    bodySections: [
+      {
+        eyebrow: 'Investigación',
+        heading: 'Colaboración científica',
+        text: 'Coautoría, experimentos reproducibles, evaluación de modelos, cuantización y trabajo en la frontera entre machine learning, sistemas digitales e IA médica.',
+      },
+      {
+        eyebrow: 'Oportunidades',
+        heading: 'Investigación y estancias',
+        text: 'Conversaciones sobre estancias, posiciones, grupos de trabajo y proyectos donde la IA eficiente o hardware-aware sea una parte central del problema.',
+      },
+      {
+        eyebrow: 'Actividad pública',
+        heading: 'Conferencias y talleres',
+        text: 'Ponencias, paneles y talleres técnicos sobre IA eficiente, reproducibilidad, cuantización, sistemas digitales y herramientas para investigación aumentada.',
+      },
+      {
+        eyebrow: 'Formación avanzada',
+        heading: 'Docencia especializada',
+        text: 'Cursos, sesiones invitadas y materiales para equipos académicos o técnicos que necesiten conectar fundamentos, implementación y evaluación rigurosa.',
+      },
+      {
+        eyebrow: 'Trabajo aplicado',
+        heading: 'Consultoría técnica selectiva',
+        text: 'Acepto un número limitado de colaboraciones aplicadas cuando existe un problema bien definido, acceso al contexto necesario y una expectativa realista sobre evidencia, alcance y resultados.',
+      },
+    ],
+    english: {
+      seoTitle: 'Collaborations and contact - Raúl Pacheco Rodríguez',
+      seoDescription:
+        'Scientific collaboration, research, conference, specialized teaching and selective technical consulting opportunities with Raúl Pacheco Rodríguez.',
+      eyebrow: 'Collaborations and opportunities',
+      title: 'Let us build technical work worth doing.',
+      description:
+        'I welcome concrete conversations where rigorous research, engineering and clear communication can produce useful outcomes. Share the context, goal and form of collaboration you have in mind.',
+      bodySections: [
+        {
+          eyebrow: 'Research',
+          heading: 'Scientific collaboration',
+          text: 'Co-authorship, reproducible experiments, model evaluation, quantization and work at the intersection of machine learning, digital systems and medical AI.',
+        },
+        {
+          eyebrow: 'Opportunities',
+          heading: 'Research and visiting opportunities',
+          text: 'Conversations about visiting positions, research roles, working groups and projects where efficient or hardware-aware AI is central to the problem.',
+        },
+        {
+          eyebrow: 'Public engagement',
+          heading: 'Conferences and workshops',
+          text: 'Talks, panels and technical workshops on efficient AI, reproducibility, quantization, digital systems and tools for augmented research.',
+        },
+        {
+          eyebrow: 'Advanced learning',
+          heading: 'Specialized teaching',
+          text: 'Courses, invited sessions and materials for academic or technical teams that need to connect fundamentals, implementation and rigorous evaluation.',
+        },
+        {
+          eyebrow: 'Applied work',
+          heading: 'Selective technical consulting',
+          text: 'I take on a limited number of applied engagements when the problem is well defined, the necessary context is available and expectations around evidence, scope and outcomes are realistic.',
+        },
+      ],
+    },
   },
 }
 

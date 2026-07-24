@@ -21,7 +21,7 @@ const siteSettings = {
     { href: '/about', label: 'Acerca', labelEn: 'About', visible: true },
   ],
   socialLinks: [
-    { kind: 'mail', label: 'Email', href: `mailto:${siteMetadata.email}` },
+    { kind: 'mail', label: 'Contacto', href: '/contact' },
     { kind: 'linkedin', label: 'LinkedIn', href: siteMetadata.linkedin },
     { kind: 'github', label: 'GitHub', href: siteMetadata.github },
     { kind: 'twitter', label: 'X / Twitter', href: siteMetadata.twitter },

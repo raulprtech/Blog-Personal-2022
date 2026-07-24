@@ -44,7 +44,7 @@ const Resume = () => {
                   <h2 className="mt-3 text-2xl font-bold text-primary-700">Desarrollador Web</h2>
                   <h3 className="text-md mt-3">{siteMetadata.authorDescription}</h3>
                   <div className="my-6 flex space-x-4">
-                    <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
+                    <SocialIcon kind="mail" href="/contact" size="6" />
                     <SocialIcon kind="whatsapp" href={siteMetadata.whatsapp} size="6" />
                     <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size="6" />
                     <SocialIcon kind="github" href={siteMetadata.github} size="6" />

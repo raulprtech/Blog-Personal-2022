@@ -14,6 +14,7 @@ import Patreon from './patreon.svg'
 import RSS from './rss.svg'
 import GoogleNews from './googlenews.svg'
 import ResearchGate from './researchgate.svg'
+import { useRouter } from 'next/router'
 
 // Icons taken from: https://simpleicons.org/
 
@@ -37,18 +38,21 @@ const components = {
 }
 
 const SocialIcon = ({ kind, href, size = 8 }) => {
-  if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
-    return null
+  const router = useRouter()
+  if (!href) return null
 
   const SocialSvg = components[kind]
   if (!SocialSvg) return null
+  const contactHref = router.asPath.startsWith('/en') ? '/en/contact' : '/contact'
+  const safeHref = kind === 'mail' || href.startsWith('mailto:') ? contactHref : href
+  const isExternal = /^https?:\/\//.test(safeHref)
 
   return (
     <a
       className="text-sm text-gray-500 transition hover:text-gray-600"
-      target="_blank"
-      rel="noopener noreferrer"
-      href={href}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+      href={safeHref}
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg

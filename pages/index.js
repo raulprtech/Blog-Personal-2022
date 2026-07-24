@@ -8,6 +8,7 @@ import Banner from '@/components/Banner'
 import UpdateCard from '@/components/UpdateCard'
 import ProjectCard from '@/components/ProjectCard'
 import NewsletterCTA from '@/components/NewsletterCTA'
+import CollaborationCTA from '@/components/CollaborationCTA'
 import ResourceCard from '@/components/ResourceCard'
 import { Eyebrow } from '@/components/ContentMeta'
 import { getHomeContent } from '@/lib/content'
@@ -145,6 +146,7 @@ export default function Home({
           description={pageContent?.seoDescription || siteMetadata.description}
         />
         <Hero content={pageContent?.hero} />
+        <CollaborationCTA content={pageContent?.collaborationCta} className="mb-4 mt-12" />
         <section className="py-12">
           <SectionHeading section={updatesSection} href="/updates" lang={lang} />
           <div className="grid gap-6 lg:grid-cols-3">

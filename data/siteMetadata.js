@@ -13,7 +13,6 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'contacto@raulpacheco.dev',
   github: 'https://github.com/RaulprTech',
   twitter: 'https://twitter.com/RaulprTech',
   facebook: 'https://facebook.com/RaulprTech',

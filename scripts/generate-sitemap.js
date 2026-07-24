@@ -8,6 +8,7 @@ const staticAlternateRoutes = new Set([
   '',
   '/about',
   '/blog',
+  '/contact',
   '/education',
   '/me',
   '/papers',

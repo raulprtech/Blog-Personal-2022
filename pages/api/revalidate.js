@@ -12,6 +12,8 @@ const pathsByType = {
     '/ventures',
     '/talks',
     '/me',
+    '/contact',
+    '/en/contact',
   ],
   siteSettings: [
     '/',
@@ -26,6 +28,8 @@ const pathsByType = {
     '/education',
     '/talks',
     '/me',
+    '/contact',
+    '/en/contact',
   ],
   credential: [
     '/education',

@@ -298,6 +298,26 @@ export default {
     },
     simpleText('occupation', 'Occupation'),
     {
+      name: 'collaborationCta',
+      title: 'Collaboration CTA',
+      description:
+        'Invitation shown on the Home and About pages. The link should normally be /contact.',
+      type: 'object',
+      fields: [
+        simpleText('eyebrow', 'Eyebrow'),
+        simpleText('title', 'Title'),
+        simpleText('description', 'Description', 'text'),
+        simpleText('href', 'Link or path'),
+        simpleText('linkLabel', 'Link label'),
+        {
+          name: 'areas',
+          title: 'Opportunity areas',
+          type: 'array',
+          of: [{ type: 'string' }],
+        },
+      ],
+    },
+    {
       name: 'profileCard',
       title: 'About profile card',
       type: 'object',
@@ -413,6 +433,23 @@ export default {
         ],
       },
       textField('occupation', 'Occupation'),
+      {
+        name: 'collaborationCta',
+        title: 'Collaboration CTA',
+        type: 'object',
+        fields: [
+          textField('eyebrow', 'Eyebrow'),
+          textField('title', 'Title'),
+          textField('description', 'Description', 'text'),
+          textField('linkLabel', 'Link label'),
+          {
+            name: 'areas',
+            title: 'Opportunity areas',
+            type: 'array',
+            of: [{ type: 'string' }],
+          },
+        ],
+      },
       {
         name: 'profileCard',
         title: 'About profile card',

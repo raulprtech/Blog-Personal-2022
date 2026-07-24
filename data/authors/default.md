@@ -4,7 +4,6 @@ nickname: RaulprTech
 avatar: /static/images/avatar_nblue.png
 occupation: Ingeniero electronico e investigador en IA eficiente
 company: CINVESTAV / FP32
-email: contacto@raulpacheco.dev
 twitter: https://twitter.com/RaulprTech
 linkedin: https://www.linkedin.com/in/raulprtech
 github: https://github.com/RaulprTech
@@ -42,4 +41,4 @@ Mi experiencia combina desarrollo web, dise&ntilde;o de interfaces, automatizaci
 
 ## Contacto
 
-Si quieres hablar sobre investigaci&oacute;n, colaboraciones, charlas, proyectos t&eacute;cnicos o escritura sobre IA, puedes escribirme a [contacto@raulpacheco.dev](mailto:contacto@raulpacheco.dev) o revisar mi [CV](/static/CV/CV.pdf).
+Estoy abierto a **colaboraciones cient&iacute;ficas**, oportunidades de investigaci&oacute;n, conferencias, docencia especializada y consultor&iacute;a t&eacute;cnica selectiva. Puedes compartir una propuesta mediante la [p&aacute;gina de contacto](/contact) o revisar mi [CV](/static/CV/CV.pdf).
