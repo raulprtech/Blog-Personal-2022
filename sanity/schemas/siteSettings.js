@@ -118,7 +118,7 @@ export default {
       name: 'socialLinks',
       title: 'Footer social links',
       description:
-        'For the mail icon, the site always opens the private contact form and ignores the URL to avoid exposing an email address.',
+        'The mail icon opens the visitor email app. Its URL is ignored so the address is not exposed in the page HTML.',
       type: 'array',
       of: [
         {

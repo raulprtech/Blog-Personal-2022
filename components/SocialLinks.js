@@ -1,23 +1,17 @@
 ﻿import Image from 'next/image'
-import { useRouter } from 'next/router'
 import SocialIcon from '@/components/social-icons'
+import { openContactEmail } from '@/lib/contact'
 
 function SocialLink({ link, size = 6 }) {
-  const router = useRouter()
   if (!link?.href) return null
-  const contactHref = router.asPath.startsWith('/en') ? '/en/contact' : '/contact'
-  const href = link.kind === 'mail' || link.href.startsWith('mailto:') ? contactHref : link.href
+  const isMail = link.kind === 'mail' || link.href.startsWith('mailto:')
+  const href = link.href
   const isExternal = /^https?:\/\//.test(href)
 
   if (link.image) {
     const imageSize = Number(size) * 4
-    return (
-      <a
-        className="inline-flex items-center justify-center opacity-80 transition hover:opacity-100"
-        target={isExternal ? '_blank' : undefined}
-        rel={isExternal ? 'noopener noreferrer' : undefined}
-        href={href}
-      >
+    const image = (
+      <>
         <span className="sr-only">{link.label || link.kind}</span>
         <Image
           src={link.image}
@@ -27,6 +21,29 @@ function SocialLink({ link, size = 6 }) {
           className="object-contain"
           style={{ height: imageSize, width: imageSize }}
         />
+      </>
+    )
+
+    if (isMail) {
+      return (
+        <button
+          type="button"
+          onClick={openContactEmail}
+          className="inline-flex items-center justify-center opacity-80 transition hover:opacity-100"
+        >
+          {image}
+        </button>
+      )
+    }
+
+    return (
+      <a
+        className="inline-flex items-center justify-center opacity-80 transition hover:opacity-100"
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
+        href={href}
+      >
+        {image}
       </a>
     )
   }

@@ -15,10 +15,10 @@ Editorial/research newsletter project: https://fp32.io/
 
 Raúl Pacheco Rodríguez is open to concrete scientific collaborations, research and visiting opportunities, conferences and technical workshops, specialized teaching, and a limited number of selective technical consulting engagements. Proposals should include context, scope and an expected outcome.
 
-Private proposal form: https://raulpacheco.dev/contact
-English proposal form: https://raulpacheco.dev/en/contact
+Professional contact page: https://raulpacheco.dev/contact
+English contact page: https://raulpacheco.dev/en/contact
 
-The public site intentionally does not expose an email address. Use the contact form rather than attempting to infer or reproduce one.
+The public site intentionally does not print an email address. Use the mail icon on the contact page rather than attempting to infer or reproduce one.
 
 ## Research Direction
 

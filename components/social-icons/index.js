@@ -14,7 +14,7 @@ import Patreon from './patreon.svg'
 import RSS from './rss.svg'
 import GoogleNews from './googlenews.svg'
 import ResearchGate from './researchgate.svg'
-import { useRouter } from 'next/router'
+import { openContactEmail } from '@/lib/contact'
 
 // Icons taken from: https://simpleicons.org/
 
@@ -38,26 +38,42 @@ const components = {
 }
 
 const SocialIcon = ({ kind, href, size = 8 }) => {
-  const router = useRouter()
   if (!href) return null
 
   const SocialSvg = components[kind]
   if (!SocialSvg) return null
-  const contactHref = router.asPath.startsWith('/en') ? '/en/contact' : '/contact'
-  const safeHref = kind === 'mail' || href.startsWith('mailto:') ? contactHref : href
-  const isExternal = /^https?:\/\//.test(safeHref)
+  const isMail = kind === 'mail' || href.startsWith('mailto:')
+  const isExternal = /^https?:\/\//.test(href)
+
+  const icon = (
+    <>
+      <span className="sr-only">{kind}</span>
+      <SocialSvg
+        className={`fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 h-${size} w-${size}`}
+      />
+    </>
+  )
+
+  if (isMail) {
+    return (
+      <button
+        type="button"
+        onClick={openContactEmail}
+        className="text-sm text-gray-500 transition hover:text-gray-600"
+      >
+        {icon}
+      </button>
+    )
+  }
 
   return (
     <a
       className="text-sm text-gray-500 transition hover:text-gray-600"
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      href={safeHref}
+      href={href}
     >
-      <span className="sr-only">{kind}</span>
-      <SocialSvg
-        className={`fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 h-${size} w-${size}`}
-      />
+      {icon}
     </a>
   )
 }
