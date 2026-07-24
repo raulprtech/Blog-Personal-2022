@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import EditablePageHeader from '@/components/EditablePageHeader'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import MarkdownText from '@/components/MarkdownText'
@@ -6,6 +7,7 @@ import { PageSEO } from '@/components/SEO'
 import SocialLinks from '@/components/SocialLinks'
 import siteMetadata from '@/data/siteMetadata'
 import { getPageContent } from '@/lib/content'
+import { localizedPath } from '@/lib/i18n'
 import { getSiteSettings } from '@/lib/siteSettings'
 
 const contactCopy = {
@@ -63,7 +65,10 @@ export default function Contact({ pageContent, siteSettings, lang = 'es' }) {
         <div className="grid gap-12 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="grid gap-px overflow-hidden rounded-md border border-gray-200 bg-gray-200 dark:border-gray-800 dark:bg-gray-800 sm:grid-cols-2">
             {(pageContent?.bodySections || []).map((item) => (
-              <article key={item.heading} className="bg-white p-6 dark:bg-gray-950">
+              <article
+                key={item.heading}
+                className="flex h-full flex-col bg-white p-6 dark:bg-gray-950"
+              >
                 {item.eyebrow && (
                   <p className="text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
                     {item.eyebrow}
@@ -78,6 +83,14 @@ export default function Contact({ pageContent, siteSettings, lang = 'es' }) {
                 >
                   {item.text}
                 </MarkdownText>
+                {item.href && item.linkLabel && (
+                  <Link
+                    href={localizedPath(item.href, lang)}
+                    className="mt-auto inline-flex pt-5 text-sm font-semibold text-primary-700 transition hover:text-primary-800 dark:text-secondary-400"
+                  >
+                    {item.linkLabel} <span aria-hidden="true">-&gt;</span>
+                  </Link>
+                )}
               </article>
             ))}
           </div>
