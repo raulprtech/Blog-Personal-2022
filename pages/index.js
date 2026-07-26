@@ -14,6 +14,7 @@ import { Eyebrow } from '@/components/ContentMeta'
 import { getHomeContent } from '@/lib/content'
 import { getAllNotesFrontMatter } from '@/lib/notes'
 import { localizedPath } from '@/lib/i18n'
+import formatDate from '@/lib/utils/formatDate'
 
 function SectionHeading({ section, href, lang = 'es' }) {
   return (
@@ -73,9 +74,12 @@ function SectionHeading({ section, href, lang = 'es' }) {
 function BlogNoteCard({ post, lang = 'es' }) {
   return (
     <article className="h-full rounded-md border border-gray-200 bg-white p-6 transition hover:border-gray-400 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-600">
-      <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-700 dark:text-secondary-400">
-        {post.date}
-      </p>
+      <time
+        dateTime={post.date}
+        className="text-xs font-bold uppercase tracking-[0.2em] text-primary-700 dark:text-secondary-400"
+      >
+        {formatDate(post.date, lang)}
+      </time>
       <h3 className="mt-4 text-2xl font-black tracking-tight text-gray-950 dark:text-white">
         <Link href={localizedPath(`/blog/${post.slug}`, lang)}>{post.title}</Link>
       </h3>
