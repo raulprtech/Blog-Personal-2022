@@ -150,8 +150,8 @@ export default function Home({
         <section className="py-12">
           <SectionHeading section={updatesSection} href="/updates" lang={lang} />
           <div className="grid gap-6 lg:grid-cols-3">
-            {updates.slice(0, 3).map((update, index) => (
-              <UpdateCard key={update.title} update={update} large={index === 0} />
+            {updates.slice(0, 3).map((update) => (
+              <UpdateCard key={update.title} update={update} />
             ))}
           </div>
         </section>
