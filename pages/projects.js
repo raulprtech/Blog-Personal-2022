@@ -30,7 +30,7 @@ export default function Projects({ projectsData, pageContent, lang = 'es' }) {
 
         <div className="grid gap-6 py-12 md:grid-cols-2">
           {projectsData.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard key={project.title} project={project} lang={lang} />
           ))}
         </div>
       </section>

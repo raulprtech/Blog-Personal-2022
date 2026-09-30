@@ -163,6 +163,11 @@ export default async function handler(req, res) {
       paths.add(`/blog/${slug}`)
     }
 
+    if (type === 'project' && typeof slug === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      paths.add(`/projects/${slug}`)
+      paths.add(`/en/projects/${slug}`)
+    }
+
     await Promise.all(Array.from(paths).map((path) => res.revalidate(path)))
 
     return res.json({ revalidated: true, type, paths: Array.from(paths) })

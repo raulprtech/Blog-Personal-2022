@@ -65,6 +65,33 @@ function normalizePagePath(page) {
   return page.replace(/\\/g, '/')
 }
 
+async function getSanityProjectPages() {
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'a668buu6'
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+  const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-01-01'
+
+  try {
+    const url = new URL(`https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`)
+    url.searchParams.set(
+      'query',
+      '*[_type == "project" && pageEnabled == true && defined(slug.current) && !(_id in path("drafts.**"))]{"slug": slug.current}'
+    )
+    const token = process.env.SANITY_API_READ_TOKEN
+    const response = await fetch(url.toString(), {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+    if (!response.ok) return []
+    const data = await response.json()
+    return Array.isArray(data.result)
+      ? data.result
+          .filter((project) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(project.slug || ''))
+          .map((project) => `/projects/${project.slug}`)
+      : []
+  } catch (error) {
+    return []
+  }
+}
+
 function routeFromPage(page) {
   const normalizedPage = normalizePagePath(page)
   const path = normalizedPage
@@ -91,6 +118,8 @@ function shouldSkipPage(page) {
     normalizedPage.includes('pages/en/blog/[...slug].') ||
     normalizedPage.includes('pages/en/blog/page/[page].') ||
     normalizedPage.includes('pages/en/tags/[tag].') ||
+    normalizedPage.includes('pages/projects/[slug].') ||
+    normalizedPage.includes('pages/en/projects/[slug].') ||
     normalizedPage.includes('pages/_')
   )
 }
@@ -151,6 +180,13 @@ function buildUrl(route, alternates = true) {
   sanityNotes.forEach((note) => {
     routes.push({ route: note.route, alternates: note.hasEnglish })
     if (note.hasEnglish) routes.push({ route: toEnglishRoute(note.route), alternates: true })
+  })
+
+  const projectPages = await getSanityProjectPages()
+  projectPages.forEach((route) => {
+    staticAlternateRoutes.add(route)
+    routes.push({ route, alternates: true })
+    routes.push({ route: toEnglishRoute(route), alternates: true })
   })
 
   const seen = new Set()

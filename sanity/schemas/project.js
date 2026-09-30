@@ -1,4 +1,4 @@
-import { englishField, stringArrayField, textField } from './localization'
+import { englishField, portableTextField, stringArrayField, textField } from './localization'
 export default {
   name: 'project',
   title: 'Project',
@@ -6,8 +6,65 @@ export default {
   fields: [
     { name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() },
     { name: 'description', title: 'Description', type: 'text', rows: 4 },
-    { name: 'href', title: 'Link or path', type: 'string' },
+    {
+      name: 'href',
+      title: 'External website or existing link',
+      type: 'string',
+      description: 'Optional. Kept as a separate link when the project has its own page.',
+    },
+    {
+      name: 'pageEnabled',
+      title: 'Publish a project page on this site',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Creates /projects/your-slug when this project is published.',
+    },
+    {
+      name: 'slug',
+      title: 'Project page URL',
+      type: 'slug',
+      options: { source: 'title', maxLength: 96 },
+      description: 'Generate a unique slug with lowercase letters, numbers and hyphens.',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          if (!context.document?.pageEnabled) return true
+          if (!value?.current) return 'Generate the URL before publishing the project page.'
+          return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value.current)
+            ? true
+            : 'Use lowercase letters, numbers and hyphens only.'
+        }),
+    },
+    portableTextField('body', 'Project page content'),
+    {
+      name: 'links',
+      title: 'Project page buttons',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'projectLink',
+          fields: [
+            {
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'href',
+              title: 'URL or site path',
+              type: 'string',
+              validation: (Rule) =>
+                Rule.required().uri({ allowRelative: true, scheme: ['http', 'https'] }),
+            },
+          ],
+        },
+      ],
+    },
+    { name: 'seoTitle', title: 'Page SEO title', type: 'string' },
+    { name: 'seoDescription', title: 'Page SEO description', type: 'text', rows: 3 },
     { name: 'image', title: 'Image', type: 'image', options: { hotspot: true } },
+    { name: 'imageAlt', title: 'Image alt text', type: 'string' },
     { name: 'category', title: 'Category', type: 'string' },
     { name: 'status', title: 'Status', type: 'string' },
     { name: 'role', title: 'Role', type: 'string' },
@@ -78,6 +135,10 @@ export default {
       textField('status', 'Status'),
       textField('role', 'Role'),
       stringArrayField('tags', 'Tags'),
+      portableTextField('body', 'Project page content'),
+      textField('seoTitle', 'Page SEO title'),
+      textField('seoDescription', 'Page SEO description', 'text'),
+      textField('imageAlt', 'Image alt text'),
     ]),
   ],
   preview: {
