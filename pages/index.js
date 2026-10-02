@@ -145,7 +145,9 @@ export default function Home({
         <PageSEO
           title={
             pageContent?.seoTitle ||
-            `${siteMetadata.title} - ${siteMetadata.author} - ${siteMetadata.nickname}`
+            `${siteMetadata.title} | ${
+              lang === 'en' ? 'AI research and systems' : 'Investigación en IA y sistemas'
+            }`
           }
           description={pageContent?.seoDescription || siteMetadata.description}
         />

@@ -101,6 +101,8 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
     '@type': 'WebSite',
     '@id': `${siteMetadata.siteUrl}/#website`,
     name: siteMetadata.title,
+    alternateName: ['Raúl Pacheco', 'Raul Pacheco', 'raulpacheco.dev'],
+    description: siteMetadata.description,
     url: siteMetadata.siteUrl,
     inLanguage: ['es-MX', 'en'],
     author: {

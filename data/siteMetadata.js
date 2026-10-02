@@ -3,7 +3,7 @@ const siteMetadata = {
   author: 'Raúl Pacheco Rodríguez',
   headerTitle: 'Raul Pacheco',
   description:
-    'Investigo IA eficiente, reproducible y hardware-aware en la frontera entre machine learning, cuantización y sistemas digitales.',
+    'Investigación en inteligencia artificial eficiente y reproducible, IA médica, cuantización y sistemas digitales. Proyectos, publicaciones y colaboraciones científicas de Raúl Pacheco Rodríguez.',
   authorDescription:
     'Ingeniero electrónico e investigador en IA eficiente, evaluación anti-leakage, cuantización y co-diseño algoritmo-hardware.',
   language: 'es-mx',

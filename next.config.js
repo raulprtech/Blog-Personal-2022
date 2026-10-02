@@ -68,7 +68,30 @@ module.exports = withBundleAnalyzer({
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
   async rewrites() {
-    return [{ source: '/favicon.ico', destination: '/api/site-icon/48' }]
+    return {
+      beforeFiles: [
+        { source: '/favicon.ico', destination: '/api/site-icon/48?format=ico' },
+        { source: '/favicon.png', destination: '/api/site-icon/96' },
+        { source: '/apple-touch-icon.png', destination: '/api/site-icon/180' },
+        { source: '/site.webmanifest', destination: '/api/site-manifest' },
+        { source: '/static/favicons/site.webmanifest', destination: '/api/site-manifest' },
+        { source: '/static/favicons/favicon.ico', destination: '/api/site-icon/48?format=ico' },
+        { source: '/static/favicons/favicon-16x16.png', destination: '/api/site-icon/16' },
+        { source: '/static/favicons/favicon-32x32.png', destination: '/api/site-icon/32' },
+        { source: '/static/favicons/favicon-48x48.png', destination: '/api/site-icon/48' },
+        { source: '/static/favicons/apple-touch-icon.png', destination: '/api/site-icon/180' },
+        { source: '/static/favicons/android-chrome-96x96.png', destination: '/api/site-icon/96' },
+        {
+          source: '/static/favicons/android-chrome-192x192.png',
+          destination: '/api/site-icon/192',
+        },
+        {
+          source: '/static/favicons/android-chrome-512x512.png',
+          destination: '/api/site-icon/512',
+        },
+        { source: '/static/favicons/mstile-150x150.png', destination: '/api/site-icon/150' },
+      ],
+    }
   },
   async redirects() {
     return [
