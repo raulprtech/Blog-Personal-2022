@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import LayoutWrapper from '@/components/LayoutWrapper'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+
+export const getStaticProps = withSiteSettings(async () => ({ props: {}, revalidate: 60 }))
 
 export default function FourZeroFour() {
   return (

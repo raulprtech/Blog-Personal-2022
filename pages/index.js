@@ -1,4 +1,5 @@
-﻿import Image from 'next/image'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import Image from 'next/image'
 import Link from 'next/link'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
@@ -100,7 +101,7 @@ function BlogNoteCard({ post, lang = 'es' }) {
   )
 }
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [homeContent, blogPosts] = await Promise.all([
     getHomeContent(lang),
     getAllNotesFrontMatter(lang),
@@ -194,3 +195,5 @@ export default function Home({
     </>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

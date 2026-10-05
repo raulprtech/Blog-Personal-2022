@@ -25,7 +25,9 @@ async function getLogo() {
   const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'a668buu6'
   const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
   const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-01-01'
-  const token = process.env.SANITY_API_READ_TOKEN
+  const privateDataset = process.env.SANITY_PRIVATE_DATASET === 'true'
+  const token = privateDataset ? process.env.SANITY_API_READ_TOKEN : undefined
+  if (privateDataset && !token) throw new Error('Private Sanity dataset requires a read token')
 
   try {
     const url = new URL(`https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`)

@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import Link from 'next/link'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
@@ -82,7 +83,7 @@ function Milestone({ item }) {
   )
 }
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [trajectoryData, pageContent] = await Promise.all([
     getTimelineItems(lang),
     getPageContent('trajectory', lang),
@@ -190,3 +191,5 @@ export default function Trajectory({ trajectoryData, pageContent, lang = 'es' })
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

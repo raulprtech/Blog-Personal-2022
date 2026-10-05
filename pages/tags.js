@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -6,10 +7,10 @@ import kebabCase from '@/lib/utils/kebabCase'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { localizedPath } from '@/lib/i18n'
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const tags = await getAllNoteTags(lang)
 
-  return { props: { tags, lang } }
+  return { props: { tags, lang }, revalidate: 60 }
 }
 
 export default function Tags({ tags, lang = 'es' }) {
@@ -45,3 +46,5 @@ export default function Tags({ tags, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

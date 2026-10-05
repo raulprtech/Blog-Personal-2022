@@ -1,177 +1,43 @@
-const pathsByType = {
-  pageContent: [
-    '/',
-    '/about',
-    '/updates',
-    '/projects',
-    '/resources',
-    '/research',
-    '/trajectory',
-    '/papers',
-    '/education',
-    '/ventures',
-    '/talks',
-    '/me',
-    '/contact',
-    '/en/contact',
-  ],
-  siteSettings: [
-    '/',
-    '/about',
-    '/updates',
-    '/projects',
-    '/resources',
-    '/research',
-    '/trajectory',
-    '/papers',
-    '/ventures',
-    '/education',
-    '/talks',
-    '/me',
-    '/contact',
-    '/en/contact',
-  ],
-  credential: [
-    '/education',
-    '/about',
-    '/papers',
-    '/research',
-    '/projects',
-    '/resources',
-    '/trajectory',
-    '/ventures',
-    '/talks',
-  ],
-  note: [
-    '/',
-    '/blog',
-    '/tags',
-    '/research',
-    '/projects',
-    '/papers',
-    '/resources',
-    '/trajectory',
-    '/talks',
-  ],
-  update: [
-    '/',
-    '/updates',
-    '/research',
-    '/projects',
-    '/papers',
-    '/resources',
-    '/trajectory',
-    '/talks',
-  ],
-  project: [
-    '/',
-    '/projects',
-    '/research',
-    '/papers',
-    '/ventures',
-    '/education',
-    '/resources',
-    '/trajectory',
-    '/talks',
-  ],
-  researchItem: [
-    '/research',
-    '/papers',
-    '/projects',
-    '/ventures',
-    '/education',
-    '/resources',
-    '/trajectory',
-    '/talks',
-  ],
-  paper: [
-    '/papers',
-    '/research',
-    '/projects',
-    '/ventures',
-    '/education',
-    '/resources',
-    '/trajectory',
-    '/talks',
-  ],
-  venture: [
-    '/ventures',
-    '/research',
-    '/projects',
-    '/papers',
-    '/education',
-    '/resources',
-    '/trajectory',
-    '/talks',
-  ],
-  collaborator: ['/papers', '/research', '/projects', '/ventures'],
-  resource: [
-    '/',
-    '/resources',
-    '/research',
-    '/projects',
-    '/papers',
-    '/education',
-    '/trajectory',
-    '/ventures',
-    '/talks',
-  ],
-  talk: [
-    '/',
-    '/talks',
-    '/trajectory',
-    '/research',
-    '/projects',
-    '/papers',
-    '/education',
-    '/resources',
-    '/ventures',
-    '/blog',
-  ],
-  trajectoryItem: [
-    '/trajectory',
-    '/research',
-    '/projects',
-    '/papers',
-    '/education',
-    '/resources',
-    '/ventures',
-    '/talks',
-  ],
-}
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' })
+import { createHandler, staticRoutes, bothLanguages, validSlug } from '@/lib/revalidation.cjs'
+import { getAllNotesFrontMatter } from '@/lib/notes'
+import { getProjectSlugs } from '@/lib/content'
+import kebabCase from '@/lib/utils/kebabCase'
+
+export const config = { api: { bodyParser: false } }
+
+export default createHandler(async (body) => {
+  const [notes, englishNotes, projects] = await Promise.all([
+    getAllNotesFrontMatter('es'),
+    getAllNotesFrontMatter('en'),
+    getProjectSlugs(),
+  ])
+  const paths = staticRoutes.flatMap(bothLanguages)
+  paths.push('/resume', '/services', '/404')
+  projects.forEach((slug) => paths.push(...bothLanguages(`/projects/${slug}`)))
+  for (const [prefix, posts] of [
+    ['', notes],
+    ['/en', englishNotes],
+  ]) {
+    posts.forEach((post) => {
+      if (validSlug(post.slug)) paths.push(`${prefix}/blog/${post.slug}`)
+      ;(post.tags || []).forEach((tag) => paths.push(`${prefix}/tags/${kebabCase(tag)}`))
+    })
+    // Include the former final page when deletion reduces the page count.
+    for (let page = 1; page <= Math.ceil(posts.length / 5) + 1; page++)
+      paths.push(`${prefix}/blog/page/${page}`)
   }
-
-  const secret = process.env.SANITY_REVALIDATE_SECRET
-  if (secret && req.query.secret !== secret) {
-    return res.status(401).json({ message: 'Invalid token' })
+  if (['note', 'project'].includes(body._type)) {
+    for (const value of [body.slug, body.previousSlug]) {
+      const slug = value?.current ?? value
+      if (slug)
+        paths.push(...bothLanguages(`/${body._type === 'note' ? 'blog' : 'projects'}/${slug}`))
+    }
   }
-
-  try {
-    const type = req.body?._type
-    const slug = req.body?.slug?.current || req.body?.slug
-    const paths = new Set(pathsByType[type] || ['/'])
-
-    if (type === 'pageContent' && slug) {
-      paths.add(slug === 'home' ? '/' : `/${slug}`)
-      if (slug === 'credentials') paths.add('/education')
-    }
-
-    if (type === 'note' && slug) {
-      paths.add(`/blog/${slug}`)
-    }
-
-    if (type === 'project' && typeof slug === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
-      paths.add(`/projects/${slug}`)
-      paths.add(`/en/projects/${slug}`)
-    }
-
-    await Promise.all(Array.from(paths).map((path) => res.revalidate(path)))
-
-    return res.json({ revalidated: true, type, paths: Array.from(paths) })
-  } catch (error) {
-    return res.status(500).json({ message: 'Error revalidating', error: error.message })
-  }
-}
+  ;[...(body.tags || []), ...(body.previousTags || [])].forEach((tag) =>
+    paths.push(...bothLanguages(`/tags/${kebabCase(tag)}`))
+  )
+  ;[...(body.englishTags || []), ...(body.previousEnglishTags || [])].forEach((tag) =>
+    paths.push(`/en/tags/${kebabCase(tag)}`)
+  )
+  return paths
+})

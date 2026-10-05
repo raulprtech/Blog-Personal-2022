@@ -2,6 +2,7 @@
   "name": "raul-pacheco-sanity-studio",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@11.11.0",
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",
@@ -21,12 +22,12 @@
     "import:platzi-credentials:missing": "sanity datasets import --project-id a668buu6 --dataset production --missing import/platzi-relevant-credentials.ndjson"
   },
   "dependencies": {
-    "@sanity/vision": "latest",
-    "sanity": "latest",
-    "styled-components": "^6.1.19"
+    "@sanity/vision": "6.17.0",
+    "sanity": "6.17.0",
+    "styled-components": "6.4.2"
   },
   "devDependencies": {
-    "react": "^19.2.2",
-    "react-dom": "^19.2.2"
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   }
 }

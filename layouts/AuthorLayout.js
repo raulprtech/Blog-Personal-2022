@@ -24,24 +24,12 @@ const defaultContent = {
   },
 }
 
-const resourcesSection = {
-  eyebrow: 'Biblioteca técnica',
-  heading: 'Recursos para seguir el mapa de trabajo.',
-  text: 'Mantengo una biblioteca viva con lecturas, repositorios, referencias y herramientas que alimentan mi investigación y mis notas técnicas.',
-  href: '/resources',
-  linkLabel: 'Ver recursos',
-}
-
 function AboutBody({ sections, children }) {
-  const displaySections = sections?.length ? sections : []
-  const hasResourcesLink = displaySections.some((section) => section.href === '/resources')
-  const mergedSections = hasResourcesLink ? displaySections : [...displaySections, resourcesSection]
-
-  if (!mergedSections.length) return children
+  if (!Array.isArray(sections)) return children
 
   return (
     <div className="not-prose space-y-8">
-      {mergedSections.map((section) => (
+      {sections.map((section) => (
         <section key={`${section.heading}-${section.text?.slice(0, 24)}`}>
           {section.eyebrow && (
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary-700 dark:text-secondary-400">
@@ -76,12 +64,12 @@ function AboutBody({ sections, children }) {
 }
 
 export default function AuthorLayout({ children, frontMatter, pageContent, siteSettings }) {
-  const { nickname, avatar, company, CV } = frontMatter
+  const { nickname, avatar, company } = frontMatter
   const displayName = siteSettings?.author || siteMetadata.author
   const content = { ...defaultContent, ...(pageContent || {}) }
   const settings = siteSettings || fallbackSiteSettings
   const profileCard = { ...defaultContent.profileCard, ...(content.profileCard || {}) }
-  const cvHref = settings.cvHref || CV
+  const cvHref = settings.cvHref
   const cvLabel = settings.cvLabel || 'Descargar CV'
   const socialLinks = settings.socialLinks || fallbackSiteSettings.socialLinks
   const profileImage = profileCard.image || avatar
@@ -147,25 +135,30 @@ export default function AuthorLayout({ children, frontMatter, pageContent, siteS
                 <SocialLinks links={socialLinks} size="6" className="flex space-x-3 pt-6" />
               </div>
 
-              <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-800">
-                <Link
-                  href={cvHref}
-                  className="group flex items-center justify-between rounded-md border border-gray-300 bg-gray-950 px-4 py-3 text-sm font-semibold text-white transition hover:border-primary-700 hover:bg-primary-700 dark:border-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-secondary-300"
-                >
-                  <span>{cvLabel}</span>
-                  <span aria-hidden="true" className="ml-4 transition group-hover:translate-x-0.5">
-                    -&gt;
-                  </span>
-                </Link>
-                {profileCard.cvNote && (
-                  <MarkdownText
-                    className="mt-3 space-y-3"
-                    paragraphClassName="text-sm leading-6 text-gray-500 dark:text-gray-400"
+              {cvHref && (
+                <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-800">
+                  <Link
+                    href={cvHref}
+                    className="group flex items-center justify-between rounded-md border border-gray-300 bg-gray-950 px-4 py-3 text-sm font-semibold text-white transition hover:border-primary-700 hover:bg-primary-700 dark:border-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-secondary-300"
                   >
-                    {profileCard.cvNote}
-                  </MarkdownText>
-                )}
-              </div>
+                    <span>{cvLabel}</span>
+                    <span
+                      aria-hidden="true"
+                      className="ml-4 transition group-hover:translate-x-0.5"
+                    >
+                      -&gt;
+                    </span>
+                  </Link>
+                  {profileCard.cvNote && (
+                    <MarkdownText
+                      className="mt-3 space-y-3"
+                      paragraphClassName="text-sm leading-6 text-gray-500 dark:text-gray-400"
+                    >
+                      {profileCard.cvNote}
+                    </MarkdownText>
+                  )}
+                </div>
+              )}
             </div>
             <div className="mt-8">
               <Quote />

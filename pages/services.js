@@ -1,6 +1,9 @@
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+
+export const getStaticProps = withSiteSettings(async () => ({ props: {}, revalidate: 60 }))
 import Image from 'next/image'
 
 export default function trajectory() {

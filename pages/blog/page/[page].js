@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
@@ -15,11 +16,11 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
-export async function getStaticProps(context) {
+async function getPageStaticProps(context) {
   const lang = context.lang || 'es'
   const {
     params: { page },
@@ -29,7 +30,13 @@ export async function getStaticProps(context) {
     getAllNoteTags(lang),
     getPageContent('blog', lang),
   ])
-  const pageNumber = parseInt(page)
+  const pageNumber = Number(page)
+  if (
+    !/^[1-9]\d*$/.test(page) ||
+    !Number.isSafeInteger(pageNumber) ||
+    pageNumber > Math.ceil(posts.length / POSTS_PER_PAGE)
+  )
+    return { notFound: true, revalidate: 60 }
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -79,3 +86,5 @@ export default function PostPage({
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

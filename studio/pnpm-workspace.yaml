@@ -12,3 +12,10 @@ allowBuilds:
 
 # Running a content command should not trigger an implicit reinstall first.
 verifyDepsBeforeRun: false
+
+# Patch vulnerable transitive pins without crossing their current major versions.
+overrides:
+  'js-yaml@3.13.1': 3.15.2
+  'browserslist@4.28.4': 4.29.3
+  'smol-toml@1.5.2': 1.9.0
+  'undici@7.29.0': 7.30.0

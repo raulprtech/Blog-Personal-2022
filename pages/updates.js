@@ -1,11 +1,12 @@
-﻿import LayoutWrapper from '@/components/LayoutWrapper'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import UpdateCard from '@/components/UpdateCard'
 import EditablePageHeader from '@/components/EditablePageHeader'
 import siteMetadata from '@/data/siteMetadata'
 import { getPageContent, getUpdates } from '@/lib/content'
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [updatesData, pageContent] = await Promise.all([
     getUpdates(lang),
     getPageContent('updates', lang),
@@ -46,3 +47,5 @@ export default function Updates({ updatesData, pageContent, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

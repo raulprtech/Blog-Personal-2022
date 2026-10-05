@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import EditablePageHeader from '@/components/EditablePageHeader'
@@ -5,7 +6,7 @@ import VentureCard from '@/components/VentureCard'
 import siteMetadata from '@/data/siteMetadata'
 import { getPageContent, getVentures } from '@/lib/content'
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [venturesData, pageContent] = await Promise.all([
     getVentures(lang),
     getPageContent('ventures', lang),
@@ -36,3 +37,5 @@ export default function Ventures({ venturesData, pageContent, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

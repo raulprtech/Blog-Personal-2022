@@ -1,11 +1,12 @@
-﻿import siteMetadata from '@/data/siteMetadata'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import siteMetadata from '@/data/siteMetadata'
 import { getPageContent, getProjects } from '@/lib/content'
 import { PageSEO } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import ProjectCard from '@/components/ProjectCard'
 import EditablePageHeader from '@/components/EditablePageHeader'
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [projectsData, pageContent] = await Promise.all([
     getProjects(lang),
     getPageContent('projects', lang),
@@ -37,3 +38,5 @@ export default function Projects({ projectsData, pageContent, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

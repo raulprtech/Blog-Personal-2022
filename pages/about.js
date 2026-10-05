@@ -1,4 +1,5 @@
-﻿import { MDXLayoutRenderer } from '@/components/MDXComponents'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
 import { getPageContent } from '@/lib/content'
 import { getSiteSettings } from '@/lib/siteSettings'
@@ -7,9 +8,9 @@ const DEFAULT_LAYOUT = 'AuthorLayout'
 
 import LayoutWrapper from '@/components/LayoutWrapper'
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [authorDetails, pageContent, siteSettings] = await Promise.all([
-    getFileBySlug('authors', ['default']),
+    getFileBySlug('authors', 'default'),
     getPageContent('about', lang),
     getSiteSettings(),
   ])
@@ -31,3 +32,5 @@ export default function About({ authorDetails, pageContent, siteSettings, lang =
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

@@ -31,13 +31,7 @@ const siteMetadata = {
   nickname: '@RaulprTech',
   locale: 'es-MX',
   analytics: {
-    plausibleDataDomain: 'https://raulpacheco.dev/',
-    simpleAnalytics: false,
-    umamiWebsiteId: '',
     googleAnalyticsId: 'G-84HCGBBFCK',
-  },
-  newsletter: {
-    provider: 'convertkit',
   },
   comment: {
     provider: 'giscus',

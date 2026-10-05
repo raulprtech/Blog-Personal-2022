@@ -1,5 +1,8 @@
 // import ProjectResume from '../components/ProjectResume'
 import LayoutWrapper from '@/components/LayoutWrapper'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+
+export const getStaticProps = withSiteSettings(async () => ({ props: {}, revalidate: 60 }))
 import { PageSEO } from '@/components/SEO'
 import Timeline from '@/components/Profile/Timeline'
 import siteMetadata from '@/data/siteMetadata'

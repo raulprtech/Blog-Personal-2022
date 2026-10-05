@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { SiteSettingsContext } from './SiteSettingsContext'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
@@ -43,23 +44,10 @@ function LanguageSwitch({ lang, currentPath }) {
 }
 
 const LayoutWrapper = ({ children, bgImage, header = true, lang = 'es' }) => {
-  const [siteSettings, setSiteSettings] = useState(fallbackSiteSettings)
+  const publishedSettings = useContext(SiteSettingsContext)
+  const siteSettings = publishedSettings || { ...fallbackSiteSettings, navigationLinks: [] }
   const router = useRouter()
   const currentPath = router?.asPath || '/'
-
-  useEffect(() => {
-    let active = true
-    fetch('/api/site-settings')
-      .then((response) => (response.ok ? response.json() : null))
-      .then((settings) => {
-        if (active && settings) setSiteSettings(settings)
-      })
-      .catch(() => {})
-
-    return () => {
-      active = false
-    }
-  }, [])
 
   const headerTitle = siteSettings.headerTitle || siteMetadata.headerTitle
   const logoAlt = siteSettings.logoAlt || headerTitle

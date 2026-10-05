@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from '@/components/Image'
+import { safeHref } from '@/lib/security.cjs'
 
 function spanKey(child, index) {
   return child._key || `${child.text || 'span'}-${index}`
@@ -18,9 +19,12 @@ function renderTextChild(child, markDefs, index) {
     )
     .find(Boolean)
 
-  if (linkMark?.href) {
+  if (safeHref(linkMark?.href)) {
     content = (
-      <Link href={linkMark.href} className="font-semibold text-primary-700 dark:text-secondary-400">
+      <Link
+        href={safeHref(linkMark.href)}
+        className="font-semibold text-primary-700 dark:text-secondary-400"
+      >
         {content}
       </Link>
     )

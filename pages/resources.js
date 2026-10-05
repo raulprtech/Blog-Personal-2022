@@ -1,4 +1,5 @@
-﻿import LayoutWrapper from '@/components/LayoutWrapper'
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import ResourceCard from '@/components/ResourceCard'
 import EditablePageHeader from '@/components/EditablePageHeader'
@@ -7,7 +8,7 @@ import { getPageContent, getResources } from '@/lib/content'
 
 const fallbackCategories = ['papers', 'repos', 'blogs', 'books', 'talks', 'datasets']
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [resourcesData, pageContent] = await Promise.all([
     getResources(lang),
     getPageContent('resources', lang),
@@ -50,3 +51,5 @@ export default function Resources({ resourcesData, pageContent, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

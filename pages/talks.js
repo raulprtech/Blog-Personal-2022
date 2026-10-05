@@ -1,3 +1,5 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import { serializeJsonLd } from '@/lib/security.cjs'
 import Head from 'next/head'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
@@ -6,7 +8,7 @@ import TalkCard from '@/components/TalkCard'
 import siteMetadata from '@/data/siteMetadata'
 import { getPageContent, getTalks } from '@/lib/content'
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [talksData, pageContent] = await Promise.all([
     getTalks(lang),
     getPageContent('talks', lang),
@@ -52,7 +54,7 @@ export default function Talks({ talksData, pageContent, lang = 'es' }) {
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData, null, 2) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
         />
       </Head>
       <section className="pb-16 pt-8">
@@ -67,3 +69,5 @@ export default function Talks({ talksData, pageContent, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

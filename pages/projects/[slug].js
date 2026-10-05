@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import Link from 'next/link'
 import ArticleShell from '@/components/ArticleShell'
 import LayoutWrapper from '@/components/LayoutWrapper'
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params, lang = 'es' }) {
+async function getPageStaticProps({ params, lang = 'es' }) {
   const project = await getProjectBySlug(params.slug, lang)
   if (!project) return { notFound: true, revalidate: 60 }
   return { props: { project, lang }, revalidate: 60 }
@@ -112,3 +113,5 @@ export default function ProjectPage({ project, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

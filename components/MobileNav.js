@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { alternateLanguagePath, localizedPath } from '@/lib/i18n'
 
@@ -9,25 +9,50 @@ function getNavigationLabel(link, lang) {
 
 const MobileNav = ({ lang = 'es', currentPath = '/', navigationLinks = [] }) => {
   const [navShow, setNavShow] = useState(false)
+  const trigger = useRef(null)
+  const panel = useRef(null)
 
-  const onToggleNav = () => {
-    setNavShow((status) => {
-      if (status) {
-        document.body.style.overflow = 'auto'
-      } else {
-        // Prevent scrolling
-        document.body.style.overflow = 'hidden'
-      }
-      return !status
-    })
-  }
+  const onToggleNav = () => setNavShow((status) => !status)
+
+  useEffect(() => {
+    if (!navShow) return
+    const button = trigger.current
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    panel.current?.querySelector('a, button')?.focus()
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setNavShow(false)
+      if (event.key !== 'Tab') return
+      const focusable = [trigger.current, ...panel.current.querySelectorAll('a, button')].filter(
+        Boolean
+      )
+      const index = focusable.indexOf(document.activeElement)
+      const next = event.shiftKey ? index - 1 : index + 1
+      event.preventDefault()
+      focusable[(next + focusable.length) % focusable.length]?.focus()
+    }
+    const onResize = () => {
+      if (window.innerWidth >= 640) setNavShow(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    window.addEventListener('resize', onResize)
+    return () => {
+      document.body.style.overflow = overflow
+      document.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener('resize', onResize)
+      button?.focus()
+    }
+  }, [navShow])
 
   return (
     <div className="sm:hidden">
       <button
+        ref={trigger}
         type="button"
         className="ml-1 mr-1 h-8 w-8 rounded py-1"
         aria-label="Toggle Menu"
+        aria-expanded={navShow}
+        aria-controls="mobile-navigation"
         onClick={onToggleNav}
       >
         <svg
@@ -51,51 +76,55 @@ const MobileNav = ({ lang = 'es', currentPath = '/', navigationLinks = [] }) => 
           )}
         </svg>
       </button>
-      <div
-        className={`fixed right-0 top-24 z-10 h-full w-full transform bg-gray-200 opacity-95 duration-300 ease-in-out dark:bg-gray-800 ${
-          navShow ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <button
-          type="button"
-          aria-label="toggle modal"
-          className="fixed h-full w-full cursor-auto focus:outline-none"
-          onClick={onToggleNav}
-        ></button>
-        <nav className="fixed mt-8 h-full">
-          {navigationLinks.map((link) => {
-            const title = getNavigationLabel(link, lang)
-            return (
-              <div key={`${link.href}-${title}`} className="px-12 py-4">
+      {navShow && (
+        <div
+          ref={panel}
+          id="mobile-navigation"
+          className={`fixed right-0 top-24 z-10 h-full w-full transform bg-gray-200 opacity-95 duration-300 ease-in-out dark:bg-gray-800 ${
+            navShow ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <button
+            type="button"
+            aria-label="toggle modal"
+            className="fixed h-full w-full cursor-auto focus:outline-none"
+            onClick={onToggleNav}
+          ></button>
+          <nav className="fixed mt-8 h-full">
+            {navigationLinks.map((link) => {
+              const title = getNavigationLabel(link, lang)
+              return (
+                <div key={`${link.href}-${title}`} className="px-12 py-4">
+                  <Link
+                    href={localizedPath(link.href, lang)}
+                    className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+                    onClick={onToggleNav}
+                    aria-label={title}
+                  >
+                    {title}
+                  </Link>
+                </div>
+              )
+            })}
+            <div className="mt-6 flex gap-2 px-12">
+              {['es', 'en'].map((option) => (
                 <Link
-                  href={localizedPath(link.href, lang)}
-                  className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+                  key={option}
+                  href={alternateLanguagePath(currentPath, option)}
                   onClick={onToggleNav}
-                  aria-label={title}
+                  className={`rounded-full border px-4 py-2 text-sm font-bold ${
+                    lang === option
+                      ? 'border-gray-950 bg-gray-950 text-white dark:border-white dark:bg-white dark:text-gray-950'
+                      : 'border-gray-300 text-gray-700 dark:border-gray-700 dark:text-gray-200'
+                  }`}
                 >
-                  {title}
+                  {option.toUpperCase()}
                 </Link>
-              </div>
-            )
-          })}
-          <div className="mt-6 flex gap-2 px-12">
-            {['es', 'en'].map((option) => (
-              <Link
-                key={option}
-                href={alternateLanguagePath(currentPath, option)}
-                onClick={onToggleNav}
-                className={`rounded-full border px-4 py-2 text-sm font-bold ${
-                  lang === option
-                    ? 'border-gray-950 bg-gray-950 text-white dark:border-white dark:bg-white dark:text-gray-950'
-                    : 'border-gray-300 text-gray-700 dark:border-gray-700 dark:text-gray-200'
-                }`}
-              >
-                {option.toUpperCase()}
-              </Link>
-            ))}
-          </div>
-        </nav>
-      </div>
+              ))}
+            </div>
+          </nav>
+        </div>
+      )}
     </div>
   )
 }

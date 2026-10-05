@@ -1,3 +1,5 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import { serializeJsonLd } from '@/lib/security.cjs'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from '@/components/Image'
@@ -65,7 +67,7 @@ function AcademicCard({ item, lang }) {
   )
 }
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [credentialsData, trajectoryData, pageContent] = await Promise.all([
     getCredentials(lang),
     getTrajectory(lang),
@@ -131,7 +133,7 @@ export default function Education({
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData, null, 2) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
         />
       </Head>
       <section className="pb-16 pt-8">
@@ -205,3 +207,5 @@ export default function Education({
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

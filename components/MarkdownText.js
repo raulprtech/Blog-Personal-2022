@@ -1,13 +1,7 @@
 import Link from 'next/link'
+import { safeHref } from '@/lib/security.cjs'
 
 const INLINE_PATTERN = /(\[[^\]]+\]\([^\s)]+\)|`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*)/
-
-function safeHref(href) {
-  if (!href) return '#'
-  const trimmed = href.trim()
-  if (/^(javascript|data):/i.test(trimmed)) return '#'
-  return trimmed
-}
 
 function renderToken(token, key) {
   if (token.startsWith('[')) {

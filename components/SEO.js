@@ -1,5 +1,6 @@
 ﻿import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { serializeJsonLd } from '@/lib/security.cjs'
 import siteMetadata from '@/data/siteMetadata'
 import { getPathWithoutLang, localizedPath } from '@/lib/i18n'
 
@@ -188,19 +189,19 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(webSiteStructuredData, null, 2),
+          __html: serializeJsonLd(webSiteStructuredData),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(webPageStructuredData, null, 2),
+          __html: serializeJsonLd(webPageStructuredData),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbStructuredData, null, 2),
+          __html: serializeJsonLd(breadcrumbStructuredData),
         }}
       />
     </Head>
@@ -223,7 +224,7 @@ export const PageSEO = ({ title, description }) => {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personStructuredData, null, 2),
+            __html: serializeJsonLd(personStructuredData),
           }}
         />
       </Head>
@@ -329,7 +330,7 @@ export const BlogSEO = ({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData, null, 2),
+            __html: serializeJsonLd(structuredData),
           }}
         />
       </Head>

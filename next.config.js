@@ -2,16 +2,21 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-// You might need to insert additional domains in script-src if you are using external services
+// Static Next.js hydration needs inline scripts; legacy MDX currently needs eval.
+// See docs/security-operations.md before removing either exception.
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app netlify www.google-analytics.com www.googletagmanager.com https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js https://identity.netlify.com/v1/netlify-identity-widget.js http://static.hotjar.com/c/hotjar-1928200.js https://unpkg.com/netlify-cms@%5E2.0.0/dist/netlify-cms.js https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202211010101/show_ads_impl_fy2021.js https://partner.googleadservices.com/gampad/cookie.js https://adservice.google.com.mx/adsid/integrator.js https://tpc.googlesyndication.com/sodar/sodar2.js https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202211010101/show_ads_impl_fy2021.js https://script.hotjar.com/modules.43d9c9e9a68c20171706.js https://plausible.io/js/plausible.js https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202211080101/show_ads_impl_fy2021.js https://script.hotjar.com/modules.55241fd65a1af5a1837b.js https://script.hotjar.com/modules.142ca8ad0099c834b74b.js;
-  style-src 'self' 'unsafe-inline' *.googleapis.com cdn.jsdelivr.net;
-  img-src * blob: data:;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app https://www.googletagmanager.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: blob: https:;
   media-src 'none';
-  connect-src *;
-  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net;
-  frame-src giscus.app youtube.com www.youtube.com netlify https://googleads.g.doubleclick.net/ https://tpc.googlesyndication.com/ https://www.google.com/ https://vars.hotjar.com/ ; 
+  connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
+  font-src 'self';
+  frame-src https://giscus.app https://www.youtube.com https://www.youtube-nocookie.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
   `
 
 const securityHeaders = [
@@ -55,7 +60,11 @@ const securityHeaders = [
 module.exports = withBundleAnalyzer({
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['res.cloudinary.com', 'cdn.sanity.io'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.sanity.io', pathname: '/images/a668buu6/production/**' },
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
+    ],
+    qualities: [60, 65, 70, 72, 75, 80, 85, 90, 100],
     minimumCacheTTL: 31536000,
     deviceSizes: [640, 768, 1024, 1280, 1536],
     imageSizes: [32, 48, 64, 96, 160, 320],
@@ -64,12 +73,14 @@ module.exports = withBundleAnalyzer({
   poweredByHeader: false,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-  eslint: {
-    dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
-  },
   async rewrites() {
     return {
       beforeFiles: [
+        { source: '/feed.xml', destination: '/api/feed' },
+        { source: '/en/feed.xml', destination: '/api/feed?lang=en' },
+        { source: '/tags/:tag/feed.xml', destination: '/api/feed?tag=:tag' },
+        { source: '/en/tags/:tag/feed.xml', destination: '/api/feed?lang=en&tag=:tag' },
+        { source: '/sitemap.xml', destination: '/api/sitemap' },
         { source: '/favicon.ico', destination: '/api/site-icon/48?format=ico' },
         { source: '/favicon.png', destination: '/api/site-icon/96' },
         { source: '/apple-touch-icon.png', destination: '/api/site-icon/180' },
@@ -107,21 +118,11 @@ module.exports = withBundleAnalyzer({
       },
     ]
   },
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     })
-
-    if (!dev && !isServer) {
-      // Replace React with Preact only in client production build
-      Object.assign(config.resolve.alias, {
-        'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-      })
-    }
 
     return config
   },

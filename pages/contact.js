@@ -1,3 +1,5 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
+import { serializeJsonLd } from '@/lib/security.cjs'
 import Head from 'next/head'
 import Link from 'next/link'
 import EditablePageHeader from '@/components/EditablePageHeader'
@@ -27,7 +29,7 @@ const contactCopy = {
   },
 }
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [pageContent, siteSettings] = await Promise.all([
     getPageContent('contact', lang),
     getSiteSettings(),
@@ -56,7 +58,7 @@ export default function Contact({ pageContent, siteSettings, lang = 'es' }) {
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
         />
       </Head>
       <section className="pb-16 pt-8">
@@ -117,3 +119,5 @@ export default function Contact({ pageContent, siteSettings, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

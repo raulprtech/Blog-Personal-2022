@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
 import { PageSEO } from '@/components/SEO'
@@ -7,7 +8,7 @@ import { getPageContent } from '@/lib/content'
 
 export const POSTS_PER_PAGE = 5
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [posts, tags, pageContent] = await Promise.all([
     getAllNotesFrontMatter(lang),
     getAllNoteTags(lang),
@@ -52,3 +53,5 @@ export default function Blog({
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

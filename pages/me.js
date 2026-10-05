@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import Link from 'next/link'
 import Image from '@/components/Image'
 import LayoutWrapper from '@/components/LayoutWrapper'
@@ -65,7 +66,7 @@ function LinkButton({ item }) {
   )
 }
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [pageContent, siteSettings] = await Promise.all([
     getPageContent('me', lang),
     getSiteSettings(),
@@ -132,3 +133,5 @@ export default function Me({ pageContent, siteSettings, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

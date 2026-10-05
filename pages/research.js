@@ -1,3 +1,4 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import Image from 'next/image'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
@@ -6,7 +7,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { CardLink, CollaboratorLine, RelatedConnections } from '@/components/ContentMeta'
 import { getPageContent, getResearchItems } from '@/lib/content'
 
-export async function getStaticProps({ lang = 'es' } = {}) {
+async function getPageStaticProps({ lang = 'es' } = {}) {
   const [pageContent, researchItems] = await Promise.all([
     getPageContent('research', lang),
     getResearchItems(lang),
@@ -84,3 +85,5 @@ export default function Research({ pageContent, researchItems, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)

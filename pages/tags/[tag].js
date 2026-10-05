@@ -1,14 +1,10 @@
+import { withSiteSettings } from '@/lib/withSiteSettings'
 import { TagSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
-import generateRss from '@/lib/generate-rss'
 import { getAllNoteTags, getAllNotesFrontMatter } from '@/lib/notes'
 import kebabCase from '@/lib/utils/kebabCase'
-import fs from 'fs'
-import path from 'path'
 import LayoutWrapper from '@/components/LayoutWrapper'
-
-const root = process.cwd()
 
 export async function getStaticPaths() {
   const tags = await getAllNoteTags('es')
@@ -19,28 +15,22 @@ export async function getStaticPaths() {
         tag,
       },
     })),
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
-export async function getStaticProps({ params, lang = 'es' }) {
+async function getPageStaticProps({ params, lang = 'es' }) {
   const allPosts = await getAllNotesFrontMatter(lang)
   const filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
   )
 
-  // rss
-  if (filteredPosts.length > 0) {
-    const rss = generateRss(filteredPosts, `tags/${params.tag}/feed.xml`)
-    const rssPath = path.join(root, 'public', 'tags', params.tag)
-    fs.mkdirSync(rssPath, { recursive: true })
-    fs.writeFileSync(path.join(rssPath, 'feed.xml'), rss)
-  }
+  if (!filteredPosts.length) return { notFound: true, revalidate: 60 }
 
   // getAllTags for tag section
   const tags = await getAllNoteTags(lang)
 
-  return { props: { posts: filteredPosts, tag: params.tag, tags: tags, lang } }
+  return { props: { posts: filteredPosts, tag: params.tag, tags: tags, lang }, revalidate: 60 }
 }
 
 export default function Tag({ posts, tag, tags, lang = 'es' }) {
@@ -56,3 +46,5 @@ export default function Tag({ posts, tag, tags, lang = 'es' }) {
     </LayoutWrapper>
   )
 }
+
+export const getStaticProps = withSiteSettings(getPageStaticProps)
